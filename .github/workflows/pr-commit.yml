@@ -1,0 +1,66 @@
+name: PR Commit
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  prettier:
+    name: Prettier Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install Node packages
+        run: yarn install
+      - name: Check code format
+        run: yarn format:check
+
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install Node packages
+        run: yarn install
+      - name: Lint source code
+        run: yarn eslint:check
+      - name: Lint commits
+        run: npx commitlint --verbose --from=origin/main
+
+  unit-test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install Node packages
+        run: yarn install
+      - name: Run unit tests
+        run: yarn test
+
+  build:
+    name: Build application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install Node packages
+        run: yarn install
+      - name: Build application
+        run: yarn build

@@ -10,6 +10,10 @@
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
+    "format:fix": "prettier \"{**/*,*}.{ts,js,jsx,tsx,json,css}\"",
+    "format:check": "prettier --check \"{**/*,*}.{ts,js,jsx,tsx,json,css}\"",
+    "eslint:fix": "eslint --fix \"**/*.{ts,js,tsx,jsx}\"",
+    "eslint:check": "eslint \"**/*.{ts,js,tsx,jsx}\"",
     "eject": "react-scripts eject"
   },
   "author": "PatrickKuei",
@@ -32,6 +36,7 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "husky": "^7.0.0",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.4"
   },
