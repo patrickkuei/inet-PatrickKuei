@@ -23,6 +23,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
     "semi": 0,
+    "object-curly-newline": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
