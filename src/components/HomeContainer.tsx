@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
+import Button from './shared/Button'
 
 type Props = {}
 
@@ -25,18 +26,8 @@ export default function HomeContainer({}: Props) {
           </div>
         </div>
         <div className="flex space-x-4">
-          <button
-            type="button"
-            className="w-24 h-10 border-2 rounded-3xl border-primary-500 text-primary-500"
-          >
-            login
-          </button>
-          <button
-            type="button"
-            className="w-24 h-10 border-2 rounded-3xl bg-primary-500 border-primary-500 text-primary-500 text-white"
-          >
-            sign up
-          </button>
+          <Button title="login" size="medium" type="outline" />
+          <Button title="sign up" size="medium" type="filled" />
         </div>
       </div>
       HomeContainer
