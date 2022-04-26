@@ -1,5 +1,6 @@
 import React from 'react'
-import mainLogo from '../images/Vector.svg'
+import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
+import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
 
 type Props = {}
 
@@ -11,7 +12,7 @@ export default function HomeContainer({}: Props) {
     <div className="w-screen h-screen bg-background-white">
       <div className="h-16 px-16 bg-white shadow-md flex justify-between items-center">
         <div className="text-primary-500">
-          <img className="h-6" src={mainLogo} alt="main logo" />
+          <MainLogo className="h-6" />
         </div>
         <div className="w-1/3 h-10 flex">
           <input
@@ -20,10 +21,10 @@ export default function HomeContainer({}: Props) {
             placeholder="搜尋 INET"
           />
           <div className="w-1/12 flex justify-center items-center border-2 border-l-0 rounded-lg rounded-l-none border-primary-200">
-            <i className="bg-icon-search bg-no-repeat inline-block w-5 h-5" />
+            <SearchIcon className="w-5 h-5" />
           </div>
         </div>
-        <div>
+        <div className="flex space-x-4">
           <button
             type="button"
             className="w-24 h-10 border-2 rounded-3xl border-primary-500 text-primary-500"

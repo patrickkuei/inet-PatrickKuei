@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}', './src/*.{html,js,jsx,ts,tsx}'],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -9,9 +9,6 @@ module.exports = {
         'primary-500': '#165698',
         'primary-600': '#053461',
         'gray-100': '#E9E9E9',
-      },
-      backgroundImage: {
-        'icon-search': "url('/src/icons/Icon.svg')",
       },
     },
   },
