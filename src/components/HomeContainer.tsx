@@ -10,6 +10,7 @@ import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as MenuIcon } from '../icons/menuIcon.svg'
 import { ReactComponent as UserIcon } from '../icons/userIcon.svg'
 import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
+import SidebarMobile from './SidebarMobile'
 
 type Props = {}
 
@@ -45,6 +46,7 @@ export default function HomeContainer({}: Props) {
           <Button title="sign up" size="medium" type="filled" />
         </div>
       </div>
+      <SidebarMobile />
       HomeContainer
     </div>
   )
