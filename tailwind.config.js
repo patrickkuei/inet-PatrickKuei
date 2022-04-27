@@ -10,6 +10,7 @@ module.exports = {
       },
       colors: {
         'background-white': '#F4F5F9',
+        'transparent-black': 'rgba(0, 0, 0, 0.4)',
         'primary-100': '#E6EBF4',
         'primary-200': '#A2B7CE',
         'primary-400': '#436E9E',
