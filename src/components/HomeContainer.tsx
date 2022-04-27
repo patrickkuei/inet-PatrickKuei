@@ -1,7 +1,15 @@
 import React from 'react'
-import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
-import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
+
 import Button from './shared/Button'
+
+// desktop
+import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
+import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
+
+// mobile
+import { ReactComponent as MenuIcon } from '../icons/menuIcon.svg'
+import { ReactComponent as UserIcon } from '../icons/userIcon.svg'
+import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
 
 type Props = {}
 
@@ -11,21 +19,28 @@ export default function HomeContainer({}: Props) {
 
   return (
     <div className="w-screen h-screen bg-background-white">
-      <div className="h-16 px-16 bg-white shadow-md flex justify-between items-center">
-        <div className="text-primary-500">
+      <div className="h-16 bg-white shadow-desktop flex justify-around items-center">
+        <div className="mx-7 desktop:hidden">
+          <MenuIcon />
+        </div>
+        <div className="hidden desktop:block">
           <MainLogo className="h-6" />
         </div>
-        <div className="w-1/3 h-10 flex">
+        <div className="mr-6 desktop:hidden">
+          <MobileLogo />
+        </div>
+        <div className="h-10 grow relative desktop:w-120 desktop:grow-0">
           <input
             type="text"
-            className="w-11/12 px-4 border-2 border-r-0 rounded-lg rounded-r-none border-primary-200"
+            className="w-full h-full shirnk px-4 border-2 rounded-lg border-primary-200"
             placeholder="搜尋 INET"
           />
-          <div className="w-1/12 flex justify-center items-center border-2 border-l-0 rounded-lg rounded-l-none border-primary-200">
-            <SearchIcon className="w-5 h-5" />
-          </div>
+          <SearchIcon className="w-5 h-5 absolute right-3 top-2.5" />
         </div>
-        <div className="flex space-x-4">
+        <div className="mx-8 desktop:hidden">
+          <UserIcon />
+        </div>
+        <div className="hidden desktop:flex desktop:space-x-4">
           <Button title="login" size="medium" type="outline" />
           <Button title="sign up" size="medium" type="filled" />
         </div>

@@ -1,7 +1,13 @@
 module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
+    screens: {
+      desktop: '680px',
+    },
     extend: {
+      spacing: {
+        120: '30rem',
+      },
       colors: {
         'background-white': '#F4F5F9',
         'primary-200': '#A2B7CE',
