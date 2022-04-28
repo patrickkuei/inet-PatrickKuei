@@ -2039,6 +2039,13 @@
   "resolved" "http://repository.vyond.org:4873/@types%2frange-parser/-/range-parser-1.2.4.tgz"
   "version" "1.2.4"
 
+"@types/react-dom-factories@^1.0.2":
+  "integrity" "sha512-TDrw8nuD8DYXsPKc5qA5lpPw0q2Ejq9di4OiW/vrVItzBzImfx8OaeW/RMl11woYFx6IcaOmcsev6ZuvLi8ctg=="
+  "resolved" "http://repository.vyond.org:4873/@types%2freact-dom-factories/-/react-dom-factories-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.1":
   "integrity" "sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg=="
   "resolved" "http://repository.vyond.org:4873/@types%2freact-dom/-/react-dom-18.0.2.tgz"
@@ -7494,6 +7501,11 @@
     "shell-quote" "^1.7.3"
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
+
+"react-dom-factories@^1.0.2":
+  "integrity" "sha1-63cFxNs2+1AbOqOP91lhaqD/luA="
+  "resolved" "http://repository.vyond.org:4873/react-dom-factories/-/react-dom-factories-1.0.2.tgz"
+  "version" "1.0.2"
 
 "react-dom@^18.0.0":
   "integrity" "sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw=="
