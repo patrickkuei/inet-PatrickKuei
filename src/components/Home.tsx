@@ -1,36 +1,34 @@
-import React from 'react'
-
-import Button from './shared/Button'
-
-// desktop
-import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
-import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
-
+import React, { MouseEventHandler } from 'react'
 // mobile
 import { ReactComponent as MenuIcon } from '../icons/menuIcon.svg'
+// desktop
+import { ReactComponent as SearchIcon } from '../icons/searchIcon.svg'
 import { ReactComponent as UserIcon } from '../icons/userIcon.svg'
+import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
+import Portal from './Portal'
+import Button from './shared/Button'
+import SidebarMobile from './SidebarMobile'
 
 type Props = {
-    onMobileMenuClick: Function
+  isSideBarOpen: boolean
+  onMobileMenuClick: MouseEventHandler
 }
 
-// eslint-disable-next-line no-empty-pattern
-export default function HomeContainer({ onMobileMenuClick }: Props) {
-  // navbar
-
+export default function HomeContainer({
+  isSideBarOpen,
+  onMobileMenuClick,
+}: Props) {
   return (
     <div className="w-screen h-screen bg-background-white">
       <div className="h-16 bg-white shadow-desktop flex justify-around items-center">
-        <div
-          role="button"
-          tabIndex={0}
+        <button
+          type="button"
           className="mx-7 desktop:hidden"
-          onClick={() => onMobileMenuClick()}
-          onKeyDown={() => onMobileMenuClick()}
+          onClick={onMobileMenuClick}
         >
           <MenuIcon />
-        </div>
+        </button>
         <div className="hidden desktop:block">
           <MainLogo className="h-6" />
         </div>
@@ -53,6 +51,11 @@ export default function HomeContainer({ onMobileMenuClick }: Props) {
           <Button title="sign up" size="medium" type="filled" />
         </div>
       </div>
+      {isSideBarOpen ? (
+        <Portal>
+          <SidebarMobile onMobileMenuClick={onMobileMenuClick} />
+        </Portal>
+      ) : null}
     </div>
   )
 }
