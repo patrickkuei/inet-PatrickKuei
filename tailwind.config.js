@@ -18,6 +18,9 @@ module.exports = {
         'primary-600': '#053461',
         'gray-100': '#E9E9E9',
       },
+      boxShadow: {
+        inet: '0px 2px 6px 0px #00000026',
+      },
     },
   },
   plugins: [],

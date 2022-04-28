@@ -41,11 +41,11 @@ function SidebarMobile({ onMobileMenuClick }: Props) {
       <div className="w-full h-full bg-transparent-black absolute top-0" />
       <div className="w-80 h-full p-6 bg-white absolute top-0 desktop:hidden">
         <button
-          className="absolute right-2"
+          className="absolute right-0 top-0"
           type="button"
           onClick={onMobileMenuClick}
         >
-          XXX
+          （。人。）
         </button>
         <div className="space-x-4 mb-6">
           <Button title="login" size="medium" type="filled" />
