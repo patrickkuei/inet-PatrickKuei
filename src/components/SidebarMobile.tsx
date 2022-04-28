@@ -1,11 +1,10 @@
 import React from 'react'
+import animal from '../images/animal.jpg'
+import chat from '../images/chat.jpg'
+import food from '../images/food.jpg'
+import popular from '../images/popular.jpg'
+import travel from '../images/travel.jpg'
 import Button from './shared/Button'
-
-import { ReactComponent as Animal } from '../images/animal.svg'
-import { ReactComponent as Chat } from '../images/chat.svg'
-import { ReactComponent as Food } from '../images/food.svg'
-import { ReactComponent as Travel } from '../images/travel.svg'
-import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
 
 type Props = {}
 
@@ -16,23 +15,23 @@ function SidebarMobile(props: Props) {
   const mockCommunities = [
     {
       title: 'popular',
-      icon: <MobileLogo />,
+      imgSrc: popular,
     },
     {
       title: 'chat',
-      icon: <Chat />,
+      imgSrc: chat,
     },
     {
       title: 'animal',
-      icon: <Animal />,
+      imgSrc: animal,
     },
     {
       title: 'food',
-      icon: <Food />,
+      imgSrc: food,
     },
     {
       title: 'travel',
-      icon: <Travel />,
+      imgSrc: travel,
     },
   ]
 
@@ -47,12 +46,15 @@ function SidebarMobile(props: Props) {
         <ul className="space-y-4">
           {mockCommunities.map((community) => (
             <li
-              className={mockCurrentCommunity === community.title
-                ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
-                : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'}
+              className={
+                mockCurrentCommunity === community.title
+                  ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
+                  : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'
+              }
               key={community.title}
             >
-              {community.icon}
+              <img width={32} height={32} src={community.imgSrc} alt="img" />
+
               <span className="ml-4">{community.title}</span>
             </li>
           ))}
