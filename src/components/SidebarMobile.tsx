@@ -38,7 +38,7 @@ function SidebarMobile({ onMobileMenuClick }: Props) {
 
   return (
     <>
-      <div className="w-full h-full bg-transparent-black absolute top-0" />
+      <div className="w-full h-full bg-transparent-black absolute top-0 desktop:hidden" />
       <div className="w-80 h-full p-6 bg-white absolute top-0 desktop:hidden">
         <button
           className="absolute right-0 top-0"
@@ -47,12 +47,12 @@ function SidebarMobile({ onMobileMenuClick }: Props) {
         >
           （。人。）
         </button>
-        <div className="space-x-4 mb-6">
-          <Button title="login" size="medium" type="filled" />
-          <Button title="sign up" size="medium" type="outline" />
+        <div className="flex space-x-4 mb-6">
+          <Button width="w-1/2" title="login" size="medium" type="filled" />
+          <Button width="w-1/2" title="sign up" size="medium" type="outline" />
         </div>
-        <div className="mb-6  text-left text-2xl font-bold">Communities</div>
-        <div className="w-full text-left">
+        <div className="mb-6 text-2xl font-bold">Article Catagory</div>
+        <div className="w-full">
           <ul className="space-y-4">
             {mockCommunities.map((community) => (
               <li
