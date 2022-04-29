@@ -1,14 +1,13 @@
 {
-    "security.workspace.trust.untrustedFiles": "open",
-    "explorer.confirmDelete": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "eslint.workingDirectories": [{ "mode": "auto" }],
-    "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": 1,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "eslint.format.enable": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
+  "explorer.confirmDelete": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "files.trimTrailingWhitespace": true,
+  "window.zoomLevel": 1,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
   }
+}
