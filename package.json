@@ -10,7 +10,7 @@
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
-    "format:fix": "prettier \"{**/*,*}.{ts,js,jsx,tsx,json,css}\"",
+    "format:fix": "prettier --write \"{**/*,*}.{ts,js,jsx,tsx,json,css}\"",
     "format:check": "prettier --check \"{**/*,*}.{ts,js,jsx,tsx,json,css}\"",
     "eslint:fix": "eslint --fix \"**/*.{ts,js,tsx,jsx}\"",
     "eslint:check": "eslint \"**/*.{ts,js,tsx,jsx}\"",
