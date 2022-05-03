@@ -57,21 +57,25 @@ export default function Home({
           {isNavMenuOpen ? (
             <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
               <ul>
-                <li className="p-4">
+                <li className="p-3">
                   <button
                     type="button"
                     className="flex items-center gap-3 whitespace-nowrap"
                   >
-                    <SignUpIcon className="w-6 h-6" />
+                    <div className="w-6 h-6 flex items-center pl-1">
+                      <SignUpIcon />
+                    </div>
                     Sign Up
                   </button>
                 </li>
-                <li className="p-4">
+                <li className="p-3">
                   <button
                     type="button"
                     className="flex items-center gap-3 whitespace-nowrap"
                   >
-                    <LoginIcon className="w-6 h-6" />
+                    <div className="w-6 h-6 flex items-center pl-1">
+                      <LoginIcon />
+                    </div>
                     Login
                   </button>
                 </li>
