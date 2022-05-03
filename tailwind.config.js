@@ -16,7 +16,8 @@ module.exports = {
         'gray-100': '#E9E9E9',
       },
       boxShadow: {
-        inet: '0px 2px 6px 0px #00000026',
+        drop: '0px 2px 6px 0px #00000026',
+        1: '0px 4px 4px 0px #00000040, 0px -1px 4px 0px #0000001A',
       },
     },
     maxWidth: {
