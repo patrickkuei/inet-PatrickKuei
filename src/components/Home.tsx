@@ -52,19 +52,25 @@ export default function Home({
             <UserIcon />
           </button>
           {isNavMenuOpen ? (
-            <div className="px-4 bg-white shadow-inet rounded-lg absolute -right-8 desktop:hidden">
+            <div className="bg-white shadow-inet rounded-lg absolute -right-6 desktop:hidden">
               <ul>
-                <li className="h-12 flex items-center">
-                  <div className="w-8">
-                    <SignUpIcon />
-                  </div>
-                  <span className="whitespace-nowrap">Sign Up</span>
+                <li className="p-4">
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 whitespace-nowrap"
+                  >
+                    <SignUpIcon className="w-6 h-6" />
+                    Sign Up
+                  </button>
                 </li>
-                <li className="h-12 flex items-center">
-                  <div className="w-8">
-                    <LoginIcon />
-                  </div>
-                  <span>Login</span>
+                <li className="p-4">
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 whitespace-nowrap"
+                  >
+                    <LoginIcon className="w-6 h-6" />
+                    Login
+                  </button>
                 </li>
               </ul>
             </div>
