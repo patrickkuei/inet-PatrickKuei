@@ -47,10 +47,13 @@ export default function Home({
           />
           <SearchIcon className="w-5 h-5 text-primary-200" />
         </div>
-        <div className="h-4 relative desktop:hidden">
-          <button type="button" onClick={onNavbarButtonClick}>
-            <UserIcon />
-          </button>
+        <div className="relative desktop:hidden">
+          <Button
+            size="small"
+            type="ghost"
+            icon={<UserIcon />}
+            onClick={onNavbarButtonClick}
+          />
           {isNavMenuOpen ? (
             <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
               <ul>
