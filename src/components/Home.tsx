@@ -24,30 +24,30 @@ export default function Home({
   onNavbarButtonClick,
 }: Props) {
   return (
-    <div className="w-screen h-screen bg-background-white">
-      <div className="h-16 bg-white shadow-inet flex justify-around items-center">
+    <div className="w-screen min-w-94 h-screen min-h-screen bg-background-white">
+      <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-inet flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
         <button
           type="button"
-          className="mx-7 desktop:hidden"
+          className="desktop:hidden"
           onClick={onMobileMenuClick}
         >
           <MenuIcon />
         </button>
         <div className="hidden desktop:block">
-          <MainLogo className="h-6" />
+          <MainLogo className="w-20" />
         </div>
-        <div className="mr-6 desktop:hidden">
+        <div className="desktop:hidden">
           <MobileLogo />
         </div>
-        <div className="h-10 px-4 border-2 border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:w-120 desktop:grow-0">
+        <div className="h-10 px-4 border-2 border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow">
           <input
             type="text"
-            className="w-full h-full shirnkborder-none outline-none placeholder:focus:text-primary-500"
+            className="w-full h-full border-none outline-none placeholder:focus:text-primary-500"
             placeholder="搜尋 INET"
           />
           <SearchIcon className="w-5 h-5 text-primary-200" />
         </div>
-        <div className="mx-8 relative desktop:hidden">
+        <div className="h-4 relative desktop:hidden">
           <button type="button" onClick={onNavbarButtonClick}>
             <UserIcon />
           </button>
