@@ -39,13 +39,13 @@ export default function Home({
         <div className="mr-6 desktop:hidden">
           <MobileLogo />
         </div>
-        <div className="h-10 grow relative desktop:w-120 desktop:grow-0">
+        <div className="h-10 px-4 border-2 border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:w-120 desktop:grow-0">
           <input
             type="text"
-            className="w-full h-full shirnk px-4 border-2 rounded-lg border-primary-200"
+            className="w-full h-full shirnkborder-none outline-none placeholder:focus:text-primary-500"
             placeholder="搜尋 INET"
           />
-          <SearchIcon className="w-5 h-5 absolute right-3 top-2.5" />
+          <SearchIcon className="w-5 h-5 text-primary-200" />
         </div>
         <div className="mx-8 relative desktop:hidden">
           <button type="button" onClick={onNavbarButtonClick}>
