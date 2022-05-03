@@ -6,7 +6,7 @@ import { ReactComponent as SignUpIcon } from '../icons/signupIcon.svg'
 import { ReactComponent as UserIcon } from '../icons/userIcon.svg'
 import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
-import Portal from './Portal'
+import ModalPortal from './ModalPortal'
 import Button from './shared/Button'
 import SidebarMobile from './SidebarMobile'
 
@@ -76,9 +76,9 @@ export default function Home({
         </div>
       </div>
       {isSideBarOpen ? (
-        <Portal>
+        <ModalPortal>
           <SidebarMobile onMobileMenuClick={onMobileMenuClick} />
-        </Portal>
+        </ModalPortal>
       ) : null}
     </div>
   )
