@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import React, { MouseEventHandler, useEffect, useRef } from 'react'
 import animal from '../images/animal.jpg'
 import chat from '../images/chat.jpg'
 import food from '../images/food.jpg'
@@ -11,6 +11,20 @@ type Props = {
 }
 
 const mockCurrentCommunity = 'popular'
+
+function useOutsideHandler(ref: React.MutableRefObject<any>, handler: any) {
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        handler(event)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [ref])
+}
 
 function SidebarMobile({ onMobileMenuClick }: Props) {
   const mockCommunities = [
@@ -36,10 +50,16 @@ function SidebarMobile({ onMobileMenuClick }: Props) {
     },
   ]
 
+  const wrapperRef = useRef(null)
+  useOutsideHandler(wrapperRef, onMobileMenuClick)
+
   return (
     <>
       <div className="w-full h-full bg-transparent-black absolute top-0 desktop:hidden" />
-      <div className="w-80 h-full p-6 bg-white absolute top-0 desktop:hidden">
+      <div
+        ref={wrapperRef}
+        className="w-80 h-full p-6 bg-white absolute top-0 desktop:hidden"
+      >
         <button
           className="absolute right-0 top-0"
           type="button"
