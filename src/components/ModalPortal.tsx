@@ -5,8 +5,7 @@ type Props = {
   children: React.ReactNode
 }
 
-// eslint-disable-next-line no-empty-pattern
-export default function Portal({ children }: Props) {
+export default function ModalPortal({ children }: Props) {
   const el = useRef(document.createElement('div'))
 
   useEffect(() => {
