@@ -17,7 +17,7 @@ type Props = {
   onNavbarButtonClick: MouseEventHandler
 }
 
-export default function HomeContainer({
+export default function Home({
   isSideBarOpen,
   onMobileMenuClick,
   isNavMenuOpen,
