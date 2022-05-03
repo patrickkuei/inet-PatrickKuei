@@ -5,9 +5,6 @@ module.exports = {
       desktop: '680px',
     },
     extend: {
-      spacing: {
-        120: '30rem',
-      },
       colors: {
         'background-white': '#F4F5F9',
         'transparent-black': 'rgba(0, 0, 0, 0.4)',
@@ -21,6 +18,13 @@ module.exports = {
       boxShadow: {
         inet: '0px 2px 6px 0px #00000026',
       },
+    },
+    maxWidth: {
+      120: '480px',
+    },
+    minWidth: {
+      42: '168px',
+      94: '375px',
     },
   },
   plugins: [],
