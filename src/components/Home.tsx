@@ -25,7 +25,7 @@ export default function Home({
 }: Props) {
   return (
     <div className="w-screen min-w-94 h-screen min-h-screen bg-background-white">
-      <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-inet flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
+      <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
         <button
           type="button"
           className="desktop:hidden"
@@ -52,7 +52,7 @@ export default function Home({
             <UserIcon />
           </button>
           {isNavMenuOpen ? (
-            <div className="bg-white shadow-inet rounded-lg absolute -right-6 desktop:hidden">
+            <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
               <ul>
                 <li className="p-4">
                   <button
@@ -77,8 +77,8 @@ export default function Home({
           ) : null}
         </div>
         <div className="hidden desktop:flex desktop:space-x-4">
-          <Button title="login" size="medium" type="outline" />
-          <Button title="sign up" size="medium" type="filled" />
+          <Button title="login" size="medium" type="filled" />
+          <Button title="sign up" size="medium" type="outline" />
         </div>
       </div>
       {isSideBarOpen ? (
