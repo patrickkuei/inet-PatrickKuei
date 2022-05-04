@@ -4,7 +4,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -34,6 +34,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   }
 }
