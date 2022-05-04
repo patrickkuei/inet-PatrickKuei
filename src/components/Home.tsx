@@ -12,14 +12,14 @@ import SidebarMobile from './SidebarMobile'
 
 type Props = {
   isSideBarOpen: boolean
-  onMobileMenuClick: MouseEventHandler
+  onSidebarToggle: MouseEventHandler
   isNavMenuOpen: boolean
   onNavbarButtonClick: MouseEventHandler
 }
 
 export default function Home({
   isSideBarOpen,
-  onMobileMenuClick,
+  onSidebarToggle,
   isNavMenuOpen,
   onNavbarButtonClick,
 }: Props) {
@@ -29,7 +29,7 @@ export default function Home({
         <button
           type="button"
           className="desktop:hidden"
-          onClick={onMobileMenuClick}
+          onClick={onSidebarToggle}
         >
           <MenuIcon />
         </button>
@@ -88,11 +88,11 @@ export default function Home({
           <Button title="sign up" size="medium" type="outline" />
         </div>
       </div>
-      {isSideBarOpen ? (
+      {isSideBarOpen && (
         <ModalPortal>
-          <SidebarMobile onMobileMenuClick={onMobileMenuClick} />
+          <SidebarMobile onDismiss={onSidebarToggle} />
         </ModalPortal>
-      ) : null}
+      )}
     </div>
   )
 }
