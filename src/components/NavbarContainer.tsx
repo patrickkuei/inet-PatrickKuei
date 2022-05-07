@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Home from './Home'
+import Navbar from './Navbar'
 
-export default function HomeContainer() {
+export default function NavbarContainer() {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false)
 
   const handleSidebarToggle = () => {
@@ -13,7 +13,7 @@ export default function HomeContainer() {
     setIsNavMenyOpen((prev) => !prev)
   }
   return (
-    <Home
+    <Navbar
       isSideBarOpen={isSideBarOpen}
       onSidebarToggle={handleSidebarToggle}
       isNavMenuOpen={isNavMenuOpen}
