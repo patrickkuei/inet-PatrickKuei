@@ -7,17 +7,11 @@ export default function NavbarContainer() {
   const handleSidebarToggle = () => {
     setIsSideBarOpen((prev) => !prev)
   }
-  const [isNavMenuOpen, setIsNavMenyOpen] = useState<boolean>(false)
 
-  const handleNavbarButtonClick = () => {
-    setIsNavMenyOpen((prev) => !prev)
-  }
   return (
     <Navbar
       isSideBarOpen={isSideBarOpen}
       onSidebarToggle={handleSidebarToggle}
-      isNavMenuOpen={isNavMenuOpen}
-      onNavbarButtonClick={handleNavbarButtonClick}
     />
   )
 }
