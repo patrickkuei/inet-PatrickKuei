@@ -26,13 +26,12 @@ export default function Navbar({
   return (
     <>
       <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
-        <button
-          type="button"
+        <Button
+          variant="custom"
+          icon={<MenuIcon />}
           className="desktop:hidden"
           onClick={onSidebarToggle}
-        >
-          <MenuIcon />
-        </button>
+        />
         <div className="hidden desktop:block">
           <MainLogo className="w-20" />
         </div>

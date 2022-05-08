@@ -26,17 +26,16 @@ const fillTypeMap: Record<FillType, string> = {
 
 type Props = {
   className?: string
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'custom'
   title?: string
-  size: ButtonSize
-  type: FillType
+  size?: ButtonSize
+  type?: FillType
   icon?: ReactElement
   onClick?: MouseEventHandler
 }
 
 function Button({
   className: customClassName,
-  // eslint-disable-next-line no-unused-vars
   variant,
   title,
   size,
@@ -44,8 +43,11 @@ function Button({
   icon,
   onClick,
 }: Props) {
-  const sizeValue = title ? sizeMap[size] : iconSizeMap[size]
-  const className = `${sizeValue} ${fillTypeMap[type]} ${commonStyle} ${customClassName}`
+  const sizeValue = title ? sizeMap[size!] : iconSizeMap[size!]
+  const className =
+    variant === 'custom'
+      ? customClassName
+      : `${sizeValue} ${fillTypeMap[type!]} ${commonStyle} ${customClassName}`
 
   return (
     <button type="button" className={className} onClick={onClick}>
@@ -57,6 +59,8 @@ function Button({
 
 Button.defaultProps = {
   className: '',
+  size: 'medium',
+  type: 'filled',
   variant: 'primary',
   title: '',
   icon: '',
