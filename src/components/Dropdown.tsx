@@ -1,21 +1,20 @@
-/* eslint-disable no-unused-vars */
-import React, { MouseEventHandler, ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 type Props = {
   overlay: Array<any>
-  render: (onClick: MouseEventHandler) => ReactElement
+  DropdownEntryComponent: ReactElement
+  isDropdownOpen: Boolean
 }
 
-export default function Dropdown({ overlay, render }: Props) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen((prev) => !prev)
-  }
-
+export default function Dropdown({
+  overlay,
+  DropdownEntryComponent,
+  isDropdownOpen,
+}: Props) {
   return (
     <div className="relative desktop:hidden">
-      {render(handleDropdownToggle)}
+      {DropdownEntryComponent}
       {isDropdownOpen ? (
         <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
           <ul>
