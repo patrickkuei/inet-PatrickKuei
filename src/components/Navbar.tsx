@@ -6,7 +6,7 @@ import { ReactComponent as SignUpIcon } from '../icons/signupIcon.svg'
 import { ReactComponent as UserIcon } from '../icons/userIcon.svg'
 import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
-import Dropdown from './Dropdown'
+import DropdownContainer from './DropdownContainer'
 import ModalPortal from './ModalPortal'
 import Button from './shared/Button'
 import SidebarMobile from './SidebarMobile'
@@ -31,7 +31,6 @@ export default function Navbar({ isSideBarOpen, onSidebarToggle }: Props) {
       className="p-3 flex items-center gap-3 whitespace-nowrap"
     />,
   ]
-
   return (
     <>
       <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
@@ -55,9 +54,9 @@ export default function Navbar({ isSideBarOpen, onSidebarToggle }: Props) {
           />
           <SearchIcon className="w-5 h-5 text-primary-200" />
         </div>
-        <Dropdown
+        <DropdownContainer
           overlay={dropdownOverlay}
-          render={(onDropdownToggle) => (
+          renderDropdownEntry={(onDropdownToggle) => (
             <Button
               size="small"
               type="ghost"
