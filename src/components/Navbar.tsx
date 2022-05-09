@@ -8,6 +8,7 @@ import { ReactComponent as MainLogo } from '../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../images/mobileLogo.svg'
 import Button from './Button'
 import DropdownContainer from './DropdownContainer'
+import Input from './Input'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
 export default function Navbar() {
@@ -43,14 +44,11 @@ export default function Navbar() {
       <div className="desktop:hidden">
         <MobileLogo />
       </div>
-      <div className="h-10 px-4 border-2 border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow">
-        <input
-          type="text"
-          className="w-full h-full border-none outline-none placeholder:focus:text-primary-500"
-          placeholder="搜尋 INET"
-        />
-        <SearchIcon className="w-5 h-5 text-primary-200" />
-      </div>
+      <Input
+        type="text"
+        placeholder="搜尋 INET"
+        icon={<SearchIcon className="w-5 h-5 text-primary-200" />}
+      />
       <DropdownContainer
         overlay={dropdownOverlay}
         renderDropdownEntry={(onDropdownToggle) => (
