@@ -1,5 +1,5 @@
+import { nanoid } from 'nanoid'
 import React, { ReactElement } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 type Props = {
   overlay: Array<any>
@@ -19,7 +19,7 @@ export default function Dropdown({
         <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
           <ul>
             {overlay.map((item) => (
-              <li key={uuidv4()}>{item}</li>
+              <li key={nanoid()}>{item}</li>
             ))}
           </ul>
         </div>

@@ -1,5 +1,5 @@
+import { nanoid } from 'nanoid'
 import React, { MouseEventHandler, ReactElement } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import Button from '../shared/Button'
 import ModalPortal from '../shared/ModalPortal'
 
@@ -59,7 +59,7 @@ function SidebarMobile({
                         ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
                         : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'
                     }
-                    key={uuidv4()}
+                    key={nanoid()}
                   >
                     <img
                       width={32}
