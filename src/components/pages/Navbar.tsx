@@ -29,12 +29,12 @@ export default function Navbar() {
   return (
     <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
       <SidebarMobileContainer
-        renderSidebarMobileEntry={(onSidebarToggle) => (
+        renderSidebarMobileToggle={(onToggleSidebar) => (
           <Button
             variant="custom"
             icon={<MenuIcon />}
             className="desktop:hidden"
-            onClick={onSidebarToggle}
+            onClick={onToggleSidebar}
           />
         )}
       />
@@ -51,12 +51,12 @@ export default function Navbar() {
       />
       <DropdownContainer
         overlay={dropdownOverlay}
-        renderDropdownEntry={(onDropdownToggle) => (
+        renderDropdownToggle={(onToggleDropdown) => (
           <Button
             size="small"
             type="ghost"
             icon={<UserIcon />}
-            onClick={onDropdownToggle}
+            onClick={onToggleDropdown}
           />
         )}
       />

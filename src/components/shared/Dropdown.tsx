@@ -3,18 +3,18 @@ import React, { ReactElement } from 'react'
 
 type Props = {
   overlay: Array<any>
-  DropdownEntryComponent: ReactElement
+  DropdownToggle: ReactElement
   isDropdownOpen: Boolean
 }
 
 export default function Dropdown({
   overlay,
-  DropdownEntryComponent,
+  DropdownToggle,
   isDropdownOpen,
 }: Props) {
   return (
     <div className="relative desktop:hidden">
-      {DropdownEntryComponent}
+      {DropdownToggle}
       {isDropdownOpen && (
         <div className="bg-white shadow-drop rounded-lg absolute -right-6 desktop:hidden">
           <ul>

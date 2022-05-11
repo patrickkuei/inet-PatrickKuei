@@ -8,7 +8,7 @@ import SidebarMobile from './SidebarMobile'
 
 type Props = {
   // eslint-disable-next-line no-unused-vars
-  renderSidebarMobileEntry: (onClick: MouseEventHandler) => ReactElement
+  renderSidebarMobileToggle: (onClick: MouseEventHandler) => ReactElement
 }
 const mockCategories = [
   {
@@ -34,23 +34,22 @@ const mockCategories = [
 ]
 
 export default function SidebarMobileContainer({
-  renderSidebarMobileEntry,
+  renderSidebarMobileToggle,
 }: Props) {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false)
 
-  const handleSidebarToggle = () => {
+  const handleToggleSidebar = () => {
     setIsSideBarOpen((prev) => !prev)
   }
 
-  const SidebarMobileEntryComponent =
-    renderSidebarMobileEntry(handleSidebarToggle)
+  const SidebarMobileToggle = renderSidebarMobileToggle(handleToggleSidebar)
 
   return (
     <SidebarMobile
       categories={mockCategories}
       isSideBarOpen={isSideBarOpen}
-      onDismiss={handleSidebarToggle}
-      SidebarMobileEntryComponent={SidebarMobileEntryComponent}
+      onDismiss={handleToggleSidebar}
+      SidebarMobileToggle={SidebarMobileToggle}
     />
   )
 }
