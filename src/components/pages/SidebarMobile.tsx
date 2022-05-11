@@ -6,7 +6,7 @@ import ModalPortal from '../shared/ModalPortal'
 type Props = {
   categories: Array<any>
   isSideBarOpen: Boolean
-  SidebarMobileEntryComponent: ReactElement
+  SidebarMobileToggle: ReactElement
   onDismiss: MouseEventHandler
 }
 
@@ -16,11 +16,11 @@ function SidebarMobile({
   categories,
   isSideBarOpen,
   onDismiss,
-  SidebarMobileEntryComponent,
+  SidebarMobileToggle,
 }: Props) {
   return (
     <>
-      {SidebarMobileEntryComponent}
+      {SidebarMobileToggle}
       {isSideBarOpen && (
         <ModalPortal>
           <div

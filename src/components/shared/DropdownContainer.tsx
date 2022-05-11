@@ -4,23 +4,23 @@ import Dropdown from './Dropdown'
 type Props = {
   overlay: Array<any>
   // eslint-disable-next-line no-unused-vars
-  renderDropdownEntry: (onClick: MouseEventHandler) => ReactElement
+  renderDropdownToggle: (onClick: MouseEventHandler) => ReactElement
 }
 
 export default function DropdownContainer({
   overlay,
-  renderDropdownEntry,
+  renderDropdownToggle,
 }: Props) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const handleDropdownToggle = () => {
+  const handleToggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev)
   }
-  const DropdownEntryComponent = renderDropdownEntry(handleDropdownToggle)
+  const DropdownToggle = renderDropdownToggle(handleToggleDropdown)
 
   return (
     <Dropdown
       overlay={overlay}
-      DropdownEntryComponent={DropdownEntryComponent}
+      DropdownToggle={DropdownToggle}
       isDropdownOpen={isDropdownOpen}
     />
   )
