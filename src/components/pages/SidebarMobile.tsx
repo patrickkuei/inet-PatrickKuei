@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, ReactElement } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import Button from './Button'
-import ModalPortal from './ModalPortal'
+import Button from '../shared/Button'
+import ModalPortal from '../shared/ModalPortal'
 
 type Props = {
   categories: Array<any>

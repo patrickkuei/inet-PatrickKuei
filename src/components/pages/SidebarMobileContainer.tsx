@@ -1,9 +1,9 @@
 import React, { MouseEventHandler, ReactElement, useState } from 'react'
-import animal from '../images/animal.jpg'
-import chat from '../images/chat.jpg'
-import food from '../images/food.jpg'
-import popular from '../images/popular.jpg'
-import travel from '../images/travel.jpg'
+import animal from '../../images/animal.jpg'
+import chat from '../../images/chat.jpg'
+import food from '../../images/food.jpg'
+import popular from '../../images/popular.jpg'
+import travel from '../../images/travel.jpg'
 import SidebarMobile from './SidebarMobile'
 
 type Props = {
