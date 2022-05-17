@@ -4,7 +4,6 @@ import Dropdown from './Dropdown'
 type Props = {
   className: String
   overlay: Array<any>
-  // eslint-disable-next-line no-unused-vars
   renderDropdownToggle: (onClick: MouseEventHandler) => ReactElement
 }
 

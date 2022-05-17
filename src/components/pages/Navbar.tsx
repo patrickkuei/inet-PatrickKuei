@@ -14,12 +14,14 @@ import SidebarMobileContainer from './SidebarMobileContainer'
 export default function Navbar() {
   const dropdownOverlay = [
     <Button
+      key={'mock01'}
       variant="custom"
       title="Sign Up"
       icon={<SignUpIcon />}
       className="p-3 flex items-center gap-3 whitespace-nowrap"
     />,
     <Button
+      key={'mock02'}
       variant="custom"
       title="Login"
       icon={<LoginIcon />}

@@ -31,7 +31,3 @@ export default function Dropdown({
     </div>
   )
 }
-
-Dropdown.defaultProps = {
-  customClassName: '',
-}
