@@ -12,7 +12,7 @@ const defaultInputClassName =
 
 export default function Input({
   type,
-  className: customClassName,
+  className: customClassName = '',
   placeholder,
   icon,
 }: Props) {
@@ -24,7 +24,4 @@ export default function Input({
       {icon}
     </div>
   )
-}
-Input.defaultProps = {
-  className: '',
 }

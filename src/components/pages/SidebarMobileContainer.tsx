@@ -7,7 +7,6 @@ import travel from '../../images/travel.jpg'
 import SidebarMobile from './SidebarMobile'
 
 type Props = {
-  // eslint-disable-next-line no-unused-vars
   renderSidebarMobileToggle: (onClick: MouseEventHandler) => ReactElement
 }
 const mockCategories = [

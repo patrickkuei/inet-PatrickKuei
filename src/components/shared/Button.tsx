@@ -35,11 +35,11 @@ type Props = {
 }
 
 function Button({
-  className: customClassName,
-  variant,
-  title,
-  size,
-  type,
+  className: customClassName = '',
+  variant = 'primary',
+  title = '',
+  size = 'medium',
+  type = 'filled',
   icon,
   onClick,
 }: Props) {
@@ -55,16 +55,6 @@ function Button({
       {title}
     </button>
   )
-}
-
-Button.defaultProps = {
-  className: '',
-  size: 'medium',
-  type: 'filled',
-  variant: 'primary',
-  title: '',
-  icon: '',
-  onClick: undefined,
 }
 
 export default Button
