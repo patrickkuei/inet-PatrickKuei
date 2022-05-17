@@ -2,12 +2,14 @@ import React, { MouseEventHandler, ReactElement, useState } from 'react'
 import Dropdown from './Dropdown'
 
 type Props = {
+  className: String
   overlay: Array<any>
   // eslint-disable-next-line no-unused-vars
   renderDropdownToggle: (onClick: MouseEventHandler) => ReactElement
 }
 
 export default function DropdownContainer({
+  className,
   overlay,
   renderDropdownToggle,
 }: Props) {
@@ -19,6 +21,7 @@ export default function DropdownContainer({
 
   return (
     <Dropdown
+      customClassName={className}
       overlay={overlay}
       DropdownToggle={DropdownToggle}
       isDropdownOpen={isDropdownOpen}

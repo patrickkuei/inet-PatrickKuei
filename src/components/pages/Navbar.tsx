@@ -50,6 +50,7 @@ export default function Navbar() {
         icon={<SearchIcon className="w-5 h-5 text-primary-200" />}
       />
       <DropdownContainer
+        className="desktop:hidden"
         overlay={dropdownOverlay}
         renderDropdownToggle={(onToggleDropdown) => (
           <Button
