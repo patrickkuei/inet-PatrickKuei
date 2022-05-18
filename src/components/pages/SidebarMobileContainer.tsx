@@ -32,27 +32,27 @@ const mockCategories = [
 ]
 
 export default function SidebarMobileContainer() {
-  const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false)
+  const [isOpened, setIsOpened] = useState<boolean>(false)
 
-  const handleToggleSidebar = () => {
-    setIsSideBarOpen((prev) => !prev)
+  const handleToggle = () => {
+    setIsOpened((prev) => !prev)
   }
 
-  const SidebarMobileToggle = (
+  const Toggle = (
     <Button
       variant="custom"
       icon={<MenuIcon />}
       className="desktop:hidden"
-      onClick={handleToggleSidebar}
+      onClick={handleToggle}
     />
   )
 
   return (
     <SidebarMobile
       categories={mockCategories}
-      isSideBarOpen={isSideBarOpen}
-      onDismiss={handleToggleSidebar}
-      SidebarMobileToggle={SidebarMobileToggle}
+      isOpened={isOpened}
+      onDismiss={handleToggle}
+      Toggle={Toggle}
     />
   )
 }

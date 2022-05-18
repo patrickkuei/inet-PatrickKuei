@@ -1,27 +1,21 @@
-import { nanoid } from 'nanoid'
 import React, { MouseEventHandler, ReactElement } from 'react'
 import Button from '../shared/Button'
 import ModalPortal from '../shared/ModalPortal'
 
 type Props = {
   categories: Array<any>
-  isSideBarOpen: Boolean
-  SidebarMobileToggle: ReactElement
+  isOpened: Boolean
+  Toggle: ReactElement
   onDismiss: MouseEventHandler
 }
 
 const mockCurrentCommunity = 'popular'
 
-function SidebarMobile({
-  categories,
-  isSideBarOpen,
-  onDismiss,
-  SidebarMobileToggle,
-}: Props) {
+function SidebarMobile({ categories, isOpened, onDismiss, Toggle }: Props) {
   return (
     <>
-      {SidebarMobileToggle}
-      {isSideBarOpen && (
+      {Toggle}
+      {isOpened && (
         <ModalPortal>
           <div
             className="w-full h-full bg-transparent-black absolute top-0 desktop:hidden"
@@ -52,14 +46,14 @@ function SidebarMobile({
             <div className="mb-6 text-2xl font-bold">Article Catagory</div>
             <div className="w-full">
               <ul className="space-y-4">
-                {categories.map((category) => (
+                {categories.map((category, index) => (
                   <li
                     className={
                       mockCurrentCommunity === category.title
                         ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
                         : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'
                     }
-                    key={nanoid()}
+                    key={index}
                   >
                     <img
                       width={32}
