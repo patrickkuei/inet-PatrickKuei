@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { ReactComponent as LoginIcon } from '../../icons/loginIcon.svg'
 import { ReactComponent as MenuIcon } from '../../icons/menuIcon.svg'
 import { ReactComponent as SearchIcon } from '../../icons/searchIcon.svg'
@@ -8,10 +8,15 @@ import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'
 import Button from '../shared/Button'
 import DropdownContainer from '../shared/DropdownContainer'
+import DropdownItemContainer from '../shared/DropdownItemContainer'
 import Input from '../shared/Input'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
-export default function Navbar() {
+type Props = {
+  onDropdownItemClick: MouseEventHandler
+}
+
+export default function Navbar({ onDropdownItemClick }: Props) {
   const dropdownOverlay = [
     <Button
       key={'mock01'}
@@ -53,7 +58,6 @@ export default function Navbar() {
       />
       <DropdownContainer
         className="desktop:hidden"
-        overlay={dropdownOverlay}
         renderDropdownToggle={(onToggleDropdown) => (
           <Button
             size="small"
@@ -62,7 +66,18 @@ export default function Navbar() {
             onClick={onToggleDropdown}
           />
         )}
-      />
+      >
+        <DropdownItemContainer
+          title="Sign Up"
+          icon="signup"
+          onClick={onDropdownItemClick}
+        />
+        <DropdownItemContainer
+          title="Login"
+          icon="login"
+          onClick={onDropdownItemClick}
+        />
+      </DropdownContainer>
       <div className="hidden desktop:flex desktop:space-x-4">
         <Button title="login" size="medium" type="filled" />
         <Button title="sign up" size="medium" type="outline" />

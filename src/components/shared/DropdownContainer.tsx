@@ -3,14 +3,14 @@ import Dropdown from './Dropdown'
 
 type Props = {
   className: String
-  overlay: Array<any>
   renderDropdownToggle: (onClick: MouseEventHandler) => ReactElement
+  children: ReactElement | ReactElement[]
 }
 
 export default function DropdownContainer({
   className,
-  overlay,
   renderDropdownToggle,
+  children,
 }: Props) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const handleToggleDropdown = () => {
@@ -21,9 +21,10 @@ export default function DropdownContainer({
   return (
     <Dropdown
       customClassName={className}
-      overlay={overlay}
       DropdownToggle={DropdownToggle}
       isDropdownOpen={isDropdownOpen}
-    />
+    >
+      {children}
+    </Dropdown>
   )
 }

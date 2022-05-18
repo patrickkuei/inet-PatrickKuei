@@ -1,18 +1,17 @@
-import { nanoid } from 'nanoid'
 import React, { ReactElement } from 'react'
 
 type Props = {
   customClassName?: String
-  overlay: Array<any>
   DropdownToggle: ReactElement
   isDropdownOpen: Boolean
+  children: ReactElement | ReactElement[]
 }
 
 export default function Dropdown({
   customClassName = '',
-  overlay,
   DropdownToggle,
   isDropdownOpen,
+  children,
 }: Props) {
   return (
     <div className={`relative ${customClassName}`}>
@@ -21,11 +20,7 @@ export default function Dropdown({
         <div
           className={`bg-white shadow-drop rounded-lg absolute -right-6 ${customClassName}`}
         >
-          <ul>
-            {overlay.map((item) => (
-              <li key={nanoid()}>{item}</li>
-            ))}
-          </ul>
+          <ul>{children}</ul>
         </div>
       )}
     </div>
