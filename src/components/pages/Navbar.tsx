@@ -1,5 +1,4 @@
 import React, { MouseEventHandler } from 'react'
-import { ReactComponent as MenuIcon } from '../../icons/menuIcon.svg'
 import { ReactComponent as SearchIcon } from '../../icons/searchIcon.svg'
 import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'
@@ -18,16 +17,7 @@ export default function Navbar({ user, onDropdownItemClick }: Props) {
   const dropdownToggleIcon = user.avatar
   return (
     <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
-      <SidebarMobileContainer
-        renderSidebarMobileToggle={(onToggleSidebar) => (
-          <Button
-            variant="custom"
-            icon={<MenuIcon />}
-            className="desktop:hidden"
-            onClick={onToggleSidebar}
-          />
-        )}
-      />
+      <SidebarMobileContainer />
       <div className="hidden desktop:block">
         <MainLogo className="w-20" />
       </div>
