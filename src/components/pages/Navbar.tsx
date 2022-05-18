@@ -1,9 +1,6 @@
 import React, { MouseEventHandler } from 'react'
-import { ReactComponent as LoginIcon } from '../../icons/loginIcon.svg'
 import { ReactComponent as MenuIcon } from '../../icons/menuIcon.svg'
 import { ReactComponent as SearchIcon } from '../../icons/searchIcon.svg'
-import { ReactComponent as SignUpIcon } from '../../icons/signupIcon.svg'
-import { ReactComponent as UserIcon } from '../../icons/userIcon.svg'
 import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'
 import Button from '../shared/Button'
@@ -13,26 +10,12 @@ import Input from '../shared/Input'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
 type Props = {
+  user: { id: number; name: string; avatar: JSX.Element }
   onDropdownItemClick: MouseEventHandler
 }
 
-export default function Navbar({ onDropdownItemClick }: Props) {
-  const dropdownOverlay = [
-    <Button
-      key={'mock01'}
-      variant="custom"
-      title="Sign Up"
-      icon={<SignUpIcon />}
-      className="p-3 flex items-center gap-3 whitespace-nowrap"
-    />,
-    <Button
-      key={'mock02'}
-      variant="custom"
-      title="Login"
-      icon={<LoginIcon />}
-      className="p-3 flex items-center gap-3 whitespace-nowrap"
-    />,
-  ]
+export default function Navbar({ user, onDropdownItemClick }: Props) {
+  const dropdownToggleIcon = user.avatar
   return (
     <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
       <SidebarMobileContainer
@@ -58,14 +41,7 @@ export default function Navbar({ onDropdownItemClick }: Props) {
       />
       <DropdownContainer
         className="desktop:hidden"
-        renderDropdownToggle={(onToggleDropdown) => (
-          <Button
-            size="small"
-            type="ghost"
-            icon={<UserIcon />}
-            onClick={onToggleDropdown}
-          />
-        )}
+        toggleIcon={dropdownToggleIcon}
       >
         <DropdownItemContainer
           title="Sign Up"

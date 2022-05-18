@@ -1,22 +1,30 @@
-import React, { MouseEventHandler, ReactElement, useState } from 'react'
+import React, { ReactElement, useState } from 'react'
+import Button from './Button'
 import Dropdown from './Dropdown'
 
 type Props = {
   className: String
-  renderDropdownToggle: (onClick: MouseEventHandler) => ReactElement
+  toggleIcon: ReactElement
   children: ReactElement | ReactElement[]
 }
 
 export default function DropdownContainer({
   className,
-  renderDropdownToggle,
+  toggleIcon,
   children,
 }: Props) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const handleToggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev)
   }
-  const DropdownToggle = renderDropdownToggle(handleToggleDropdown)
+  const DropdownToggle = (
+    <Button
+      size="small"
+      type="ghost"
+      icon={toggleIcon}
+      onClick={handleToggleDropdown}
+    />
+  )
 
   return (
     <Dropdown
