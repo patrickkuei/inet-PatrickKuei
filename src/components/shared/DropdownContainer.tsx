@@ -13,25 +13,21 @@ export default function DropdownContainer({
   toggleIcon,
   children,
 }: Props) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const handleToggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev)
+  const [isOpened, setIsOpened] = useState(false)
+  const handleToggle = () => {
+    setIsOpened((prev) => !prev)
   }
-  const DropdownToggle = (
+  const Toggle = (
     <Button
       size="small"
       type="ghost"
       icon={toggleIcon}
-      onClick={handleToggleDropdown}
+      onClick={handleToggle}
     />
   )
 
   return (
-    <Dropdown
-      customClassName={className}
-      DropdownToggle={DropdownToggle}
-      isDropdownOpen={isDropdownOpen}
-    >
+    <Dropdown customClassName={className} Toggle={Toggle} isOpened={isOpened}>
       {children}
     </Dropdown>
   )
