@@ -31,6 +31,7 @@ type Props = {
   size?: ButtonSize
   type?: FillType
   icon?: ReactElement
+  disabled?: boolean
   onClick?: MouseEventHandler
 }
 
@@ -41,6 +42,7 @@ function Button({
   size = 'medium',
   type = 'filled',
   icon,
+  disabled = false,
   onClick,
 }: Props) {
   const sizeValue = title ? sizeMap[size!] : iconSizeMap[size!]
@@ -50,7 +52,12 @@ function Button({
       : `${sizeValue} ${fillTypeMap[type!]} ${commonStyle} ${customClassName}`
 
   return (
-    <button type="button" className={className} onClick={onClick}>
+    <button
+      type="button"
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {icon}
       {title}
     </button>
