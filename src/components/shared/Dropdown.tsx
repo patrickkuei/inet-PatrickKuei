@@ -11,11 +11,10 @@ type Props = {
 const Dropdown = React.forwardRef<HTMLDivElement, Props>(
   ({ customClassName = '', Toggle, isOpened, children }: Props, ref) => {
     return (
-      <div className={`relative ${customClassName}`}>
+      <div ref={ref} className={`relative ${customClassName}`}>
         {Toggle}
         {isOpened && (
           <div
-            ref={ref}
             className={`bg-white shadow-drop rounded-lg absolute -right-6 ${customClassName}`}
           >
             <ul>{children}</ul>
