@@ -12,7 +12,7 @@ const sizeMap: Record<ButtonSize, string> = {
   large: 'h-16 px-8',
 }
 const iconSizeMap: Record<ButtonSize, string> = {
-  small: 'h-8 w-8 p-2',
+  small: 'h-8 w-8',
   medium: 'h-10 w-10 p-3',
   large: 'h-16 w-16 p-4',
 }
