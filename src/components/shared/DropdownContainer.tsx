@@ -6,6 +6,7 @@ type Props = {
   className: String
   toggleIcon: ReactElement
   children: ReactElement | ReactElement[]
+  isLogin: boolean
 }
 
 function useOutsideHandler(ref: React.MutableRefObject<any>, handler: any) {
@@ -28,15 +29,18 @@ export default function DropdownContainer({
   className,
   toggleIcon,
   children,
+  isLogin,
 }: Props) {
   const [isOpened, setIsOpened] = useState(false)
 
   const handleToggle = () => {
     setIsOpened((prev) => !prev)
   }
+
+  const toggleIconSize = isLogin ? 'medium' : 'small'
   const Toggle = (
     <Button
-      size="small"
+      size={toggleIconSize}
       type="ghost"
       icon={toggleIcon}
       onClick={handleToggle}

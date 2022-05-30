@@ -10,7 +10,7 @@ const getUserInfo = () => ({
 })
 
 export default function NavbarContainer() {
-  const [isLoging, setIsLoging] = useState(false)
+  const [isLoging, setIsLoging] = useState(true)
   const user = isLoging
     ? getUserInfo()
     : { id: 0, name: 'anonymous', avatar: <AnonymIcon /> }
