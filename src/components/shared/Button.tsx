@@ -21,7 +21,7 @@ const fillTypeMap: Record<FillType, string> = {
   filled: 'bg-primary-500 border-primary-500 text-white',
   elevated: 'text-primary-500 border-none shadow-1',
   outline: 'border-primary-500 text-primary-500',
-  ghost: 'text-primary-500 border-none',
+  ghost: 'fill-primary-500 border-none',
 }
 
 type Props = {

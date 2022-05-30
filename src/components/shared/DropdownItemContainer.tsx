@@ -2,7 +2,16 @@ import React, { MouseEventHandler } from 'react'
 import DropdownItem from './DropdownItem'
 
 type Props = {
-  icon: 'login' | 'signup'
+  icon:
+    | 'login'
+    | 'signup'
+    | 'edit'
+    | 'user'
+    | 'bookmark'
+    | 'history'
+    | 'setting'
+    | 'setting'
+    | 'logOut'
   className?: string
   title: string
   onClick: MouseEventHandler
