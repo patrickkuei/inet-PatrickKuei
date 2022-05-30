@@ -14,7 +14,8 @@ type Props = {
     | 'logOut'
   className?: string
   title: string
-  onClick: MouseEventHandler
+  onClick?: MouseEventHandler
+  linkTo?: string
 }
 
 export default function DropdownItemContainer({
@@ -22,15 +23,18 @@ export default function DropdownItemContainer({
   icon,
   className,
   onClick,
-  ...others
+  linkTo = 'linkTo',
 }: Props) {
+  const defaultOnClick = () => {
+    console.log(linkTo)
+  }
+
   return (
     <DropdownItem
       title={title}
       icon={icon}
       className={className}
-      onClick={onClick}
-      {...others}
+      onClick={onClick || defaultOnClick}
     />
   )
 }
