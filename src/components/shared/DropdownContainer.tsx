@@ -11,6 +11,8 @@ type Props = {
 function useOutsideHandler(ref: React.MutableRefObject<any>, handler: any) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      event.stopPropagation()
+
       if (ref.current && !ref.current.contains(event.target)) {
         handler(event)
       }
@@ -37,7 +39,6 @@ export default function DropdownContainer({
       size="small"
       type="ghost"
       icon={toggleIcon}
-      disabled={isOpened}
       onClick={handleToggle}
     />
   )
