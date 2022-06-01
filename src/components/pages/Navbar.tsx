@@ -27,7 +27,7 @@ export default function Navbar({ user, onDropdownItemClick }: Props) {
       <Input
         type="text"
         placeholder="搜尋 INET"
-        icon={<SearchIcon className="w-5 h-5 text-primary-200" />}
+        icon={<SearchIcon className="text-primary-200" />}
       />
       <DropdownContainer
         className="desktop:hidden"
