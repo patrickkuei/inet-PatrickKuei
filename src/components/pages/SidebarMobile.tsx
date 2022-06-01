@@ -34,13 +34,13 @@ function SidebarMobile({ categories, isOpened, onDismiss, Toggle }: Props) {
                 className="w-1/2"
                 title="login"
                 size="medium"
-                type="filled"
+                fillType="filled"
               />
               <Button
                 className="w-1/2"
                 title="sign up"
                 size="medium"
-                type="outline"
+                fillType="outline"
               />
             </div>
             <div className="mb-6 text-2xl font-bold">Article Catagory</div>

@@ -1,8 +1,9 @@
 import React, { MouseEventHandler } from 'react'
+import { IconName } from '../../icons'
 import DropdownItem from './DropdownItem'
 
 type Props = {
-  icon: 'login' | 'signup'
+  icon: IconName
   className?: string
   title: string
   onClick: MouseEventHandler

@@ -26,34 +26,51 @@ const fillTypeMap: Record<FillType, string> = {
 
 type Props = {
   className?: string
+  /**
+   * @default 'button'
+   */
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+  /**
+   * @default 'primary'
+   */
   variant?: 'primary' | 'secondary' | 'custom'
   title?: string
+  /**
+   * @default 'medium'
+   */
   size?: ButtonSize
-  type?: FillType
+  /**
+   * @default 'filled'
+   */
+  fillType?: FillType
   icon?: ReactElement
+  /**
+   * @default false
+   */
   disabled?: boolean
   onClick?: MouseEventHandler
 }
 
 function Button({
   className: customClassName = '',
+  type = 'button',
   variant = 'primary',
   title = '',
   size = 'medium',
-  type = 'filled',
+  fillType = 'filled',
   icon,
   disabled = false,
   onClick,
 }: Props) {
-  const sizeValue = title ? sizeMap[size!] : iconSizeMap[size!]
+  const sizeValue = title ? sizeMap[size] : iconSizeMap[size]
   const className =
     variant === 'custom'
       ? customClassName
-      : `${sizeValue} ${fillTypeMap[type!]} ${commonStyle} ${customClassName}`
+      : `${sizeValue} ${fillTypeMap[fillType]} ${commonStyle} ${customClassName}`
 
   return (
     <button
-      type="button"
+      type={type}
       className={className}
       onClick={onClick}
       disabled={disabled}
