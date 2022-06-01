@@ -3,6 +3,7 @@ import Button from '../shared/Button'
 import ModalPortal from '../shared/ModalPortal'
 
 type Props = {
+  isLogin: boolean
   categories: Array<any>
   isOpened: Boolean
   Toggle: ReactElement
@@ -11,7 +12,13 @@ type Props = {
 
 const mockCurrentCommunity = 'popular'
 
-function SidebarMobile({ categories, isOpened, onDismiss, Toggle }: Props) {
+function SidebarMobile({
+  isLogin,
+  categories,
+  isOpened,
+  onDismiss,
+  Toggle,
+}: Props) {
   return (
     <>
       {Toggle}
@@ -29,31 +36,33 @@ function SidebarMobile({ categories, isOpened, onDismiss, Toggle }: Props) {
             >
               （。人。）
             </button>
-            <div className="flex space-x-4 mb-6">
-              <Button
-                className="w-1/2"
-                title="login"
-                size="medium"
-                fillType="filled"
-              />
-              <Button
-                className="w-1/2"
-                title="sign up"
-                size="medium"
-                fillType="outline"
-              />
-            </div>
+            {isLogin || (
+              <div className="flex space-x-4 mb-6">
+                <Button
+                  className="w-1/2"
+                  title="login"
+                  size="medium"
+                  fillType="filled"
+                />
+                <Button
+                  className="w-1/2"
+                  title="sign up"
+                  size="medium"
+                  fillType="outline"
+                />
+              </div>
+            )}
             <div className="mb-6 text-2xl font-bold">Article Catagory</div>
             <div className="w-full">
               <ul className="space-y-4">
                 {categories.map((category, index) => (
                   <li
+                    key={index}
                     className={
                       mockCurrentCommunity === category.title
                         ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
                         : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'
                     }
-                    key={index}
                   >
                     <img
                       width={32}

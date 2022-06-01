@@ -2,10 +2,10 @@ import React, { MouseEventHandler } from 'react'
 import { SearchIcon } from '../../icons'
 import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'
-import Button from '../shared/Button'
 import DropdownContainer from '../shared/DropdownContainer'
 import DropdownItemContainer from '../shared/DropdownItemContainer'
 import Input from '../shared/Input'
+import NavbarActionContainer from './NavbarActionsContainer'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
 type Props = {
@@ -15,10 +15,10 @@ type Props = {
 }
 
 export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
-  const dropdownToggleIcon = user.avatar
+  const userAvatar = user.avatar
   return (
     <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
-      <SidebarMobileContainer />
+      <SidebarMobileContainer isLogin={isLogin} />
       <div className="hidden desktop:block">
         <MainLogo className="w-20" />
       </div>
@@ -32,7 +32,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
       />
       <DropdownContainer
         className="desktop:hidden"
-        toggleIcon={dropdownToggleIcon}
+        toggleIcon={userAvatar}
         isLogin={isLogin}
       >
         {isLogin ? (
@@ -40,27 +40,28 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
             <DropdownItemContainer
               title="Publish Artical"
               icon="edit"
-              onClick={onDropdownItemClick}
+              className="desktop:hidden"
+              linkTo="editArtical"
             />
             <DropdownItemContainer
               title="Personal Info"
               icon="user"
-              onClick={onDropdownItemClick}
+              linkTo="userInfo"
             />
             <DropdownItemContainer
               title="My Collection"
               icon="bookmark"
-              onClick={onDropdownItemClick}
+              linkTo="bookmark"
             />
             <DropdownItemContainer
               title="History"
               icon="history"
-              onClick={onDropdownItemClick}
+              linkTo="history"
             />
             <DropdownItemContainer
               title="Account Setting"
               icon="setting"
-              onClick={onDropdownItemClick}
+              linkTo="setting"
             />
             <DropdownItemContainer
               title="Log out"
@@ -83,10 +84,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
           </>
         )}
       </DropdownContainer>
-      <div className="hidden desktop:flex desktop:space-x-4">
-        <Button title="login" size="medium" fillType="filled" />
-        <Button title="sign up" size="medium" fillType="outline" />
-      </div>
+      <NavbarActionContainer isLogin={isLogin} avatar={userAvatar} />
     </div>
   )
 }
