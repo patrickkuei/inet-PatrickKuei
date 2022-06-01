@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { UserIcon } from '../../icons'
+import { AnonymIcon } from '../../icons'
+import { ReactComponent as UserImage } from '../../images/MR BIGBIRD.svg'
 import Navbar from './Navbar'
 
 const getUserInfo = () => ({
   id: 1,
   name: 'giant p holder',
-  avatar: <UserIcon />,
+  avatar: <UserImage />,
 })
 
 export default function NavbarContainer() {
-  const [isLoging, setIsLoging] = useState(false)
-  const user = isLoging
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const user = isLoggedIn
     ? getUserInfo()
-    : { id: 0, name: 'anonymous', avatar: <UserIcon /> }
+    : { id: 0, name: 'anonymous', avatar: <AnonymIcon /> }
 
   const handleDropdownItemClick = () => {
     console.log('dropdown item click')
