@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, Ref } from 'react'
 
 type Props = {
-  ref: any
+  ref: Ref<HTMLDivElement>
   customClassName?: String
   Toggle: ReactElement
   isOpened: Boolean

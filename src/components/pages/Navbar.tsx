@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from 'react'
-import { ReactComponent as SearchIcon } from '../../icons/searchIcon.svg'
+import { SearchIcon } from '../../icons'
 import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'
 import Button from '../shared/Button'
@@ -45,8 +45,8 @@ export default function Navbar({ user, onDropdownItemClick }: Props) {
         />
       </DropdownContainer>
       <div className="hidden desktop:flex desktop:space-x-4">
-        <Button title="login" size="medium" type="filled" />
-        <Button title="sign up" size="medium" type="outline" />
+        <Button title="login" size="medium" fillType="filled" />
+        <Button title="sign up" size="medium" fillType="outline" />
       </div>
     </div>
   )

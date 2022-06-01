@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ReactComponent as UserIcon } from '../../icons/userIcon.svg'
+import { UserIcon } from '../../icons'
 import Navbar from './Navbar'
 
 const getUserInfo = () => ({

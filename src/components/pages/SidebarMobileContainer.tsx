@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ReactComponent as MenuIcon } from '../../icons/menuIcon.svg'
+import { MenuIcon } from '../../icons'
 import animal from '../../images/animal.jpg'
 import chat from '../../images/chat.jpg'
 import food from '../../images/food.jpg'

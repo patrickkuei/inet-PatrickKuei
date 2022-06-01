@@ -1,4 +1,5 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react'
+import React, { ReactElement, useCallback, useRef, useState } from 'react'
+import useClickOutside from '../../hooks/use-click-outside'
 import Button from './Button'
 import Dropdown from './Dropdown'
 
@@ -6,22 +7,6 @@ type Props = {
   className: String
   toggleIcon: ReactElement
   children: ReactElement | ReactElement[]
-}
-
-function useOutsideHandler(ref: React.MutableRefObject<any>, handler: any) {
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      event.stopPropagation()
-
-      if (ref.current && !ref.current.contains(event.target)) {
-        handler(event)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [ref])
 }
 
 export default function DropdownContainer({
@@ -34,19 +19,21 @@ export default function DropdownContainer({
   const handleToggle = () => {
     setIsOpened((prev) => !prev)
   }
+
   const Toggle = (
     <Button
       size="small"
-      type="ghost"
+      fillType="ghost"
       icon={toggleIcon}
       onClick={handleToggle}
     />
   )
 
   const wrapperRef = useRef<HTMLDivElement>(null)
-  useOutsideHandler(wrapperRef, (e: MouseEvent) => {
-    setIsOpened(false)
-  })
+
+  const handleOutsideClicked = useCallback(() => setIsOpened(false), [])
+
+  useClickOutside(wrapperRef, handleOutsideClicked)
 
   return (
     <Dropdown
