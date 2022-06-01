@@ -7,12 +7,14 @@ type Props = {
   className: String
   toggleIcon: ReactElement
   children: ReactElement | ReactElement[]
+  isLogin: boolean
 }
 
 export default function DropdownContainer({
   className,
   toggleIcon,
   children,
+  isLogin,
 }: Props) {
   const [isOpened, setIsOpened] = useState(false)
 
@@ -20,9 +22,10 @@ export default function DropdownContainer({
     setIsOpened((prev) => !prev)
   }
 
+  const toggleIconSize = isLogin ? 'medium' : 'small'
   const Toggle = (
     <Button
-      size="small"
+      size={toggleIconSize}
       fillType="ghost"
       icon={toggleIcon}
       onClick={handleToggle}

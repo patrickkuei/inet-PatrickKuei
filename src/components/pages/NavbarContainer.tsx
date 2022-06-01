@@ -10,7 +10,7 @@ const getUserInfo = () => ({
 })
 
 export default function NavbarContainer() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const user = isLoggedIn
     ? getUserInfo()
     : { id: 0, name: 'anonymous', avatar: <AnonymIcon /> }
