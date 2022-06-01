@@ -31,7 +31,11 @@ const mockCategories = [
   },
 ]
 
-export default function SidebarMobileContainer() {
+type Props = {
+  isLogin: boolean
+}
+
+export default function SidebarMobileContainer({ isLogin }: Props) {
   const [isOpened, setIsOpened] = useState<boolean>(false)
 
   const handleToggle = () => {
@@ -49,6 +53,7 @@ export default function SidebarMobileContainer() {
 
   return (
     <SidebarMobile
+      isLogin={isLogin}
       categories={mockCategories}
       isOpened={isOpened}
       onDismiss={handleToggle}
