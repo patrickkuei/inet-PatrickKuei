@@ -10,14 +10,24 @@ const getUserInfo = () => ({
 })
 
 export default function NavbarContainer() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const user = isLoggedIn
+  const [isLogin, setIsLogin] = useState(true)
+  const user = isLogin
     ? getUserInfo()
-    : { id: 0, name: 'anonymous', avatar: <AnonymIcon /> }
+    : {
+        id: 0,
+        name: 'anonymous',
+        avatar: <AnonymIcon />,
+      }
 
   const handleDropdownItemClick = () => {
     console.log('dropdown item click')
   }
 
-  return <Navbar user={user} onDropdownItemClick={handleDropdownItemClick} />
+  return (
+    <Navbar
+      isLogin={isLogin}
+      user={user}
+      onDropdownItemClick={handleDropdownItemClick}
+    />
+  )
 }
