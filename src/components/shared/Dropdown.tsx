@@ -2,20 +2,20 @@ import React, { ReactElement, Ref } from 'react'
 
 type Props = {
   ref: Ref<HTMLDivElement>
-  customClassName?: String
+  className?: String
   Toggle: ReactElement
   isOpened: Boolean
   children: ReactElement | ReactElement[]
 }
 
 const Dropdown = React.forwardRef<HTMLDivElement, Props>(
-  ({ customClassName = '', Toggle, isOpened, children }: Props, ref) => {
+  ({ className = '', Toggle, isOpened, children }: Props, ref) => {
     return (
-      <div ref={ref} className={`relative ${customClassName}`}>
+      <div ref={ref} className={`relative ${className}`}>
         {Toggle}
         {isOpened && (
           <div
-            className={`bg-white shadow-drop rounded-lg absolute -right-6 ${customClassName}`}
+            className={`bg-white shadow-drop rounded-lg absolute -right-6 ${className}`}
           >
             <ul>{children}</ul>
           </div>

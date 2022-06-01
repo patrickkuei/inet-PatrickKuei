@@ -41,7 +41,7 @@ export default function DropdownContainer({
   return (
     <Dropdown
       ref={wrapperRef}
-      customClassName={className}
+      className={className}
       Toggle={Toggle}
       isOpened={isOpened}
     >
