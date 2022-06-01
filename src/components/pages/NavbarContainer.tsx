@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { AnonymIcon } from '../../icons'
-import { ReactComponent as UserImage } from '../../images/MR BIGBIRD.svg'
+import UserImage from '../../images/MR BIGBIRD.jpg'
 import Navbar from './Navbar'
 
 const getUserInfo = () => ({
   id: 1,
   name: 'giant p holder',
-  avatar: <UserImage />,
+  avatar: <img src={UserImage} className="rounded-full" alt="giant p holder" />,
 })
 
 export default function NavbarContainer() {
