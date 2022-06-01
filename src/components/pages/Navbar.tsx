@@ -32,6 +32,7 @@ export default function Navbar({ user, onDropdownItemClick }: Props) {
       <DropdownContainer
         className="desktop:hidden"
         toggleIcon={dropdownToggleIcon}
+        isLogin={Boolean(user)}
       >
         <DropdownItemContainer
           title="Sign Up"
