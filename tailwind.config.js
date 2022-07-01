@@ -5,6 +5,9 @@ module.exports = {
       desktop: '680px',
     },
     extend: {
+      fontSize: {
+        tiny: ['15px', '20px'],
+      },
       colors: {
         'background-white': '#F4F5F9',
         'transparent-black': 'rgba(0, 0, 0, 0.4)',
@@ -14,6 +17,7 @@ module.exports = {
         'primary-500': '#165698',
         'primary-600': '#053461',
         'gray-100': '#E9E9E9',
+        'gray-500': '#A5A5A5',
       },
       boxShadow: {
         drop: '0px 2px 6px 0px #00000026',
