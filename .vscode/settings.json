@@ -8,6 +8,6 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.sortImports": true
   }
 }
