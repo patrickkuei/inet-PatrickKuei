@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, ReactElement } from 'react'
+import AriticleCagegory from '../shared/AriticleCagegory'
 import Button from '../shared/Button'
 import ModalPortal from '../shared/ModalPortal'
 
@@ -52,29 +53,7 @@ function SidebarMobile({
                 />
               </div>
             )}
-            <div className="mb-6 text-2xl font-bold">Article Catagory</div>
-            <div className="w-full">
-              <ul className="space-y-4">
-                {categories.map((category, index) => (
-                  <li
-                    key={index}
-                    className={
-                      mockCurrentCommunity === category.title
-                        ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500'
-                        : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100'
-                    }
-                  >
-                    <img
-                      width={32}
-                      height={32}
-                      src={category.imgSrc}
-                      alt="img"
-                    />
-                    <span className="ml-4">{category.title}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <AriticleCagegory categories={categories} />
           </div>
         </ModalPortal>
       )}
