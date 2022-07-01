@@ -7,7 +7,7 @@ type Props = {}
 
 export default function ArticleCategorySection({}: Props) {
   return (
-    <div className="w-52 p-4 bg-white rounded-lg">
+    <div className="w-52 p-4 bg-white rounded-lg text-left">
       <AriticleCagegory categories={articleCategories} />
     </div>
   )
