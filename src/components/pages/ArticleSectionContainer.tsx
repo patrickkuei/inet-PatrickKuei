@@ -22,6 +22,7 @@ export default function ArticleSectionContainer({}: Props) {
           <Button
             key={filter}
             title={filter}
+            isSizeCustom={true}
             fillType={filter === currentFilter ? 'filled' : 'outline'}
             className="h-9 px-3 capitalize text-tiny"
             onClick={() => handerFilterClick(filter)}
