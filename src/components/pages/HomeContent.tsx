@@ -6,7 +6,7 @@ type Props = {}
 
 export default function HomeContent({}: Props) {
   return (
-    <div className="my-8 mx-36 flex">
+    <div className="flex desktop:my-8 desktop:mx-36">
       <ArticleCategorySection />
       <ArticleSectionContainer />
     </div>

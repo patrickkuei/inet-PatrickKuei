@@ -36,6 +36,10 @@ type Props = {
   variant?: 'primary' | 'secondary' | 'custom'
   title?: string
   /**
+   * @default false
+   */
+  isSizeCustom?: boolean
+  /**
    * @default 'medium'
    */
   size?: ButtonSize
@@ -56,6 +60,7 @@ function Button({
   type = 'button',
   variant = 'primary',
   title = '',
+  isSizeCustom = false,
   size = 'medium',
   fillType = 'filled',
   icon,
@@ -66,6 +71,8 @@ function Button({
   const className =
     variant === 'custom'
       ? customClassName
+      : isSizeCustom
+      ? `${fillTypeMap[fillType]} ${commonStyle} ${customClassName}`
       : `${sizeValue} ${fillTypeMap[fillType]} ${commonStyle} ${customClassName}`
 
   return (

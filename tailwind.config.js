@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontSize: {
         tiny: ['15px', '20px'],
+        mobile5xl: '2.625rem',
       },
       colors: {
         'background-white': '#F4F5F9',

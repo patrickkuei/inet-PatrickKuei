@@ -7,8 +7,10 @@ type Props = {
 
 export default function Articles({ filter, articleList }: Props) {
   return (
-    <div className="mx-12 py-6 px-8 bg-white grow max-w-180 rounded-lg">
-      <div className="text-left text-5xl font-bold">Most Popular</div>
+    <div className="p-6 grow max-w-180 desktop:bg-white desktop:mx-12 desktop:py-6 desktop:px-8 desktop:rounded-lg">
+      <div className="text-mobile5xl text-left font-bold desktop:text-5xl">
+        Most Popular
+      </div>
       <div className="flex mt-4 mb-5 gap-x-4">{filter}</div>
       <div className="py-6 border-t">{articleList}</div>
     </div>
