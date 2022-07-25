@@ -4,16 +4,22 @@ import Articles from './ArticleSection'
 
 type Props = {}
 
-const defaultFilter = 'today'
+enum ArticleTimeFilter {
+  Today = 'today',
+  Weekly = 'weekly',
+  Monthly = 'monthly',
+  Yearly = 'yearly',
+  None = 'none',
+}
+
+const filters = Object.entries(ArticleTimeFilter).map(([, value]) => value)
 
 export default function ArticleSectionContainer({}: Props) {
-  const [currentFilter, setCurrentFilter] = useState(defaultFilter)
+  const [currentFilter, setCurrentFilter] = useState(ArticleTimeFilter.Today)
 
   const filter = () => {
-    const filters = ['today', 'weekly', 'monthly', 'yearly', 'none']
-
     const handerFilterClick = (filter: string) => {
-      setCurrentFilter(filter)
+      setCurrentFilter(filter as ArticleTimeFilter)
     }
 
     return (
