@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     screens: {
       desktop: '680px',
+      'desktop-lg': '992px',
     },
     extend: {
       fontSize: {

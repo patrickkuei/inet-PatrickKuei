@@ -11,7 +11,7 @@ export default function Articles({ filter, articleList }: Props) {
       <div className="text-mobile5xl text-left font-bold desktop:text-5xl">
         Most Popular
       </div>
-      <div className="flex mt-4 mb-5 gap-x-4">{filter}</div>
+      <div className="flex mt-4 mb-5 gap-4 flex-wrap">{filter}</div>
       <div className="py-6 border-t">{articleList}</div>
     </div>
   )
