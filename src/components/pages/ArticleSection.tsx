@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {
   filter: JSX.Element
-  articleList: JSX.Element
+  articleList: JSX.Element | JSX.Element[]
 }
 
 export default function Articles({ filter, articleList }: Props) {
@@ -12,7 +12,7 @@ export default function Articles({ filter, articleList }: Props) {
         Most Popular
       </div>
       <div className="flex mt-4 mb-5 gap-4 flex-wrap">{filter}</div>
-      <div className="py-6 border-t">{articleList}</div>
+      <div className="flex flex-col py-6 border-t gap-5">{articleList}</div>
     </div>
   )
 }
