@@ -7,6 +7,7 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        mini: ['9px', '12px'],
         tiny: ['15px', '20px'],
         mobile5xl: '2.625rem',
       },

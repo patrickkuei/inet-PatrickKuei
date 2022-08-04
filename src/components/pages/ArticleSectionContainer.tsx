@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Button from '../shared/Button'
 import Articles from './ArticleSection'
+import ArticleThumbnail from './ArticleThumbnail'
+
+import articles, { IArticle } from '../../mockData/articles'
 
 type Props = {}
 
@@ -13,6 +16,8 @@ enum ArticleTimeFilter {
 }
 
 const filters = Object.entries(ArticleTimeFilter).map(([, value]) => value)
+
+const mockArticles = articles
 
 export default function ArticleSectionContainer({}: Props) {
   const [currentFilter, setCurrentFilter] = useState(ArticleTimeFilter.Today)
@@ -38,17 +43,18 @@ export default function ArticleSectionContainer({}: Props) {
     )
   }
 
-  const articleList = () => {
-    const currentArticleList = []
+  const getArticled = () => mockArticles
 
-    return (
-      <div>
-        {currentArticleList.length < 1 ? (
-          <span className="text-tiny text-gray-500">no article</span>
-        ) : (
-          ''
-        )}
-      </div>
+  const articleList = () => {
+    const currentArticleList: IArticle[] = getArticled()
+    // const currentArticleList: any[] = []
+
+    return currentArticleList.length < 1 ? (
+      <span className="text-tiny text-gray-500">no article</span>
+    ) : (
+      currentArticleList.map((article) => (
+        <ArticleThumbnail key={article.id} article={article} />
+      ))
     )
   }
 
