@@ -20,6 +20,8 @@ module.exports = {
         'primary-500': '#165698',
         'primary-600': '#053461',
         'gray-100': '#E9E9E9',
+        'gray-300': '#A5A5A5',
+        'gray-400': '#818181',
         'gray-500': '#A5A5A5',
       },
       boxShadow: {

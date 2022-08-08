@@ -15,39 +15,32 @@ enum ArticleTimeFilter {
   None = 'none',
 }
 
-const filters = Object.entries(ArticleTimeFilter).map(([, value]) => value)
+const filters = Object.values(ArticleTimeFilter)
 
 const mockArticles = articles
 
 export default function ArticleSectionContainer({}: Props) {
   const [currentFilter, setCurrentFilter] = useState(ArticleTimeFilter.Today)
 
-  const filter = () => {
-    const handerFilterClick = (filter: string) => {
-      setCurrentFilter(filter as ArticleTimeFilter)
-    }
+  const filter = () => (
+    <>
+      {filters.map((filter) => (
+        <Button
+          key={filter}
+          title={filter}
+          isSizeCustom={true}
+          fillType={filter === currentFilter ? 'filled' : 'outline'}
+          className="h-9 px-3 capitalize text-tiny"
+          onClick={() => setCurrentFilter(filter)}
+        />
+      ))}
+    </>
+  )
 
-    return (
-      <>
-        {filters.map((filter) => (
-          <Button
-            key={filter}
-            title={filter}
-            isSizeCustom={true}
-            fillType={filter === currentFilter ? 'filled' : 'outline'}
-            className="h-9 px-3 capitalize text-tiny"
-            onClick={() => handerFilterClick(filter)}
-          />
-        ))}
-      </>
-    )
-  }
-
-  const getArticled = () => mockArticles
+  const getArticles = () => mockArticles
 
   const articleList = () => {
-    const currentArticleList: IArticle[] = getArticled()
-    // const currentArticleList: any[] = []
+    const currentArticleList: IArticle[] = getArticles()
 
     return currentArticleList.length < 1 ? (
       <span className="text-tiny text-gray-500">no article</span>
