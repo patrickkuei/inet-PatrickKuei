@@ -1,19 +1,23 @@
+import moment from 'moment'
 import React from 'react'
 import { IArticle } from '../../mockData/articles'
+import Dot from '../shared/Dot'
 
 type Props = {
   article: IArticle
+  createdAtDuration: string
 }
 
-const Dot = () => <span className="text-gray-400">•</span>
-
-export default function ArticleThumbnail({ article }: Props) {
+export default function ArticleThumbnail({
+  article,
+  createdAtDuration,
+}: Props) {
   return (
     <div className="text-left h-24 flex flex-row gap-x-2">
       <div className="w-24 shrink-0">
         <img src={article.coverImageUrl} alt={article.title} />
       </div>
-      <div className="flex flex-col grow gap-y-1">
+      <div className="flex flex-col grow gap-y-1 min-w-0">
         <div className="flex items-center gap-x-1 text-xs">
           <div className="flex items-center gap-x-1">
             <img
@@ -33,11 +37,11 @@ export default function ArticleThumbnail({ article }: Props) {
             <span>{article.category.code}</span>
           </div>
           <Dot />
-          <span>{new Date(article.createdAt).toLocaleDateString()}</span>
+          <span>{createdAtDuration}</span>
         </div>
         <div>
           <div className="text-tiny font-bold">{article.title}</div>
-          <div className="text-xs text-gray-300">{article.body}</div>
+          <div className="text-xs text-gray-300 truncate">{article.body}</div>
           <div className="text-mini">
             <span>{article.views}</span>
             <span>{article.likes}</span>

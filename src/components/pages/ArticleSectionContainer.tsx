@@ -1,55 +1,18 @@
-import React, { useState } from 'react'
-import Button from '../shared/Button'
-import Articles from './ArticleSection'
-import ArticleThumbnail from './ArticleThumbnail'
+import React, { useEffect, useState } from 'react'
+import { useGetArticlesQuery } from '../../services/articles'
 
-import articles, { IArticle } from '../../mockData/articles'
+import Articles from './ArticleSection'
 
 type Props = {}
 
-enum ArticleTimeFilter {
-  Today = 'today',
-  Weekly = 'weekly',
-  Monthly = 'monthly',
-  Yearly = 'yearly',
-  None = 'none',
-}
-
-const filters = Object.values(ArticleTimeFilter)
-
-const mockArticles = articles
-
 export default function ArticleSectionContainer({}: Props) {
-  const [currentFilter, setCurrentFilter] = useState(ArticleTimeFilter.Today)
+  const { data, error, isLoading } = useGetArticlesQuery({
+    pagination: 'basic',
+    page: 0,
+    limit: 10,
+    FLAG_UNLIMITED: false,
+  })
+  console.log('useGetArticlesQuery', data)
 
-  const filter = () => (
-    <>
-      {filters.map((filter) => (
-        <Button
-          key={filter}
-          title={filter}
-          isSizeCustom={true}
-          fillType={filter === currentFilter ? 'filled' : 'outline'}
-          className="h-9 px-3 capitalize text-tiny"
-          onClick={() => setCurrentFilter(filter)}
-        />
-      ))}
-    </>
-  )
-
-  const getArticles = () => mockArticles
-
-  const articleList = () => {
-    const currentArticleList: IArticle[] = getArticles()
-
-    return currentArticleList.length < 1 ? (
-      <span className="text-tiny text-gray-500">no article</span>
-    ) : (
-      currentArticleList.map((article) => (
-        <ArticleThumbnail key={article.id} article={article} />
-      ))
-    )
-  }
-
-  return <Articles filter={filter()} articleList={articleList()} />
+  return <Articles />
 }

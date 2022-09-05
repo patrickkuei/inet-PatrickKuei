@@ -28,14 +28,15 @@ module.exports = {
         drop: '0px 2px 6px 0px #00000026',
         1: '0px 4px 4px 0px #00000040, 0px -1px 4px 0px #0000001A',
       },
-    },
-    maxWidth: {
-      120: '480px',
-      180: '720px',
-    },
-    minWidth: {
-      42: '168px',
-      94: '375px',
+      maxWidth: {
+        120: '480px',
+        138: '552px',
+        180: '720px',
+      },
+      minWidth: {
+        42: '168px',
+        94: '375px',
+      },
     },
   },
   plugins: [],
