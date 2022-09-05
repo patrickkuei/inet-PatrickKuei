@@ -41,7 +41,7 @@ const articles: IArticle[] = [
     views: 123,
     likes: 45,
     likeId: 1,
-    createdAt: '2022-06-27T06:32:38.231Z',
+    createdAt: '2022-09-04T15:34:38.231Z',
     lastModifiedAt: null,
   },
   {
