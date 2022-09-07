@@ -1,6 +1,8 @@
 import { ReactComponent as AnonymIcon } from './anonym.svg'
 import { ReactComponent as BookmarkIcon } from './bookmark.svg'
 import { ReactComponent as EditIcon } from './edit.svg'
+import { ReactComponent as EyeIcon } from './eye.svg'
+import { ReactComponent as HeartIcon } from './heart.svg'
 import { ReactComponent as HistoryIcon } from './history.svg'
 import { ReactComponent as LoginIcon } from './login.svg'
 import { ReactComponent as LogOutIcon } from './logout.svg'
@@ -38,4 +40,6 @@ export {
   SettingIcon,
   SignUpIcon,
   UserIcon,
+  EyeIcon,
+  HeartIcon,
 }
