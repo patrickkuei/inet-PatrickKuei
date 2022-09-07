@@ -40,18 +40,20 @@ export default function ArticleThumbnail({
           <span>{createdAtDuration}</span>
         </div>
         <div>
-          <div className="text-tiny font-bold">{article.title}</div>
-          <div className="text-xs text-gray-300 truncate">{article.body}</div>
-          <div className="text-mini flex gap-x-4">
-            <span className="flex gap-x-1">
-              <EyeIcon />
-              {article.views}
-            </span>
-            <span className="flex gap-x-1">
-              <HeartIcon />
-              {article.likes}
-            </span>
+          <div className="text-tiny font-bold line-clamp-2">
+            {article.title}
           </div>
+          <div className="text-xs text-gray-300 truncate">{article.body}</div>
+        </div>
+        <div className="text-mini flex grow items-end gap-x-4">
+          <span className="flex gap-x-1">
+            <EyeIcon />
+            {article.views}
+          </span>
+          <span className="flex gap-x-1">
+            <HeartIcon />
+            {article.likes}
+          </span>
         </div>
       </div>
     </div>
