@@ -4,8 +4,11 @@
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "files.trimTrailingWhitespace": true,
   "window.zoomLevel": 1,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file", // required to format on save
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
     "source.sortImports": true
