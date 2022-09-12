@@ -19,7 +19,7 @@ export default function ArticleThumbnail({
       </div>
       <div className="flex flex-col grow gap-y-1 min-w-0">
         <div className="flex items-center gap-x-1 text-xs">
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 shrink-0">
             <img
               className="w-4 h-4 border border-gray-100 rounded inline"
               src={article.category.imageUrl}
@@ -28,19 +28,19 @@ export default function ArticleThumbnail({
             <span>{article.category.code}</span>
           </div>
           <Dot />
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 min-w-0">
             <img
               className="w-4 h-4 border border-gray-100 rounded-full inline"
               src={article.author.avatarUrl}
               alt={article.author.name}
             />
-            <span>{article.category.code}</span>
+            <span className="truncate">{article.author.name}</span>
           </div>
           <Dot />
-          <span>{createdAtDuration}</span>
+          <span className="whitespace-nowrap">{createdAtDuration}</span>
         </div>
         <div>
-          <div className="text-tiny font-bold line-clamp-2">
+          <div className="w-fit text-tiny font-bold line-clamp-2 hover:text-primary-400 hover:cursor-pointer">
             {article.title}
           </div>
           <div className="text-xs text-gray-300 truncate">{article.body}</div>
