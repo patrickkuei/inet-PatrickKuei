@@ -21,6 +21,7 @@
       }
     }
   },
+  "ignorePatterns": ["*.test.js"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
     "semi": 0,
