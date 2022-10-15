@@ -1,10 +1,10 @@
 import React from 'react'
-import { EyeIcon, HeartIcon } from '../../icons'
-import { IArticle } from '../../mockData/articles'
+import { AnonymIcon, EyeIcon, HeartIcon } from '../../icons'
+import { IArticleViewModel } from '../../services/types/articles/i-article.view-model'
 import Dot from '../shared/Dot'
 
 type Props = {
-  article: IArticle
+  article: IArticleViewModel
   createdAtDuration: string
 }
 
@@ -29,11 +29,15 @@ export default function ArticleThumbnail({
           </div>
           <Dot />
           <div className="flex items-center gap-x-1 min-w-0">
-            <img
-              className="w-4 h-4 border border-gray-100 rounded-full inline"
-              src={article.author.avatarUrl}
-              alt={article.author.name}
-            />
+            {article.author.avatarUrl ? (
+              <img
+                className="w-4 h-4 border border-gray-100 rounded-full inline"
+                src={article.author.avatarUrl}
+                alt={article.author.name}
+              />
+            ) : (
+              <AnonymIcon />
+            )}
             <span className="truncate">{article.author.name}</span>
           </div>
           <Dot />

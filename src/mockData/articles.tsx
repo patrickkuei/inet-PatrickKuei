@@ -1,27 +1,6 @@
-export type IArticle = {
-  id: number
-  category: {
-    code: string
-    imageUrl: string
-  }
-  author: {
-    id: number
-    username: string
-    name: string
-    avatarUrl: string
-    createdAt: string
-  }
-  coverImageUrl: string
-  title: string
-  body: string
-  views: number
-  likes: number
-  likeId: number | null
-  createdAt: string
-  lastModifiedAt: string | null
-}
+import { IArticleViewModel } from '../services/types/articles/i-article.view-model'
 
-const articles: IArticle[] = [
+const articles: IArticleViewModel[] = [
   {
     id: 1,
     category: {
@@ -33,7 +12,7 @@ const articles: IArticle[] = [
       username: 'user0',
       name: '人類一號',
       avatarUrl: 'https://i.imgur.com/1yJEtrqs.jpeg',
-      createdAt: '2022-06-27T06:32:36.929Z',
+      createdAt: new Date('2022-06-27T06:32:36.929Z'),
     },
     coverImageUrl: 'https://i.imgur.com/bqgW6JXh.jpeg',
     title: 'Hello world',
@@ -41,7 +20,7 @@ const articles: IArticle[] = [
     views: 123,
     likes: 45,
     likeId: 1,
-    createdAt: '2022-09-04T15:34:38.231Z',
+    createdAt: new Date('2022-09-04T15:34:38.231Z'),
     lastModifiedAt: null,
   },
   {
@@ -55,7 +34,7 @@ const articles: IArticle[] = [
       username: 'user0',
       name: '人類一號',
       avatarUrl: 'https://i.imgur.com/1yJEtrqs.jpeg',
-      createdAt: '2022-06-27T06:32:36.929Z',
+      createdAt: new Date('2022-06-27T06:32:36.929Z'),
     },
     coverImageUrl: 'https://i.imgur.com/bqgW6JXh.jpeg',
     title: 'Hello world 2',
@@ -63,7 +42,7 @@ const articles: IArticle[] = [
     views: 12,
     likes: 3,
     likeId: null,
-    createdAt: '2022-06-27T06:32:38.231Z',
+    createdAt: new Date('2022-06-27T06:32:38.231Z'),
     lastModifiedAt: '2022-06-27T06:32:38.231Z',
   },
 ]
