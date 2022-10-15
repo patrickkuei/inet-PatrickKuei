@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
+import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
 import Button from '../shared/Button'
 
-enum ArticleTimeFilter {
-  Today = 'today',
-  Weekly = 'weekly',
-  Monthly = 'monthly',
-  Yearly = 'yearly',
-  None = 'none',
-}
-
-const filters = Object.values(ArticleTimeFilter)
+const filters = Object.values(ArticleCreatedWithin)
 
 const ArticlaSectionFilter = () => {
-  const [currentFilter, setCurrentFilter] = useState(ArticleTimeFilter.Today)
+  const [currentFilter, setCurrentFilter] = useState(ArticleCreatedWithin.Today)
 
   return (
     <>
