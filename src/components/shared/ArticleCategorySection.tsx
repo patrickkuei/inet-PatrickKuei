@@ -1,5 +1,5 @@
 import React from 'react'
-import AriticleCagegory from '../shared/AriticleCagegory'
+import AriticleCagegory from './AriticleCagegory'
 
 import articleCategories from '../../mockData/articleCategories'
 
