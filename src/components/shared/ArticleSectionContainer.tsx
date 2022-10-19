@@ -3,7 +3,7 @@ import { useGetArticlesQuery } from '../../services/articles'
 import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
 import { Pagination } from '../../services/types/shared/pagination'
 
-import Articles from './ArticleSection'
+import ArticleSection from './ArticleSection'
 
 type Props = {}
 
@@ -15,5 +15,5 @@ export default function ArticleSectionContainer({}: Props) {
   })
   console.log('useGetArticlesQuery', data)
 
-  return <Articles />
+  return <ArticleSection />
 }
