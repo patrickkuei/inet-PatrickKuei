@@ -8,6 +8,8 @@ export default function Router() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomeContainer />} />
+        <Route path="/edit" element={<></>} />
+        <Route path="/setting" element={<></>} />
       </Route>
     </Routes>
   )
