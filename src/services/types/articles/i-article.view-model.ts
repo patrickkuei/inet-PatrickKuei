@@ -14,3 +14,11 @@ export interface IArticleViewModel {
   createdAt: Date
   lastModifiedAt: string | null
 }
+
+export interface IArticleResponse {
+  page: number
+  limit: number
+  totalCount: number
+  totalPages: number
+  data: IArticleViewModel[]
+}
