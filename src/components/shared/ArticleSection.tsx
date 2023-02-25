@@ -1,16 +1,26 @@
 import clsx from 'clsx'
 import React from 'react'
+import { useAppSelector } from '../../app/hooks'
 import { useGetArticlesQuery } from '../../services/apiSlice'
+import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
 import { Pagination } from '../../services/types/shared/pagination'
 import ArticleSectionArticleList from './ArticleSectionArticleList'
 import ArticleSectionFiler from './ArticleSectionFilter'
 
 export default function Articles() {
-  const { data, error, isLoading } = useGetArticlesQuery({
-    pagination: Pagination.Basic,
-    page: 0,
-    limit: 30,
-  })
+  const createdWithin = useAppSelector(
+    (state) => state.articleReducer.articleCreatedWithin,
+  )
+  const { data, error, isLoading } = useGetArticlesQuery(
+    createdWithin === ArticleCreatedWithin.All
+      ? { pagination: Pagination.Basic, page: 0, limit: 30 }
+      : {
+          pagination: Pagination.Basic,
+          page: 0,
+          limit: 30,
+          createdWithin,
+        },
+  )
 
   return (
     <div className="p-6 grow min-w-0 max-w-180 desktop:bg-white desktop:mx-12 desktop:py-6 desktop:px-8 desktop:rounded-lg">

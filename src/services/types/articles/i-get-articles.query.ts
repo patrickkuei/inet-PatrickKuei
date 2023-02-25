@@ -5,6 +5,7 @@ export enum ArticleCreatedWithin {
   Week = 'week',
   Month = 'month',
   Year = 'year',
+  All = 'all',
 }
 
 export interface IGetArticlesQuery extends IPagableQuery {

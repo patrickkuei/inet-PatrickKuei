@@ -1,22 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { setArticleCreatedWithin } from '../../redux/slices/articleSlice'
 import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
 import Button from '../shared/Button'
 
-const filters = Object.values(ArticleCreatedWithin)
+const articleCreatedWithin = Object.values(ArticleCreatedWithin)
 
 const ArticlaSectionFilter = () => {
-  const [currentFilter, setCurrentFilter] = useState(ArticleCreatedWithin.Today)
+  const currentCreatedWithin = useAppSelector(
+    (state) => state.articleReducer.articleCreatedWithin,
+  )
+  const dispatch = useAppDispatch()
+
+  const handleClick = (createdWithin: ArticleCreatedWithin) => {
+    dispatch(setArticleCreatedWithin(createdWithin))
+  }
 
   return (
     <>
-      {filters.map((filter) => (
+      {articleCreatedWithin.map((createdWithin) => (
         <Button
-          key={filter}
-          title={filter}
+          key={createdWithin}
+          title={createdWithin}
           isSizeCustom={true}
-          fillType={filter === currentFilter ? 'filled' : 'outline'}
+          fillType={
+            createdWithin === currentCreatedWithin ? 'filled' : 'outline'
+          }
           className="h-9 px-3 capitalize text-tiny"
-          onClick={() => setCurrentFilter(filter)}
+          onClick={() => handleClick(createdWithin)}
         />
       ))}
     </>
