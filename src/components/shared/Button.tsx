@@ -18,9 +18,9 @@ const iconSizeMap: Record<ButtonSize, string> = {
 }
 
 const fillTypeMap: Record<FillType, string> = {
-  filled: 'bg-primary-500 border-primary-500 text-white',
+  filled: 'bg-primary-500 border-primary-500 text-white hover:bg-primary-400',
   elevated: 'text-primary-500 border-none shadow-1',
-  outline: 'border-primary-500 text-primary-500',
+  outline: 'border-primary-500 text-primary-500 hover:bg-primary-100',
   ghost: 'fill-primary-500 border-none',
 }
 
