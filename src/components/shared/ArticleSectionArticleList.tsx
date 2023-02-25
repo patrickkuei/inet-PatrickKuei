@@ -1,9 +1,7 @@
 import moment from 'moment'
 import React, { useRef } from 'react'
-
-import ArticleThumbnail from './ArticleThumbnail'
-
 import { IArticleViewModel } from '../../services/types/articles/i-article.view-model'
+import ArticleThumbnail from './ArticleThumbnail'
 
 type Props = {
   articles: IArticleViewModel[]
