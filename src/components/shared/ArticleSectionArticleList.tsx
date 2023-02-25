@@ -2,6 +2,7 @@ import moment from 'moment'
 import React, { useRef } from 'react'
 import { IArticleViewModel } from '../../services/types/articles/i-article.view-model'
 import ArticleThumbnail from './ArticleThumbnail'
+import PaginationSection from './PaginationSection'
 
 type Props = {
   articles: IArticleViewModel[]
@@ -27,6 +28,7 @@ const ArticleSectionArticleList = ({ articles }: Props) => {
           />
         )
       })}
+      <PaginationSection />
     </>
   )
 }
