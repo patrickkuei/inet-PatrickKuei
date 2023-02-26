@@ -16,6 +16,7 @@ export default function AriticleCagegory({}: Props) {
 
   const handleCategoryClick = (category: IArticleCategoryViewModel) => {
     dispatch(setArticleCategory(category))
+    window.scrollTo(0, 0)
   }
 
   const getCategoryClassName = (category: string): string => {
