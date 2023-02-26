@@ -1,6 +1,6 @@
+import Dot from '@inet/components/shared/Dot'
 import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
-import Dot from '../shared/Dot'
 
 type Props = {
   article: IArticleViewModel

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import Button from '@inet/components/shared/Button'
 import { setArticleCreatedWithin } from '@inet/redux/slices/articleSlice'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
-import Button from '../shared/Button'
 
 const articleCreatedWithin = Object.values(ArticleCreatedWithin)
 

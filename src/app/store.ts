@@ -1,6 +1,6 @@
+import articleReducer from '@inet/redux/slices/articleSlice'
+import { apiSlice } from '@inet/services/apiSlice'
 import { configureStore } from '@reduxjs/toolkit'
-import articleReducer from '../redux/slices/articleSlice'
-import { apiSlice } from '../services/apiSlice'
 
 export const store = configureStore({
   reducer: {

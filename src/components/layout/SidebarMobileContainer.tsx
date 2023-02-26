@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
+import Button from '@inet/components/shared/Button'
 import { MenuIcon } from '@inet/icons'
-import Button from '../shared/Button'
 import SidebarMobile from './SidebarMobile'
 
 type Props = {

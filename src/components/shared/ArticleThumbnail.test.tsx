@@ -1,5 +1,5 @@
+import articles from '@inet/mockData/articles'
 import renderer from 'react-test-renderer'
-import articles from '../../mockData/articles'
 import ArticleThumbnail from './ArticleThumbnail'
 
 it('render ArticleThumbnail', () => {
