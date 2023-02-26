@@ -30,7 +30,7 @@ function SidebarMobile({
       {isOpened && (
         <ModalPortal>
           <div
-            className="w-full h-full bg-transparent-black fixed top-0 desktop:hidden z-0"
+            className="w-full h-full bg-transparent-black fixed top-0 desktop:hidden"
             onClick={onDismiss}
           >
             <div
