@@ -1,5 +1,5 @@
 export interface ICategory {
-  title: string
+  key: string
   imgSrc: string
 }
 

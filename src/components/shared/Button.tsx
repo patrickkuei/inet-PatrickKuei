@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement } from 'react'
+import { MouseEventHandler, ReactElement } from 'react'
 
 type ButtonSize = 'small' | 'medium' | 'large'
 type FillType = 'filled' | 'elevated' | 'outline' | 'ghost'

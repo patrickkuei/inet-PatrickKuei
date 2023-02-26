@@ -1,4 +1,3 @@
-import React from 'react'
 import ArticleCategorySection from '../shared/ArticleCategorySection'
 import ArticleSectionContainer from '../shared/ArticleSectionContainer'
 type Props = {}

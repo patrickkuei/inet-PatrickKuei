@@ -1,4 +1,4 @@
-import React, { ReactElement, Ref } from 'react'
+import { forwardRef, ReactElement, Ref } from 'react'
 
 type Props = {
   ref: Ref<HTMLDivElement>
@@ -8,7 +8,7 @@ type Props = {
   children: ReactElement | ReactElement[]
 }
 
-const Dropdown = React.forwardRef<HTMLDivElement, Props>(
+const Dropdown = forwardRef<HTMLDivElement, Props>(
   ({ className = '', Toggle, isOpened, children }: Props, ref) => {
     return (
       <div ref={ref} className={`relative ${className}`}>

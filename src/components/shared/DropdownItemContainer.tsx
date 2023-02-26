@@ -1,5 +1,6 @@
-import React, { MouseEventHandler } from 'react'
-import { IconName } from '../../icons'
+import { MouseEventHandler } from 'react'
+
+import { IconName } from '@inet/icons'
 import DropdownItem from './DropdownItem'
 
 type Props = {

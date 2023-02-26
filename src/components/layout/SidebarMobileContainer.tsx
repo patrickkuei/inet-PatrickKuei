@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { MenuIcon } from '../../icons'
+import { useState } from 'react'
+
+import { MenuIcon } from '@inet/icons'
 import Button from '../shared/Button'
 import SidebarMobile from './SidebarMobile'
 
-import articleCategories from '../../mockData/articleCategories'
+import articleCategories from '@inet/mockData/articleCategories'
 
 type Props = {
   isLogin: boolean

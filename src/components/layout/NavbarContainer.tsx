@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { AnonymIcon } from '../../icons'
-import UserImage from '../../images/MR BIGBIRD.jpg'
+import { useState } from 'react'
+
+import { AnonymIcon } from '@inet/icons'
+import UserImage from '@inet/images/MR BIGBIRD.jpg'
 import Navbar from './Navbar'
 
 const getUserInfo = () => ({

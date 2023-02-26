@@ -1,6 +1,5 @@
-import React from 'react'
-import { AnonymIcon, EyeIcon, HeartIcon } from '../../icons'
-import { IArticleViewModel } from '../../services/types/articles/i-article.view-model'
+import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
+import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 import Dot from '../shared/Dot'
 
 type Props = {

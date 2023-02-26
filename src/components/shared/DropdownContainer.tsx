@@ -1,5 +1,6 @@
-import React, { ReactElement, useCallback, useRef, useState } from 'react'
-import useClickOutside from '../../hooks/use-click-outside'
+import { ReactElement, useCallback, useRef, useState } from 'react'
+
+import useClickOutside from '@inet/hooks/use-click-outside'
 import Button from './Button'
 import Dropdown from './Dropdown'
 

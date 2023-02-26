@@ -1,16 +1,33 @@
-import React, { useState } from 'react'
+import clsx from 'clsx'
+import { useState } from 'react'
 
-import { ICategories } from '../../services/types/articles/i-categories'
+import {
+  ICategories,
+  ICategory,
+} from '@inet/services/types/articles/i-categories'
 
 type Props = {
   categories: ICategories
 }
 
 export default function AriticleCagegory({ categories }: Props) {
-  const [currentCommunity, setCurrentCommunity] = useState('popular')
+  const [currentCommunity, setCurrentCommunity] = useState(categories[0].key)
 
-  const handleCategoryClick = (category: string) => {
-    setCurrentCommunity(category)
+  const handleCategoryClick = (community: string) => {
+    setCurrentCommunity(community)
+  }
+
+  const getCategoryClassName = (category: ICategory): string => {
+    const isActive = category.key === currentCommunity
+
+    const colorClasses = isActive
+      ? 'text-white bg-primary-500'
+      : 'hover:bg-primary-100'
+
+    return clsx(
+      'flex items-center py-1 px-2 rounded-lg hover:cursor-pointer',
+      colorClasses,
+    )
   }
 
   return (
@@ -22,16 +39,17 @@ export default function AriticleCagegory({ categories }: Props) {
         <ul className="space-y-4">
           {categories.map((category) => (
             <li
-              key={category.title}
-              className={
-                currentCommunity === category.title
-                  ? 'flex items-center py-1 px-2 rounded-lg text-white bg-primary-500 hover:cursor-pointer'
-                  : 'flex items-center py-1 px-2 rounded-lg hover:bg-primary-100 hover:cursor-pointer'
-              }
-              onClick={() => handleCategoryClick(category.title)}
+              key={category.key}
+              className={getCategoryClassName(category)}
+              onClick={() => handleCategoryClick(category.key)}
             >
-              <img width={32} height={32} src={category.imgSrc} alt="img" />
-              <span className="ml-4">{category.title}</span>
+              <img
+                width={32}
+                height={32}
+                src={category.imgSrc}
+                alt={category.key}
+              />
+              <span className="ml-4">{category.key}</span>
             </li>
           ))}
         </ul>

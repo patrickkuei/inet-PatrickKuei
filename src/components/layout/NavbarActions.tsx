@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement } from 'react'
+import { MouseEventHandler, ReactElement } from 'react'
 import { EditIcon } from '../../icons'
 import Button from '../shared/Button'
 import DropdownContainer from '../shared/DropdownContainer'
