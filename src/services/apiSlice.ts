@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IArticleResponse } from './types/articles/i-article.view-model'
-import { ICategoriesRespont } from './types/articles/i-categories'
+import { ICategoriesRespont } from './types/articles/i-categories.view-model'
 import { IGetArticlesQuery } from './types/articles/i-get-articles.query'
 
 export const apiSlice = createApi({
