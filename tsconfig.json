@@ -17,7 +17,11 @@
     "jsx": "react-jsx",
     "removeComments": true,
     "strictNullChecks": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "@inet/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }
