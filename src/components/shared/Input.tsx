@@ -8,7 +8,7 @@ type Props = {
 }
 
 const defaultInputClassName =
-  'w-full h-full border-none outline-none placeholder:focus:text-primary-500'
+  'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow'
 
 export default function Input({
   type,
@@ -19,8 +19,12 @@ export default function Input({
   const className = `${defaultInputClassName} ${customClassName}`
 
   return (
-    <div className="h-10 px-4 border-2 border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow">
-      <input type={type} className={className} placeholder={placeholder} />
+    <div className={className}>
+      <input
+        type={type}
+        className="w-full h-full border-none outline-none placeholder:focus:text-primary-500"
+        placeholder={placeholder}
+      />
       {icon}
     </div>
   )
