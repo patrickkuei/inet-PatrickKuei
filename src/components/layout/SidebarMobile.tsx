@@ -7,19 +7,12 @@ import ModalPortal from '../shared/ModalPortal'
 
 type Props = {
   isLogin: boolean
-  categories: Array<any>
   isOpened: Boolean
   Toggle: ReactElement
   onDismiss: MouseEventHandler
 }
 
-function SidebarMobile({
-  isLogin,
-  categories,
-  isOpened,
-  onDismiss,
-  Toggle,
-}: Props) {
+function SidebarMobile({ isLogin, isOpened, onDismiss, Toggle }: Props) {
   const stopPropagation: MouseEventHandler = (e) => {
     e.stopPropagation()
   }
@@ -61,7 +54,7 @@ function SidebarMobile({
                   />
                 </div>
               )}
-              <AriticleCagegory categories={categories} />
+              <AriticleCagegory />
             </div>
           </div>
         </ModalPortal>
