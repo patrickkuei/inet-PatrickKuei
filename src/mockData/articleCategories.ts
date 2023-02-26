@@ -3,28 +3,33 @@ import chat from '@inet/images/chat.jpg'
 import food from '@inet/images/food.jpg'
 import popular from '@inet/images/popular.jpg'
 import travel from '@inet/images/travel.jpg'
-import { ICategories } from '@inet/services/types/articles/i-categories'
+import { ICategoriesRespont } from '@inet/services/types/articles/i-categories.view-model'
 
-const mockCategories: ICategories = [
+const mockCategories: ICategoriesRespont = [
   {
-    key: 'popular',
-    imgSrc: popular,
+    id: 1,
+    code: 'popular',
+    imageUrl: popular,
   },
   {
-    key: 'chat',
-    imgSrc: chat,
+    id: 2,
+    code: 'chat',
+    imageUrl: chat,
   },
   {
-    key: 'animal',
-    imgSrc: animal,
+    id: 3,
+    code: 'animal',
+    imageUrl: animal,
   },
   {
-    key: 'food',
-    imgSrc: food,
+    id: 4,
+    code: 'food',
+    imageUrl: food,
   },
   {
-    key: 'travel',
-    imgSrc: travel,
+    id: 5,
+    code: 'travel',
+    imageUrl: travel,
   },
 ]
 
