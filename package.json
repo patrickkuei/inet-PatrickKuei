@@ -44,6 +44,7 @@
     "@commitlint/config-conventional": "^16.2.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/react-dom-factories": "^1.0.2",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.5",
