@@ -14,7 +14,11 @@ export default function ArticleThumbnail({
   return (
     <div className="text-left h-24 flex flex-row gap-x-2">
       <div className="w-24 shrink-0 bg-cyan-50 flex items-center justify-center">
-        <img src={article.coverImageUrl} alt={article.title} />
+        <img
+          className="max-h-full"
+          src={article.coverImageUrl}
+          alt={article.title}
+        />
       </div>
       <div className="flex flex-col grow gap-y-1 min-w-0">
         <div className="flex items-center gap-x-1 text-xs">
