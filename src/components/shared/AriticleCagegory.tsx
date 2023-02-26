@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
 import { setArticleCategory } from '@inet/redux/slices/articleSlice'
 import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
+import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
 
 type Props = {}
 
@@ -12,12 +13,12 @@ export default function AriticleCagegory({}: Props) {
   )
   const dispatch = useAppDispatch()
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = (category: IArticleCategoryViewModel) => {
     dispatch(setArticleCategory(category))
   }
 
   const getCategoryClassName = (category: string): string => {
-    const isActive = category === currentCategory
+    const isActive = category === currentCategory.code
 
     const colorClasses = isActive
       ? 'text-white bg-primary-500'
@@ -45,7 +46,9 @@ export default function AriticleCagegory({}: Props) {
               <li
                 key={id}
                 className={getCategoryClassName(category)}
-                onClick={() => handleCategoryClick(category)}
+                onClick={() =>
+                  handleCategoryClick({ code: category, id, imageUrl })
+                }
               >
                 <img
                   width={32}

@@ -4,6 +4,7 @@ const articles: IArticleViewModel[] = [
   {
     id: 1,
     category: {
+      id: 1,
       code: 'animal',
       imageUrl: 'https://i.imgur.com/JR2xyV6s.jpg',
     },
@@ -26,6 +27,7 @@ const articles: IArticleViewModel[] = [
   {
     id: 2,
     category: {
+      id: 2,
       code: 'sports',
       imageUrl: 'https://i.imgur.com/s4PDhtLs.jpg',
     },
