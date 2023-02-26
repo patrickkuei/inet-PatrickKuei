@@ -1,4 +1,4 @@
-import HomeContent from '../components/home/HomeContent'
+import HomeContent from '@inet/components/home/HomeContent'
 
 export default function HomeContainer() {
   return <HomeContent />

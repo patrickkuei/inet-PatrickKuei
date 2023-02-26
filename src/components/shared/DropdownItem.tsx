@@ -1,5 +1,5 @@
+import { IconMap, IconName } from '@inet/icons'
 import { MouseEventHandler } from 'react'
-import { IconMap, IconName } from '../../icons'
 import Button from './Button'
 
 type Props = {

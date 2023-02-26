@@ -1,4 +1,4 @@
-import { IPagableQuery } from '../shared/pagination'
+import { IPagableQuery } from '@inet/services/types/shared/pagination'
 
 export enum ArticleCreatedWithin {
   Today = 'today',

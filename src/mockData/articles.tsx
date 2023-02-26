@@ -1,4 +1,4 @@
-import { IArticleViewModel } from '../services/types/articles/i-article.view-model'
+import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 
 const articles: IArticleViewModel[] = [
   {
