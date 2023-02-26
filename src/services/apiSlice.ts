@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IArticleResponse } from './types/articles/i-article.view-model'
-import { ICategoriesRespont } from './types/articles/i-categories.view-model'
 import { IGetArticlesQuery } from './types/articles/i-get-articles.query'
+import { IArticleCategoriesRespont } from './types/shared/i-article-category.view-model'
 
 export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://3.112.59.180:33823/api/' }),
@@ -12,7 +12,7 @@ export const apiSlice = createApi({
         params,
       }),
     }),
-    getArticleCategories: builder.query<ICategoriesRespont, void>({
+    getArticleCategories: builder.query<IArticleCategoriesRespont, void>({
       query: () => 'article-categories',
     }),
   }),
