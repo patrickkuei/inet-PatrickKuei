@@ -1,24 +1,23 @@
 import clsx from 'clsx'
-import { useState } from 'react'
 
-import {
-  ICategories,
-  ICategory,
-} from '@inet/services/types/articles/i-categories'
+import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import { setArticleCategory } from '@inet/redux/slices/articleSlice'
+import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
 
-type Props = {
-  categories: ICategories
-}
+type Props = {}
 
-export default function AriticleCagegory({ categories }: Props) {
-  const [currentCommunity, setCurrentCommunity] = useState(categories[0].key)
+export default function AriticleCagegory({}: Props) {
+  const currentCategory = useAppSelector(
+    (state) => state.articleReducer.currentCategory,
+  )
+  const dispatch = useAppDispatch()
 
-  const handleCategoryClick = (community: string) => {
-    setCurrentCommunity(community)
+  const handleCategoryClick = (category: string) => {
+    dispatch(setArticleCategory(category))
   }
 
-  const getCategoryClassName = (category: ICategory): string => {
-    const isActive = category.key === currentCommunity
+  const getCategoryClassName = (category: string): string => {
+    const isActive = category === currentCategory
 
     const colorClasses = isActive
       ? 'text-white bg-primary-500'
@@ -30,30 +29,37 @@ export default function AriticleCagegory({ categories }: Props) {
     )
   }
 
+  const { data: response, isError, isLoading } = useGetArticleCategoriesQuery()
+
   return (
     <>
       <div className="mb-6 text-2xl font-bold uppercase whitespace-nowrap">
         board
       </div>
-      <div className="w-full">
-        <ul className="space-y-4">
-          {categories.map((category) => (
-            <li
-              key={category.key}
-              className={getCategoryClassName(category)}
-              onClick={() => handleCategoryClick(category.key)}
-            >
-              <img
-                width={32}
-                height={32}
-                src={category.imgSrc}
-                alt={category.key}
-              />
-              <span className="ml-4">{category.key}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {isLoading ? (
+        <div>...is loading</div>
+      ) : (
+        <div className="w-full">
+          <ul className="space-y-4">
+            {response!.map(({ code: category, id, imageUrl }) => (
+              <li
+                key={id}
+                className={getCategoryClassName(category)}
+                onClick={() => handleCategoryClick(category)}
+              >
+                <img
+                  width={32}
+                  height={32}
+                  src={imageUrl}
+                  alt={category}
+                  className="rounded-2xl"
+                />
+                <span className="ml-4">{category}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   )
 }

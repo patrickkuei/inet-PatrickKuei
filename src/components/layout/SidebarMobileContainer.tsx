@@ -4,8 +4,6 @@ import { MenuIcon } from '@inet/icons'
 import Button from '../shared/Button'
 import SidebarMobile from './SidebarMobile'
 
-import articleCategories from '@inet/mockData/articleCategories'
-
 type Props = {
   isLogin: boolean
 }
@@ -29,7 +27,6 @@ export default function SidebarMobileContainer({ isLogin }: Props) {
   return (
     <SidebarMobile
       isLogin={isLogin}
-      categories={articleCategories}
       isOpened={isOpened}
       onDismiss={handleToggle}
       Toggle={Toggle}
