@@ -44,6 +44,20 @@ export default function AriticleCagegory({}: Props) {
       ) : (
         <div className="w-full">
           <ul className="space-y-4">
+            <li
+              key={0}
+              className={getCategoryClassName(0)}
+              onClick={() =>
+                handleCategoryClick({
+                  code: 'popular',
+                  id: 0,
+                  imageUrl: popularUrl,
+                })
+              }
+            >
+              <img width={32} height={32} src={popularUrl} alt="popular" />
+              <span className="ml-4">popular</span>
+            </li>
             {response!.map(({ code: category, id, imageUrl }) => (
               <li
                 key={id}
