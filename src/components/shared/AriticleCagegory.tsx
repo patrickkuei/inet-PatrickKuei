@@ -19,8 +19,8 @@ export default function AriticleCagegory({}: Props) {
     window.scrollTo(0, 0)
   }
 
-  const getCategoryClassName = (category: string): string => {
-    const isActive = category === currentCategory.code
+  const getCategoryClassName = (categoryId: number): string => {
+    const isActive = categoryId === currentCategory.id
 
     const colorClasses = isActive
       ? 'text-white bg-primary-500'
@@ -61,7 +61,7 @@ export default function AriticleCagegory({}: Props) {
             {response!.map(({ code: category, id, imageUrl }) => (
               <li
                 key={id}
-                className={getCategoryClassName(category)}
+                className={getCategoryClassName(id)}
                 onClick={() =>
                   handleCategoryClick({ code: category, id, imageUrl })
                 }
