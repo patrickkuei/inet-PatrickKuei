@@ -4,6 +4,7 @@ import ArticleThumbnail from './ArticleThumbnail'
 import PaginationSection from './PaginationSection'
 
 import { useAppSelector } from '@inet/app/hooks'
+import usePagination from '@inet/hooks/use-pagination'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 import { Pagination } from '@inet/services/types/shared/pagination'
@@ -11,35 +12,24 @@ import { Pagination } from '@inet/services/types/shared/pagination'
 type Props = {}
 
 const ArticleSectionArticleList = ({}: Props) => {
-  const [page, setPage] = useState(0)
-  const [limit, setLimit] = useState(10)
   const currentMoment = useRef(moment())
   const createdWithin = useAppSelector(
     (state) => state.articleReducer.articleCreatedWithin,
   )
+
+  const { page, limit, updatePage, updateLimit } = usePagination()
+
   const {
     data: response,
     error,
     isFetching,
-  } = useGetArticlesQuery(
-    createdWithin === ArticleCreatedWithin.All
-      ? { pagination: Pagination.Basic, page, limit }
-      : {
-          pagination: Pagination.Basic,
-          page,
-          limit,
-          createdWithin,
-        },
-  )
-
-  const handlePageClick = (page: number) => {
-    setPage(page)
-  }
-
-  const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLimit(parseInt(event.target.value))
-    setPage(0)
-  }
+  } = useGetArticlesQuery({
+    pagination: Pagination.Basic,
+    page,
+    limit,
+    createdWithin:
+      createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
+  })
 
   return isFetching ? (
     <div>...is loading</div>
@@ -63,8 +53,8 @@ const ArticleSectionArticleList = ({}: Props) => {
       <PaginationSection
         currentPage={page}
         totalPages={response!.totalPages}
-        onClick={handlePageClick}
-        onLimitChange={handleLimitChange}
+        onClick={updatePage}
+        onLimitChange={updateLimit}
         currentLimit={limit}
       />
     </>
