@@ -1,14 +1,19 @@
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
+import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type articleState = {
   articleCreatedWithin: ArticleCreatedWithin
-  currentCategory: string
+  currentCategory: IArticleCategoryViewModel
 }
 
 const initialState: articleState = {
   articleCreatedWithin: ArticleCreatedWithin.All,
-  currentCategory: 'popular',
+  currentCategory: {
+    code: 'popular',
+    id: 0,
+    imageUrl: '',
+  },
 }
 
 export const articleSlice = createSlice({
@@ -21,7 +26,10 @@ export const articleSlice = createSlice({
     ) => {
       state.articleCreatedWithin = action.payload
     },
-    setArticleCategory: (state, action: PayloadAction<string>) => {
+    setArticleCategory: (
+      state,
+      action: PayloadAction<IArticleCategoryViewModel>,
+    ) => {
       state.currentCategory = action.payload
     },
   },
