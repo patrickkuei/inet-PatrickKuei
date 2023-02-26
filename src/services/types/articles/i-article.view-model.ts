@@ -1,5 +1,5 @@
-import { IArticleCategoryViewModel } from '../shared/i-article-category.view-model'
-import { IAuthorViewModel } from '../shared/i-author.view-model'
+import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
+import { IAuthorViewModel } from '@inet/services/types/shared/i-author.view-model'
 
 export interface IArticleViewModel {
   id: number

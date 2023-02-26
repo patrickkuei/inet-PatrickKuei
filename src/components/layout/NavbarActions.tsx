@@ -1,8 +1,8 @@
+import Button from '@inet/components/shared/Button'
+import DropdownContainer from '@inet/components/shared/DropdownContainer'
+import DropdownItemContainer from '@inet/components/shared/DropdownItemContainer'
+import { EditIcon } from '@inet/icons'
 import { MouseEventHandler, ReactElement } from 'react'
-import { EditIcon } from '../../icons'
-import Button from '../shared/Button'
-import DropdownContainer from '../shared/DropdownContainer'
-import DropdownItemContainer from '../shared/DropdownItemContainer'
 
 type Props = {
   isLogin: boolean

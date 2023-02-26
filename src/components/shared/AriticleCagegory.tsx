@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 
 import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import popularUrl from '@inet/images/popular.jpg'
 import { setArticleCategory } from '@inet/redux/slices/articleSlice'
 import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
 import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
