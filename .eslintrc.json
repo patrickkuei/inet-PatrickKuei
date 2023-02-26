@@ -4,7 +4,11 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react/jsx-runtime"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,6 +23,9 @@
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "ignorePatterns": ["*.test.js"],

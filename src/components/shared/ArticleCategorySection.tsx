@@ -1,7 +1,6 @@
-import React from 'react'
 import AriticleCagegory from './AriticleCagegory'
 
-import articleCategories from '../../mockData/articleCategories'
+import articleCategories from '@inet/mockData/articleCategories'
 
 type Props = {}
 

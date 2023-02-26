@@ -1,4 +1,6 @@
-import React, { MouseEventHandler, ReactElement } from 'react'
+import { MouseEventHandler, ReactElement } from 'react'
+
+import { CrossIcon } from '@inet/icons'
 import AriticleCagegory from '../shared/AriticleCagegory'
 import Button from '../shared/Button'
 import ModalPortal from '../shared/ModalPortal'
@@ -11,8 +13,6 @@ type Props = {
   onDismiss: MouseEventHandler
 }
 
-const mockCurrentCommunity = 'popular'
-
 function SidebarMobile({
   isLogin,
   categories,
@@ -20,40 +20,49 @@ function SidebarMobile({
   onDismiss,
   Toggle,
 }: Props) {
+  const stopPropagation: MouseEventHandler = (e) => {
+    e.stopPropagation()
+  }
+
   return (
     <>
       {Toggle}
       {isOpened && (
         <ModalPortal>
           <div
-            className="w-full h-full bg-transparent-black absolute top-0 desktop:hidden"
+            className="w-full h-full bg-transparent-black fixed top-0 desktop:hidden z-0"
             onClick={onDismiss}
-          />
-          <div className="w-80 h-full p-6 bg-white absolute top-0 desktop:hidden">
-            <button
-              className="absolute right-0 top-0"
-              type="button"
-              onClick={onDismiss}
+          >
+            <div
+              className="w-80 h-full relative p-6 bg-white z-10"
+              onClick={stopPropagation}
             >
-              （。人。）
-            </button>
-            {isLogin || (
-              <div className="flex space-x-4 mb-6">
-                <Button
-                  className="w-1/2"
-                  title="login"
-                  size="medium"
-                  fillType="filled"
-                />
-                <Button
-                  className="w-1/2"
-                  title="sign up"
-                  size="medium"
-                  fillType="outline"
-                />
-              </div>
-            )}
-            <AriticleCagegory categories={categories} />
+              <button
+                className="absolute right-2 top-2 p-2 rounded-lg hover:bg-primary-100 hover:cursor-pointer"
+                type="button"
+                onClick={onDismiss}
+              >
+                <CrossIcon />
+              </button>
+              {isLogin || (
+                <div className="flex space-x-4 mb-6">
+                  <Button
+                    className="w-1/2"
+                    title="login"
+                    size="medium"
+                    fillType="filled"
+                    onClick={onDismiss}
+                  />
+                  <Button
+                    className="w-1/2"
+                    title="sign up"
+                    size="medium"
+                    fillType="outline"
+                  />
+                </div>
+              )}
+              <AriticleCagegory categories={categories} />
+            </div>
           </div>
         </ModalPortal>
       )}

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 import { IconMap, IconName } from '../../icons'
 import Button from './Button'
 

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 import { SearchIcon } from '../../icons'
 import { ReactComponent as MainLogo } from '../../images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '../../images/mobileLogo.svg'

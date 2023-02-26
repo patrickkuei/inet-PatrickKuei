@@ -1,5 +1,5 @@
+import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
 
 type articleState = {
   articleCreatedWithin: ArticleCreatedWithin

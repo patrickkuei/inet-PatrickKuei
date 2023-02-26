@@ -1,13 +1,12 @@
 import moment from 'moment'
-import React, { useEffect, useRef, useState } from 'react'
-import { IArticleViewModel } from '../../services/types/articles/i-article.view-model'
+import { useRef, useState } from 'react'
 import ArticleThumbnail from './ArticleThumbnail'
 import PaginationSection from './PaginationSection'
 
-import { useAppSelector } from '../../app/hooks'
-import { useGetArticlesQuery } from '../../services/apiSlice'
-import { ArticleCreatedWithin } from '../../services/types/articles/i-get-articles.query'
-import { Pagination } from '../../services/types/shared/pagination'
+import { useAppSelector } from '@inet/app/hooks'
+import { useGetArticlesQuery } from '@inet/services/apiSlice'
+import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
+import { Pagination } from '@inet/services/types/shared/pagination'
 
 type Props = {}
 
