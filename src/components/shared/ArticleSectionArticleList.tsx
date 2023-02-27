@@ -25,6 +25,10 @@ const ArticleSectionArticleList = ({}: Props) => {
     dispatch(setPage(page))
   }
 
+  const { id: currentCategoryId } = useAppSelector(
+    (state) => state.articleReducer.currentCategory,
+  )
+
   const {
     data: response,
     error,
@@ -35,6 +39,7 @@ const ArticleSectionArticleList = ({}: Props) => {
     limit,
     createdWithin:
       createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
+    categoryId: currentCategoryId === 0 ? undefined : currentCategoryId,
   })
 
   return isFetching ? (
