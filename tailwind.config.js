@@ -9,7 +9,7 @@ module.exports = {
       fontSize: {
         mini: ['9px', '12px'],
         tiny: ['15px', '20px'],
-        '10.5': ['42px', '57px'],
+        10.5: ['42px', '57px'],
         mobile5xl: '2.625rem',
       },
       colors: {

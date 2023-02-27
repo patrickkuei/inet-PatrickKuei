@@ -9,6 +9,7 @@ exports[`render ArticleThumbnail 1`] = `
   >
     <img
       alt="Hello world"
+      className="max-h-full"
       src="https://i.imgur.com/bqgW6JXh.jpeg"
     />
   </div>
