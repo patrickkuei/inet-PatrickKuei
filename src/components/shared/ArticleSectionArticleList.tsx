@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import ArticleThumbnail from './ArticleThumbnail'
 import PaginationSection from './PaginationSection'
 
@@ -19,7 +19,7 @@ const ArticleSectionArticleList = ({}: Props) => {
   const createdWithin = useAppSelector(
     (state) => state.articleReducer.articleCreatedWithin,
   )
-  const page = useAppSelector((state) => state.paginationReducer.page)
+  const currentPage = useAppSelector((state) => state.paginationReducer.page)
 
   const handlePageClick = (page: number) => {
     dispatch(setPage(page))
@@ -33,14 +33,28 @@ const ArticleSectionArticleList = ({}: Props) => {
     data: response,
     error,
     isFetching,
+    isLoading,
   } = useGetArticlesQuery({
     pagination: Pagination.Basic,
-    page,
+    page: currentPage,
     limit,
     createdWithin:
       createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
     categoryId: currentCategoryId === 0 ? undefined : currentCategoryId,
   })
+
+  const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const nextLimit = parseInt(event.target.value)
+
+    updateLimit(nextLimit)
+
+    const { totalCount } = response!
+    const nextTotalPage = ~~(totalCount / nextLimit)
+
+    if (currentPage > nextTotalPage) {
+      dispatch(setPage(nextTotalPage - 1))
+    }
+  }
 
   return isFetching ? (
     <div>...is loading</div>
@@ -62,10 +76,10 @@ const ArticleSectionArticleList = ({}: Props) => {
         )
       })}
       <PaginationSection
-        currentPage={page}
+        currentPage={currentPage}
         totalPages={response!.totalPages}
         onClick={handlePageClick}
-        onLimitChange={updateLimit}
+        onLimitChange={handleLimitChange}
         currentLimit={limit}
       />
     </>
