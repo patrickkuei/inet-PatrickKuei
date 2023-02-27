@@ -4,7 +4,7 @@ export interface IUsePagination {
   page: number
   limit: number
   updatePage: (page: number) => void
-  updateLimit: (event: ChangeEvent<HTMLSelectElement>) => void
+  updateLimit: (nextLimit: number) => void
 }
 
 export interface IUsePaginationOptions {
@@ -29,8 +29,8 @@ function usePagination({
     setPage(page)
   }
 
-  const updateLimit = (event: ChangeEvent<HTMLSelectElement>): void => {
-    setLimit(parseInt(event.target.value))
+  const updateLimit = (nextLimit: number): void => {
+    setLimit(nextLimit)
     setPage(0)
   }
 
