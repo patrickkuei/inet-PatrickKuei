@@ -48,7 +48,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
       <Input
         ref={searchInputRef}
         type="text"
-        placeholder="搜尋 INET"
+        placeholder="Search in INET"
         onSubmit={handleSearchInputSubmit}
         onCancelClick={handleCancelClick}
         suffix={

@@ -2,6 +2,7 @@ import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-
 import moment from 'moment'
 import { useRef } from 'react'
 import ArticlePreview from './ArticlePreview'
+import ArticleSectionArticleListNoArticle from './ArticleSectionArticleListNoArticle'
 import Spinner from './Spinner'
 
 interface IArticleListProps {
@@ -18,7 +19,7 @@ export default function ArticleList({
   return isLoading ? (
     <Spinner className="mt-12" size="md" />
   ) : !articles.length ? (
-    <span className="text-tiny text-gray-500">no article</span>
+    <ArticleSectionArticleListNoArticle />
   ) : (
     <div className="flex flex-col gap-y-5">
       {articles.map((article) => {
