@@ -8,6 +8,7 @@ import { ReactComponent as MainLogo } from '@inet/images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '@inet/images/mobileLogo.svg'
 import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
 import { MouseEventHandler, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import NavbarActionContainer from './NavbarActionsContainer'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
@@ -21,12 +22,18 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
   const dispatch = useAppDispatch()
   const userAvatar = user.avatar
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const [_, setSearchParams] = useSearchParams()
   const handleSearchInputSubmit = () => {
-    searchInputRef.current &&
-      dispatch(setSearchKeyword(searchInputRef.current.value))
+    const searchKeyword = searchInputRef.current?.value
+
+    if (searchKeyword) {
+      dispatch(setSearchKeyword(searchKeyword))
+      setSearchParams({ keyword: searchKeyword })
+    }
   }
   const handleCancelClick = () => {
     dispatch(setSearchKeyword(undefined))
+    setSearchParams()
   }
 
   return (
