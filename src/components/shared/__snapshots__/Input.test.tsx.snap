@@ -10,10 +10,16 @@ exports[`render Input 1`] = `
     <input
       className="grow border-none outline-none placeholder:focus:text-primary-500 h-2/4"
       onChange={[Function]}
+      onKeyDown={[Function]}
       placeholder="搜尋 INET"
       type="text"
       value=""
     />
   </div>
+  <svg
+    className="fill-primary-200"
+  >
+    search.svg
+  </svg>
 </div>
 `;
