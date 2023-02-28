@@ -1,6 +1,15 @@
+import { useAppDispatch } from '@inet/app/hooks'
 import { CancelIcon } from '@inet/icons'
+import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
 import clsx from 'clsx'
-import { forwardRef, LegacyRef, ReactElement, Ref, useState } from 'react'
+import {
+  forwardRef,
+  LegacyRef,
+  ReactElement,
+  Ref,
+  useEffect,
+  useState,
+} from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Button from './Button'
 
@@ -16,12 +25,27 @@ type Props = {
 const defaultInputClassName =
   'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow'
 
+const useInitialStateSearchKeyword = (value: string) => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    value && dispatch(setSearchKeyword(value))
+
+    return () => {
+      dispatch(setSearchKeyword(undefined))
+    }
+  }, [])
+}
+
 const useInputValue = (
   onSubmit: (() => void) | undefined,
   onCancelClick: (() => void) | undefined,
 ) => {
   const [searchParams] = useSearchParams()
   const [value, setValue] = useState(searchParams.get('keyword') ?? '')
+
+  useInitialStateSearchKeyword(value)
+
   const [shouldShowCancel, setShouldShowCancel] = useState(Boolean(value))
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
