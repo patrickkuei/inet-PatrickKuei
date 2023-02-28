@@ -1,10 +1,13 @@
+import { useAppDispatch } from '@inet/app/hooks'
+import Button from '@inet/components/shared/Button'
 import DropdownContainer from '@inet/components/shared/DropdownContainer'
 import DropdownItemContainer from '@inet/components/shared/DropdownItemContainer'
 import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
 import { ReactComponent as MainLogo } from '@inet/images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '@inet/images/mobileLogo.svg'
-import { MouseEventHandler } from 'react'
+import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
+import { MouseEventHandler, useEffect, useRef } from 'react'
 import NavbarActionContainer from './NavbarActionsContainer'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
@@ -15,7 +18,17 @@ type Props = {
 }
 
 export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
+  const dispatch = useAppDispatch()
   const userAvatar = user.avatar
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const handleSearchInputSubmit = () => {
+    searchInputRef.current &&
+      dispatch(setSearchKeyword(searchInputRef.current.value))
+  }
+  const handleCancelClick = () => {
+    dispatch(setSearchKeyword(undefined))
+  }
+
   return (
     <div className="h-16 min-w-94 px-6 py-2.5 gap-x-6 bg-white shadow-drop flex justify-between items-center desktop:px-16 desktop:py-2.5 desktop:gap-x-16">
       <SidebarMobileContainer isLogin={isLogin} />
@@ -26,9 +39,20 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
         <MobileLogo />
       </div>
       <Input
+        ref={searchInputRef}
         type="text"
         placeholder="搜尋 INET"
-        icon={<SearchIcon className="fill-primary-200" />}
+        onSubmit={handleSearchInputSubmit}
+        onCancelClick={handleCancelClick}
+        suffix={
+          <Button
+            variant="custom"
+            icon={<SearchIcon className="fill-primary-200" />}
+            size="small"
+            fillType="ghost"
+            onClick={handleSearchInputSubmit}
+          />
+        }
       />
       <DropdownContainer
         className="desktop:hidden"
