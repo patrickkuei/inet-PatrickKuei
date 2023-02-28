@@ -3,6 +3,7 @@ import PaginationSection from '@inet/components/shared/PaginationSection'
 import usePagination from '@inet/hooks/use-pagination'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
 import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
+import { useSearchParams } from 'react-router-dom'
 import ArticleDirectoryHeader from './ArticleDirectoryHeader'
 
 interface IArticleDirectoryProps {
@@ -11,7 +12,9 @@ interface IArticleDirectoryProps {
 
 export default function ArticleDirectory({ category }: IArticleDirectoryProps) {
   const { page: currentPage, limit, updatePage, updateLimit } = usePagination()
-  const searchKeyword = undefined // TODO: get from query string
+
+  const [searchParams] = useSearchParams()
+  const searchKeyword = searchParams.get('keyword') ?? undefined
 
   const { isFetching, data: response } = useGetArticlesQuery({
     categoryId: category.id,
