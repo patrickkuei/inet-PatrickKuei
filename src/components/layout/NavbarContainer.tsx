@@ -1,7 +1,6 @@
-import { useState } from 'react'
-
 import { AnonymIcon } from '@inet/icons'
 import UserImage from '@inet/images/MR BIGBIRD.jpg'
+import { useState } from 'react'
 import Navbar from './Navbar'
 
 const getUserInfo = () => ({
@@ -11,7 +10,7 @@ const getUserInfo = () => ({
 })
 
 export default function NavbarContainer() {
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(true) // TODO: login system
   const user = isLogin
     ? getUserInfo()
     : {

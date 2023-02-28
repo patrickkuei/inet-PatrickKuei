@@ -1,6 +1,7 @@
 import { CancelIcon } from '@inet/icons'
 import clsx from 'clsx'
 import { forwardRef, LegacyRef, ReactElement, Ref, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Button from './Button'
 
 type Props = {
@@ -15,21 +16,13 @@ type Props = {
 const defaultInputClassName =
   'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow'
 
-const Input = (
-  {
-    type,
-    className: customClassName = '',
-    placeholder,
-    suffix,
-    onSubmit,
-    onCancelClick,
-  }: Props,
-  ref: LegacyRef<HTMLInputElement> | undefined,
+const useInputValue = (
+  onSubmit: (() => void) | undefined,
+  onCancelClick: (() => void) | undefined,
 ) => {
-  const className = `${defaultInputClassName} ${customClassName}`
-
-  const [value, setValue] = useState('')
-  const [shouldShowCancel, setShouldShowCancel] = useState(false)
+  const [searchParams] = useSearchParams()
+  const [value, setValue] = useState(searchParams.get('keyword') ?? '')
+  const [shouldShowCancel, setShouldShowCancel] = useState(Boolean(value))
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newValue } = event.target
@@ -54,6 +47,35 @@ const Input = (
       onSubmit && onSubmit()
     }
   }
+
+  return {
+    value,
+    shouldShowCancel,
+    handleChange,
+    handleKeyDown,
+    handleCancelClick,
+  }
+}
+
+const Input = (
+  {
+    type,
+    className: customClassName = '',
+    placeholder,
+    suffix,
+    onSubmit,
+    onCancelClick,
+  }: Props,
+  ref: LegacyRef<HTMLInputElement> | undefined,
+) => {
+  const className = `${defaultInputClassName} ${customClassName}`
+  const {
+    value,
+    shouldShowCancel,
+    handleChange,
+    handleKeyDown,
+    handleCancelClick,
+  } = useInputValue(onSubmit, onCancelClick)
 
   return (
     <div className={className}>
