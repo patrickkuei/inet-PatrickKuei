@@ -1,6 +1,7 @@
-import { ReactElement, useCallback, useRef, useState } from 'react'
+import { ReactElement, useCallback, useRef } from 'react'
 
 import useClickOutside from '@inet/hooks/use-click-outside'
+import useToggle from '@inet/hooks/use-toggle'
 import Button from './Button'
 import Dropdown from './Dropdown'
 
@@ -17,11 +18,7 @@ export default function DropdownContainer({
   children,
   isLogin,
 }: Props) {
-  const [isOpened, setIsOpened] = useState(false)
-
-  const handleToggle = () => {
-    setIsOpened((prev) => !prev)
-  }
+  const { isOpened, handleToggle, setIsOpened } = useToggle()
 
   const toggleIconSize = isLogin ? 'medium' : 'small'
   const Toggle = (

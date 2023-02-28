@@ -1,6 +1,5 @@
-import { useState } from 'react'
-
 import Button from '@inet/components/shared/Button'
+import useToggle from '@inet/hooks/use-toggle'
 import { MenuIcon } from '@inet/icons'
 import SidebarMobile from './SidebarMobile'
 
@@ -9,11 +8,7 @@ type Props = {
 }
 
 export default function SidebarMobileContainer({ isLogin }: Props) {
-  const [isOpened, setIsOpened] = useState<boolean>(false)
-
-  const handleToggle = () => {
-    setIsOpened((prev) => !prev)
-  }
+  const { isOpened, handleToggle } = useToggle()
 
   const Toggle = (
     <Button
