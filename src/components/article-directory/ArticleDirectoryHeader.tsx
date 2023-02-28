@@ -36,7 +36,7 @@ export default function ArticleDirectoryHeader({
           type="text"
           className="w-64"
           placeholder="在此分類中搜尋"
-          icon={<SearchIcon className="fill-primary-200" />}
+          suffix={<SearchIcon className="fill-primary-200" />}
         />
       </div>
     </>

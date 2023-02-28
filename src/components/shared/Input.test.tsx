@@ -7,7 +7,7 @@ it('render Input', () => {
     <Input
       type="text"
       placeholder="搜尋 INET"
-      icon={<SearchIcon className="fill-primary-200" />}
+      suffix={<SearchIcon className="fill-primary-200" />}
     />,
   )
 

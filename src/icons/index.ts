@@ -1,5 +1,6 @@
 import { ReactComponent as AnonymIcon } from './anonym.svg'
 import { ReactComponent as BookmarkIcon } from './bookmark.svg'
+import { ReactComponent as CancelIcon } from './cancel.svg'
 import { ReactComponent as CrossIcon } from './cross.svg'
 import { ReactComponent as EditIcon } from './edit.svg'
 import { ReactComponent as EyeIcon } from './eye.svg'
@@ -26,6 +27,7 @@ export const IconMap = {
   setting: SettingIcon,
   signup: SignUpIcon,
   user: UserIcon,
+  cancel: CancelIcon,
 }
 
 export type IconName = keyof typeof IconMap
@@ -45,4 +47,5 @@ export {
   UserIcon,
   EyeIcon,
   HeartIcon,
+  CancelIcon,
 }

@@ -11,11 +11,13 @@ interface IArticleDirectoryProps {
 
 export default function ArticleDirectory({ category }: IArticleDirectoryProps) {
   const { page: currentPage, limit, updatePage, updateLimit } = usePagination()
+  const searchKeyword = undefined // TODO: get from query string
 
   const { isFetching, data: response } = useGetArticlesQuery({
     categoryId: category.id,
     page: currentPage,
     limit,
+    keyword: searchKeyword,
   })
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
