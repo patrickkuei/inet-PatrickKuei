@@ -14,7 +14,6 @@ export const searchSlice = createSlice({
   reducers: {
     setSearchKeyword: (state, action: PayloadAction<string | undefined>) => {
       state.searchKeyword = action.payload
-      window.scrollTo(0, 0)
     },
   },
 })

@@ -2,14 +2,7 @@ import { useAppDispatch } from '@inet/app/hooks'
 import { CancelIcon } from '@inet/icons'
 import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
 import clsx from 'clsx'
-import {
-  forwardRef,
-  LegacyRef,
-  ReactElement,
-  Ref,
-  useEffect,
-  useState,
-} from 'react'
+import { forwardRef, LegacyRef, ReactElement, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Button from './Button'
 
