@@ -1,16 +1,79 @@
+import { useAppSelector } from '@inet/app/hooks'
 import Dot from '@inet/components/shared/Dot'
 import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
+import React from 'react'
 
 interface IArticlePreviewProps {
   article: IArticleViewModel
   createdAt: string
 }
 
+const getMatchedSubstringIndex = (
+  rowString: string | undefined,
+  rowSubstring: string | undefined,
+) => {
+  if (!rowString || !rowSubstring) {
+    return -1
+  }
+
+  const [string, substring] = [
+    rowString.toLowerCase(),
+    rowSubstring.toLowerCase(),
+  ]
+
+  for (let i = 0; i < string.length; i++) {
+    let matchedIdx = -1
+    let idx = 0
+    let matched = true
+
+    if (string[i] === substring[idx]) {
+      matchedIdx = i
+
+      while (idx < substring.length - 1) {
+        if (string[++i] !== substring[++idx]) {
+          matched = false
+          break
+        }
+      }
+
+      if (matched) {
+        return matchedIdx
+      }
+
+      i--
+    }
+  }
+
+  return -1
+}
+
 export default function ArticlePreview({
   article,
   createdAt,
 }: IArticlePreviewProps) {
+  const searchKeyword = useAppSelector(
+    (state) => state.searchReducer.searchKeyword,
+  )
+
+  const getMarkedJsx = (string: string) => {
+    const matchedIdx = getMatchedSubstringIndex(string, searchKeyword)
+
+    if (matchedIdx < 0) {
+      return string
+    } else {
+      return (
+        <>
+          {string.slice(0, matchedIdx)}
+          <span className="text-secondary-500">
+            {string.slice(matchedIdx, matchedIdx + searchKeyword!.length)}
+          </span>
+          {string.slice(matchedIdx + searchKeyword!.length)}
+        </>
+      )
+    }
+  }
+
   return (
     <div className="text-left h-24 flex flex-row gap-x-2">
       <div className="w-24 shrink-0 bg-cyan-50 flex items-center justify-center">
@@ -41,16 +104,20 @@ export default function ArticlePreview({
             ) : (
               <AnonymIcon />
             )}
-            <span className="truncate">{article.author.name}</span>
+            <span className="truncate">
+              {getMarkedJsx(article.author.name)}
+            </span>
           </div>
           <Dot />
           <span className="whitespace-nowrap">{createdAt}</span>
         </div>
         <div>
           <div className="w-fit text-tiny font-bold line-clamp-2 hover:text-primary-400 hover:cursor-pointer">
-            {article.title}
+            {getMarkedJsx(article.title)}
           </div>
-          <div className="text-xs text-gray-300 truncate">{article.body}</div>
+          <div className="text-xs text-gray-300 truncate">
+            {getMarkedJsx(article.body)}
+          </div>
         </div>
         <div className="text-mini flex grow items-end gap-x-4">
           <span className="flex gap-x-1">
