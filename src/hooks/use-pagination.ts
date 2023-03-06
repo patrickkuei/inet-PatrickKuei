@@ -27,11 +27,13 @@ function usePagination({
 
   const updatePage = (page: number): void => {
     setPage(page)
+    window.scrollTo(0, 0)
   }
 
   const updateLimit = (nextLimit: number): void => {
     setLimit(nextLimit)
     setPage(0)
+    window.scrollTo(0, 0)
   }
 
   return {

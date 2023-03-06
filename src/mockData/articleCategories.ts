@@ -3,9 +3,9 @@ import chat from '@inet/images/chat.jpg'
 import food from '@inet/images/food.jpg'
 import popular from '@inet/images/popular.jpg'
 import travel from '@inet/images/travel.jpg'
-import { IArticleCategoriesRespont } from '@inet/services/types/shared/i-article-category.view-model'
+import { IArticleCategoriesResponse } from '@inet/services/types/shared/i-article-category.view-model'
 
-const mockCategories: IArticleCategoriesRespont = [
+const mockCategories: IArticleCategoriesResponse = [
   {
     id: 1,
     code: 'popular',
