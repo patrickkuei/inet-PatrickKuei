@@ -4,4 +4,4 @@ export interface IArticleCategoryViewModel {
   imageUrl: string
 }
 
-export type IArticleCategoriesRespont = IArticleCategoryViewModel[]
+export type IArticleCategoriesResponse = IArticleCategoryViewModel[]

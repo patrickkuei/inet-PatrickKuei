@@ -1,4 +1,4 @@
-import AriticleCagegory from './AriticleCagegory'
+import AriticleCagegory from './AriticleCategory'
 
 type Props = {}
 

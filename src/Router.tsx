@@ -7,8 +7,11 @@ export default function Router() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomeContainer />} />
-        <Route path="/edit" element={<></>} />
-        <Route path="/setting" element={<></>} />
+        <Route>
+          <Route path="category/:currentCategory" element={<HomeContainer />} />
+        </Route>
+        <Route path="edit" element={<>edit</>} />
+        <Route path="setting" element={<>setting</>} />
       </Route>
     </Routes>
   )

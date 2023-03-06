@@ -3,9 +3,8 @@ import { useRef } from 'react'
 import ArticleThumbnail from './ArticleThumbnail'
 import PaginationSection from './PaginationSection'
 
-import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import { useAppSelector } from '@inet/app/hooks'
 import usePagination from '@inet/hooks/use-pagination'
-import { setPage } from '@inet/redux/slices/paginationSlice'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 import { Pagination } from '@inet/services/types/shared/pagination'
@@ -13,16 +12,14 @@ import { Pagination } from '@inet/services/types/shared/pagination'
 type Props = {}
 
 const ArticleSectionArticleList = ({}: Props) => {
-  const dispatch = useAppDispatch()
-  const { limit, updateLimit } = usePagination()
+  const { page: currentPage, updatePage, limit, updateLimit } = usePagination()
   const currentMoment = useRef(moment())
   const createdWithin = useAppSelector(
     (state) => state.articleReducer.articleCreatedWithin,
   )
-  const currentPage = useAppSelector((state) => state.paginationReducer.page)
 
   const handlePageClick = (page: number) => {
-    dispatch(setPage(page))
+    updatePage(page)
   }
 
   const { id: currentCategoryId } = useAppSelector(
@@ -52,7 +49,7 @@ const ArticleSectionArticleList = ({}: Props) => {
     const nextTotalPage = ~~(totalCount / nextLimit)
 
     if (currentPage > nextTotalPage) {
-      dispatch(setPage(nextTotalPage - 1))
+      updatePage(nextTotalPage - 1)
     }
   }
 
