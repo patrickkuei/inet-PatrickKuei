@@ -1,6 +1,4 @@
-import clsx from 'clsx'
-
-import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import { useAppDispatch } from '@inet/app/hooks'
 import popularUrl from '@inet/images/popular.jpg'
 import { setArticleCategory } from '@inet/redux/slices/articleSlice'
 import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
@@ -8,8 +6,9 @@ import {
   IArticleCategoriesResponse,
   IArticleCategoryViewModel,
 } from '@inet/services/types/shared/i-article-category.view-model'
-import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import clsx from 'clsx'
+import { useEffect } from 'react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 type Props = {}
 
@@ -18,6 +17,7 @@ const useUpdateCategory = (
   isLoading: boolean,
 ) => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const location = useLocation()
   const pathnameArray = location.pathname.split('/')
@@ -34,6 +34,8 @@ const useUpdateCategory = (
 
         if (currentCategory) {
           dispatch(setArticleCategory(currentCategory))
+        } else {
+          navigate('category/popular')
         }
       }
     }
