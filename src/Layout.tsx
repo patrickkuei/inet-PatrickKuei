@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
+import ArticleCategorySection from './components/layout/ArticleCategorySection'
 import NavbarContainer from './components/layout/NavbarContainer'
-import ArticleCategorySection from './components/shared/ArticleCategorySection'
 import useConditionNavigate from './hooks/use-condition-navigate'
 
 export default function Layout() {

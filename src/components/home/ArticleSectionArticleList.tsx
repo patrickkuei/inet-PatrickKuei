@@ -1,13 +1,12 @@
-import moment from 'moment'
-import { useRef } from 'react'
-import ArticleThumbnail from './ArticleThumbnail'
-import PaginationSection from './PaginationSection'
-
 import { useAppSelector } from '@inet/app/hooks'
 import usePagination from '@inet/hooks/use-pagination'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 import { Pagination } from '@inet/services/types/shared/pagination'
+import moment from 'moment'
+import { useRef } from 'react'
+import PaginationSection from '../shared/PaginationSection'
+import ArticleThumbnail from './ArticleThumbnail'
 
 type Props = {}
 

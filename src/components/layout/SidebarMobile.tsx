@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactElement } from 'react'
 
-import AriticleCagegory from '@inet/components/shared/AriticleCategory'
+import AriticleCagegory from '@inet/components/home/AriticleCategory'
 import Button from '@inet/components/shared/Button'
 import ModalPortal from '@inet/components/shared/ModalPortal'
 import { CrossIcon } from '@inet/icons'

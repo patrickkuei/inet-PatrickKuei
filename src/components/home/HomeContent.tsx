@@ -1,5 +1,4 @@
-import ArticleCategorySection from '@inet/components/shared/ArticleCategorySection'
-import ArticleSectionContainer from '@inet/components/shared/ArticleSectionContainer'
+import ArticleSectionContainer from '@inet/components/home/ArticleSectionContainer'
 type Props = {}
 
 export default function HomeContent({}: Props) {

@@ -1,6 +1,6 @@
 import { SearchIcon } from '@inet/icons'
+import Input from '../shared/Input'
 import ArticleSectionFiler from './ArticleSectionFilter'
-import Input from './Input'
 
 type Props = {
   category: string
