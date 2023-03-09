@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 
 export interface IUsePagination {
   page: number
@@ -35,6 +35,8 @@ function usePagination({
     setPage(0)
     window.scrollTo(0, 0)
   }
+
+  let x = 1
 
   return {
     page,

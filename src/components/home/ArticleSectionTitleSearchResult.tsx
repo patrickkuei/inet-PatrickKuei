@@ -1,5 +1,4 @@
 import { IArticleResponse } from '@inet/services/types/articles/i-article.view-model'
-import React from 'react'
 import Dot from '../shared/Dot'
 
 type Props = {
