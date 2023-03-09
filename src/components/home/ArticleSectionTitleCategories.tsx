@@ -1,6 +1,5 @@
 import { SearchIcon } from '@inet/icons'
-import React from 'react'
-import Input from './Input'
+import Input from '../shared/Input'
 
 type Props = {
   category: string
