@@ -5,9 +5,15 @@ import popular from '@inet/images/popular.jpg'
 import travel from '@inet/images/travel.jpg'
 import { IArticleCategoriesResponse } from '@inet/services/types/shared/i-article-category.view-model'
 
+export const popularCategory = {
+  id: 0,
+  code: 'popular',
+  imageUrl: popular,
+}
+
 const mockCategories: IArticleCategoriesResponse = [
   {
-    id: 1,
+    id: 0,
     code: 'popular',
     imageUrl: popular,
   },

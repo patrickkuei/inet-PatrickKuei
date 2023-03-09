@@ -1,3 +1,4 @@
+import { popularCategory } from '@inet/mockData/articleCategories'
 import {
   ArticleCreatedWithin,
   IGetArticlesQuery,
@@ -13,11 +14,7 @@ type articleState = {
 
 const initialState: articleState = {
   articleCreatedWithin: ArticleCreatedWithin.All,
-  currentCategory: {
-    code: 'popular',
-    id: 0,
-    imageUrl: '',
-  },
+  currentCategory: popularCategory,
   articleParams: {},
 }
 

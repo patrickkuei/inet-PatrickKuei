@@ -15,6 +15,7 @@ it('render Input', () => {
           ref={ref}
           type="text"
           placeholder="搜尋 INET"
+          isGlobalSearchInput={false}
           suffix={<SearchIcon className="fill-primary-200" />}
         />
       </Provider>
