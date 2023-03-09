@@ -1,5 +1,6 @@
 import { IArticleResponse } from '@inet/services/types/articles/i-article.view-model'
 import Dot from '../shared/Dot'
+import SpinLoader from '../shared/SpinLoader'
 
 type Props = {
   response: IArticleResponse | undefined
@@ -8,7 +9,7 @@ type Props = {
 
 const ArticleSectionTitleSearchResult = ({ response, isFetching }: Props) => {
   return isFetching ? (
-    <div>...is loading</div>
+    <SpinLoader />
   ) : (
     <div className="flex flex-row gap-2 items-center">
       <span className="text-10.5">Search Result</span>
