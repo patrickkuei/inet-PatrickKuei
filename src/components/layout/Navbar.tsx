@@ -6,9 +6,7 @@ import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
 import { ReactComponent as MainLogo } from '@inet/images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '@inet/images/mobileLogo.svg'
-import {
-  popularCategory,
-} from '@inet/mockData/articleCategories'
+import { popularCategory } from '@inet/mockData/articleCategories'
 import { setArticleCategory } from '@inet/redux/slices/articleSlice'
 import {
   setIsGlobalSearch,
