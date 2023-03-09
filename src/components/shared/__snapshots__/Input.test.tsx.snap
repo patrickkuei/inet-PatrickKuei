@@ -2,7 +2,7 @@
 
 exports[`render Input 1`] = `
 <div
-  className="h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow "
+  className="h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow"
 >
   <div
     className="flex flex-col grow h-full py-px"

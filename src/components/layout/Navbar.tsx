@@ -6,9 +6,16 @@ import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
 import { ReactComponent as MainLogo } from '@inet/images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '@inet/images/mobileLogo.svg'
-import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
+import {
+  popularCategory,
+} from '@inet/mockData/articleCategories'
+import { setArticleCategory } from '@inet/redux/slices/articleSlice'
+import {
+  setIsGlobalSearch,
+  setSearchKeyword,
+} from '@inet/redux/slices/searchSlice'
 import { MouseEventHandler, useRef } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import NavbarActionContainer from './NavbarActionsContainer'
 import SidebarMobileContainer from './SidebarMobileContainer'
 
@@ -23,6 +30,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
   const userAvatar = user.avatar
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [_, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
 
   const handleSearchInputSubmit = () => {
     const searchKeyword = searchInputRef.current?.value
@@ -30,12 +38,16 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
     if (searchKeyword) {
       dispatch(setSearchKeyword(searchKeyword))
       setSearchParams({ keyword: searchKeyword })
+      dispatch(setIsGlobalSearch(true))
+      dispatch(setArticleCategory(popularCategory))
+      navigate(`category/popular?keyword=${searchKeyword}`)
     }
   }
 
   const handleCancelClick = () => {
     dispatch(setSearchKeyword(undefined))
     setSearchParams()
+    dispatch(setIsGlobalSearch(false))
   }
 
   return (
@@ -53,6 +65,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
         placeholder="Search in INET"
         onSubmit={handleSearchInputSubmit}
         onCancelClick={handleCancelClick}
+        isGlobalSearchInput={true}
         suffix={
           <Button
             variant="custom"

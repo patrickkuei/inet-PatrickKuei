@@ -1,6 +1,10 @@
-import { useAppDispatch } from '@inet/app/hooks'
+import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
+import useGetPathName from '@inet/hooks/use-get-path-name'
 import { CancelIcon } from '@inet/icons'
-import { setSearchKeyword } from '@inet/redux/slices/searchSlice'
+import {
+  setIsGlobalSearch,
+  setSearchKeyword,
+} from '@inet/redux/slices/searchSlice'
 import clsx from 'clsx'
 import { forwardRef, LegacyRef, ReactElement, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -13,24 +17,32 @@ type Props = {
   suffix: ReactElement
   onSubmit?: () => void
   onCancelClick?: () => void
+  cancelButtonClass?: string
+  cancelButtonIconClass?: string
+  isGlobalSearchInput: boolean
 }
 
-const defaultInputClassName =
-  'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow'
-
-const useInputValue = (onCancelClick: (() => void) | undefined) => {
+const useInputValue = (
+  onCancelClick: (() => void) | undefined,
+  shouldUpdateInput: boolean,
+) => {
   const dispatch = useAppDispatch()
-  const [searchParams] = useSearchParams()
+
   const [value, setValue] = useState('')
   const [shouldShowCancel, setShouldShowCancel] = useState(false)
 
+  const [searchParams] = useSearchParams()
+  const keyword = searchParams.get('keyword')
+
   useEffect(() => {
-    const keyword = searchParams.get('keyword')
+    if (!shouldUpdateInput) {
+      return
+    }
 
     setValue(keyword ?? '')
     dispatch(setSearchKeyword(keyword ?? undefined))
     setShouldShowCancel(Boolean(keyword))
-  }, [searchParams])
+  }, [keyword, shouldUpdateInput])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newValue } = event.target
@@ -58,6 +70,26 @@ const useInputValue = (onCancelClick: (() => void) | undefined) => {
   }
 }
 
+const useUpdateSearchMode = (
+  isGlobalSearchInput: boolean,
+): { shouldUpdateInput: boolean } => {
+  const dispatch = useAppDispatch()
+
+  const currentCategoryName = useGetPathName('category', 1)
+  const nextIsGlobalSearch = currentCategoryName === 'popular'
+  const isGlobalSearch = useAppSelector(
+    (state) => state.searchReducer.isGlobalSearch,
+  )
+
+  useEffect(() => {
+    if (isGlobalSearch !== nextIsGlobalSearch) {
+      dispatch(setIsGlobalSearch(nextIsGlobalSearch))
+    }
+  }, [currentCategoryName])
+
+  return { shouldUpdateInput: nextIsGlobalSearch === isGlobalSearchInput }
+}
+
 const Input = (
   {
     type,
@@ -66,12 +98,16 @@ const Input = (
     suffix,
     onSubmit,
     onCancelClick,
+    cancelButtonIconClass: customCancelButtonIconClassName = '',
+    cancelButtonClass: customCancelButtonClassName = '',
+    isGlobalSearchInput,
   }: Props,
   ref: LegacyRef<HTMLInputElement> | undefined,
 ) => {
-  const className = `${defaultInputClassName} ${customClassName}`
+  const { shouldUpdateInput } = useUpdateSearchMode(isGlobalSearchInput)
+
   const { value, shouldShowCancel, handleChange, handleCancelClick } =
-    useInputValue(onCancelClick)
+    useInputValue(onCancelClick, shouldUpdateInput)
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -80,7 +116,12 @@ const Input = (
   }
 
   return (
-    <div className={className}>
+    <div
+      className={clsx(
+        'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow',
+        customClassName,
+      )}
+    >
       <>
         <div className="flex flex-col grow h-full py-px">
           {shouldShowCancel ? (
@@ -104,10 +145,20 @@ const Input = (
         {shouldShowCancel ? (
           <Button
             variant="custom"
-            icon={<CancelIcon className="fill-primary-200" />}
+            icon={
+              <CancelIcon
+                className={clsx(
+                  'fill-primary-200',
+                  customCancelButtonIconClassName,
+                )}
+              />
+            }
             size="small"
             fillType="ghost"
-            className="h-6 border-r border-solid rounded-none border-primary-200 pr-1.5"
+            className={clsx(
+              'h-6 border-r border-solid rounded-none border-primary-200 pr-1.5',
+              customCancelButtonClassName,
+            )}
             onClick={handleCancelClick}
           />
         ) : null}
