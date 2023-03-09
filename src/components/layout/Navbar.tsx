@@ -23,6 +23,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
   const userAvatar = user.avatar
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [_, setSearchParams] = useSearchParams()
+
   const handleSearchInputSubmit = () => {
     const searchKeyword = searchInputRef.current?.value
 
@@ -31,6 +32,7 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
       setSearchParams({ keyword: searchKeyword })
     }
   }
+
   const handleCancelClick = () => {
     dispatch(setSearchKeyword(undefined))
     setSearchParams()
