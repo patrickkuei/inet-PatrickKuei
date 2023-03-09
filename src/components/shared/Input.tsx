@@ -18,28 +18,19 @@ type Props = {
 const defaultInputClassName =
   'h-10 px-4 border border-primary-200 rounded-lg focus-within:border-primary-500 flex flex-row items-center gap-x-2 grow desktop:max-w-120 desktop:grow'
 
-const useInitialStateSearchKeyword = (value: string) => {
+const useInputValue = (onCancelClick: (() => void) | undefined) => {
   const dispatch = useAppDispatch()
+  const [searchParams] = useSearchParams()
+  const [value, setValue] = useState('')
+  const [shouldShowCancel, setShouldShowCancel] = useState(false)
 
   useEffect(() => {
-    value && dispatch(setSearchKeyword(value))
+    const keyword = searchParams.get('keyword')
 
-    return () => {
-      dispatch(setSearchKeyword(undefined))
-    }
-  }, [])
-}
-
-const useInputValue = (
-  onSubmit: (() => void) | undefined,
-  onCancelClick: (() => void) | undefined,
-) => {
-  const [searchParams] = useSearchParams()
-  const [value, setValue] = useState(searchParams.get('keyword') ?? '')
-
-  useInitialStateSearchKeyword(value)
-
-  const [shouldShowCancel, setShouldShowCancel] = useState(Boolean(value))
+    setValue(keyword ?? '')
+    dispatch(setSearchKeyword(keyword ?? undefined))
+    setShouldShowCancel(Boolean(keyword))
+  }, [searchParams])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newValue } = event.target
@@ -59,17 +50,10 @@ const useInputValue = (
     onCancelClick && onCancelClick()
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      onSubmit && onSubmit()
-    }
-  }
-
   return {
     value,
     shouldShowCancel,
     handleChange,
-    handleKeyDown,
     handleCancelClick,
   }
 }
@@ -86,13 +70,14 @@ const Input = (
   ref: LegacyRef<HTMLInputElement> | undefined,
 ) => {
   const className = `${defaultInputClassName} ${customClassName}`
-  const {
-    value,
-    shouldShowCancel,
-    handleChange,
-    handleKeyDown,
-    handleCancelClick,
-  } = useInputValue(onSubmit, onCancelClick)
+  const { value, shouldShowCancel, handleChange, handleCancelClick } =
+    useInputValue(onCancelClick)
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onSubmit && onSubmit()
+    }
+  }
 
   return (
     <div className={className}>
