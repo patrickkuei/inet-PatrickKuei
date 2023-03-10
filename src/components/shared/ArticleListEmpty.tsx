@@ -1,12 +1,8 @@
-import { useAppSelector } from '@inet/app/hooks'
+interface IArticleListEmptyProps {
+  searchKeyword?: string
+}
 
-type Props = {}
-
-const ArticleSectionArticleListNoArticle = (props: Props) => {
-  const searchKeyword = useAppSelector(
-    (state) => state.searchReducer.searchKeyword,
-  )
-
+const ArticleListEmpty = ({ searchKeyword }: IArticleListEmptyProps) => {
   return (
     <span className="text-tiny text-gray-500">
       {searchKeyword ? (
@@ -24,4 +20,4 @@ const ArticleSectionArticleListNoArticle = (props: Props) => {
   )
 }
 
-export default ArticleSectionArticleListNoArticle
+export default ArticleListEmpty

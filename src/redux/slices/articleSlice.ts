@@ -15,7 +15,10 @@ type articleState = {
 const initialState: articleState = {
   articleCreatedWithin: ArticleCreatedWithin.All,
   currentCategory: popularCategory,
-  articleParams: {},
+  articleParams: {
+    page: 0,
+    limit: 10,
+  },
 }
 
 export const articleSlice = createSlice({

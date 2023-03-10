@@ -1,11 +1,8 @@
+import { useAppSelector } from '@inet/app/hooks'
 import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
-import {
-  useGetArticleCategoriesQuery,
-  useGetArticleCategoryQuery,
-} from '@inet/services/apiSlice'
+import { useGetArticleCategoryQuery } from '@inet/services/apiSlice'
 import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
-import { useMemo } from 'react'
 
 interface IArticleDirectoryHeaderProps {
   category: IArticleCategoryViewModel
@@ -15,6 +12,8 @@ export default function ArticleDirectoryHeader({
   category,
 }: IArticleDirectoryHeaderProps) {
   const { data: categoryDetail } = useGetArticleCategoryQuery(category.code)
+
+  const { isGlobalSearch } = useAppSelector((state) => state.searchReducer)
 
   return (
     <>
@@ -36,6 +35,7 @@ export default function ArticleDirectoryHeader({
           type="text"
           className="w-64"
           placeholder="在此分類中搜尋"
+          isGlobalSearchInput={isGlobalSearch}
           suffix={<SearchIcon className="fill-primary-200" />}
         />
       </div>
