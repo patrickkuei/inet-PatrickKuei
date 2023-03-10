@@ -5,7 +5,10 @@ type Props = {
 }
 
 const SpinLoader = ({ className }: Props) => {
-  const customClassName = clsx('flex justify-center items-center', className)
+  const customClassName = clsx(
+    'flex justify-center items-center w-full',
+    className,
+  )
 
   return (
     <div role="status" className={customClassName}>

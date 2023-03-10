@@ -2,14 +2,14 @@ import Button from '@inet/components/shared/Button'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 
 export interface IHomeFilterProps {
-  currentCreatedWithin: ArticleCreatedWithin
+  createdWithin: ArticleCreatedWithin
   onCreatedWithinChange: (createdWithin: ArticleCreatedWithin) => void
 }
 
 const createdWithins = Object.values(ArticleCreatedWithin)
 
 export default function HomeFilter({
-  currentCreatedWithin,
+  createdWithin: currentCreatedWithin,
   onCreatedWithinChange,
 }: IHomeFilterProps) {
   return (

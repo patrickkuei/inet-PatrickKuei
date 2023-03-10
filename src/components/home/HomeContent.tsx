@@ -12,7 +12,8 @@ export default function HomeContent() {
   const { page: currentPage, limit, updatePage, updateLimit } = usePagination()
 
   const { data: response, isFetching } = useGetArticlesQuery({
-    createdWithin,
+    createdWithin:
+      createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
     page: currentPage,
     limit,
   })
@@ -37,7 +38,7 @@ export default function HomeContent() {
         Most Popular
       </div>
       <HomeFilter
-        currentCreatedWithin={createdWithin}
+        createdWithin={createdWithin}
         onCreatedWithinChange={setCreatedWithin}
       />
       <div className="flex flex-col py-6 gap-5">

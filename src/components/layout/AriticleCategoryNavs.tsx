@@ -2,7 +2,7 @@ import popularUrl from '@inet/images/popular.jpg'
 import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
-import Spinner from '../shared/Spinner'
+import SpinLoader from '../shared/SpinLoader'
 
 export default function AriticleCategoryNavs() {
   const getCategoryClassName = (isActive: boolean): string => {
@@ -24,7 +24,7 @@ export default function AriticleCategoryNavs() {
         board
       </div>
       {isLoading ? (
-        <Spinner className="my-5" size="md" />
+        <SpinLoader className="my-5" />
       ) : (
         <div className="w-full">
           <ul className="space-y-4">
