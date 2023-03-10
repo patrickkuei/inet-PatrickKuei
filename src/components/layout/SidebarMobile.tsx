@@ -1,9 +1,9 @@
 import { MouseEventHandler, ReactElement } from 'react'
 
-import AriticleCagegory from '@inet/components/home/AriticleCategory'
 import Button from '@inet/components/shared/Button'
 import ModalPortal from '@inet/components/shared/ModalPortal'
 import { CrossIcon } from '@inet/icons'
+import AriticleCategoryNavs from './AriticleCategoryNavs'
 
 type Props = {
   isLogin: boolean
@@ -54,7 +54,7 @@ function SidebarMobile({ isLogin, isOpened, onDismiss, Toggle }: Props) {
                   />
                 </div>
               )}
-              <AriticleCagegory />
+              <AriticleCategoryNavs />
             </div>
           </div>
         </ModalPortal>

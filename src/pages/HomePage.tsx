@@ -1,5 +1,5 @@
 import HomeContent from '@inet/components/home/HomeContent'
 
-export default function HomeContainer() {
+export default function HomePage() {
   return <HomeContent />
 }
