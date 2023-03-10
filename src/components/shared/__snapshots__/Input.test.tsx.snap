@@ -11,8 +11,9 @@ exports[`render Input 1`] = `
   />
   <svg
     className="fill-primary-200"
-  >
-    search.svg
-  </svg>
+    data-jest-file-name="search.svg"
+    data-jest-svg-name="search"
+    data-testid="search"
+  />
 </div>
 `;
