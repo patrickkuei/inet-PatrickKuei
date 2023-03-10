@@ -1,13 +1,10 @@
 import articles from '@inet/mockData/articles'
 import renderer from 'react-test-renderer'
-import ArticleThumbnail from './ArticleThumbnail'
+import ArticlePreview from './ArticlePreview'
 
-it('render ArticleThumbnail', () => {
+it('render ArticlePreview', () => {
   const component = renderer.create(
-    <ArticleThumbnail
-      article={articles[0]}
-      createdAtDuration="8 days ago"
-    ></ArticleThumbnail>,
+    <ArticlePreview article={articles[0]} createdAt="8 days ago" />,
   )
 
   let tree = component.toJSON()

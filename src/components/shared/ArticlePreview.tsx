@@ -2,15 +2,15 @@ import Dot from '@inet/components/shared/Dot'
 import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 
-type Props = {
+interface IArticlePreviewProps {
   article: IArticleViewModel
-  createdAtDuration: string
+  createdAt: string
 }
 
-export default function ArticleThumbnail({
+export default function ArticlePreview({
   article,
-  createdAtDuration,
-}: Props) {
+  createdAt,
+}: IArticlePreviewProps) {
   return (
     <div className="text-left h-24 flex flex-row gap-x-2">
       <div className="w-24 shrink-0 bg-cyan-50 flex items-center justify-center">
@@ -44,7 +44,7 @@ export default function ArticleThumbnail({
             <span className="truncate">{article.author.name}</span>
           </div>
           <Dot />
-          <span className="whitespace-nowrap">{createdAtDuration}</span>
+          <span className="whitespace-nowrap">{createdAt}</span>
         </div>
         <div>
           <div className="w-fit text-tiny font-bold line-clamp-2 hover:text-primary-400 hover:cursor-pointer">
