@@ -3,7 +3,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "files.trimTrailingWhitespace": true,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,

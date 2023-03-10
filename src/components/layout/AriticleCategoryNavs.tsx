@@ -35,7 +35,7 @@ export default function AriticleCategoryNavs() {
               <img width={32} height={32} src={popularUrl} alt="popular" />
               <span className="ml-4">popular</span>
             </NavLink>
-            {response!.map(({ code: categoryCode, imageUrl }) => (
+            {response?.map(({ code: categoryCode, imageUrl }) => (
               <NavLink
                 key={categoryCode}
                 to={`category/${categoryCode}`}
