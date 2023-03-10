@@ -1,5 +1,5 @@
 import ArticleDirectory from '@inet/components/article-directory/ArticleDirectory'
-import Spinner from '@inet/components/shared/Spinner'
+import SpinLoader from '@inet/components/shared/SpinLoader'
 import { useGetArticleCategoriesQuery } from '@inet/services/apiSlice'
 import { useMemo } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
@@ -15,7 +15,7 @@ export default function ArticleDirectoryPage() {
   )
 
   return isLoading ? (
-    <Spinner size="md" />
+    <SpinLoader />
   ) : category ? (
     <ArticleDirectory key={categoryCode} category={category} />
   ) : (

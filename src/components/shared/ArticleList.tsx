@@ -4,7 +4,7 @@ import moment from 'moment'
 import { useRef } from 'react'
 import ArticleListEmpty from './ArticleListEmpty'
 import ArticlePreview from './ArticlePreview'
-import Spinner from './Spinner'
+import SpinLoader from './SpinLoader'
 
 interface IArticleListProps {
   isLoading: boolean
@@ -22,7 +22,7 @@ export default function ArticleList({
   )
 
   return isLoading ? (
-    <Spinner className="mt-12" size="md" />
+    <SpinLoader className="mt-12" />
   ) : !articles.length ? (
     <ArticleListEmpty searchKeyword={searchKeyword} />
   ) : (
