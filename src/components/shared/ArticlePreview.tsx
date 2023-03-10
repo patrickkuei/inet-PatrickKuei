@@ -2,7 +2,6 @@ import { useAppSelector } from '@inet/app/hooks'
 import Dot from '@inet/components/shared/Dot'
 import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
-import React from 'react'
 
 interface IArticlePreviewProps {
   article: IArticleViewModel

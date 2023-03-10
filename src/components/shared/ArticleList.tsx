@@ -1,8 +1,9 @@
+import { useAppSelector } from '@inet/app/hooks'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 import moment from 'moment'
 import { useRef } from 'react'
+import ArticleListEmpty from './ArticleListEmpty'
 import ArticlePreview from './ArticlePreview'
-import ArticleSectionArticleListNoArticle from './ArticleSectionArticleListNoArticle'
 import Spinner from './Spinner'
 
 interface IArticleListProps {
@@ -16,10 +17,14 @@ export default function ArticleList({
 }: IArticleListProps) {
   const currentMoment = useRef(moment())
 
+  const searchKeyword = useAppSelector(
+    (state) => state.searchReducer.searchKeyword,
+  )
+
   return isLoading ? (
     <Spinner className="mt-12" size="md" />
   ) : !articles.length ? (
-    <ArticleSectionArticleListNoArticle />
+    <ArticleListEmpty searchKeyword={searchKeyword} />
   ) : (
     <div className="flex flex-col gap-y-5">
       {articles.map((article) => {
