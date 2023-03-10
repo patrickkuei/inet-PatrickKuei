@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { CSSProperties } from 'react'
-import styles from './Spinner.module.css'
+import './Spinner.css'
 
 export interface ISpinnerProps {
   className?: string
@@ -39,7 +39,7 @@ export default function Spinner({ className, size }: ISpinnerProps) {
       height: `${dotSize}px`,
       left: `${x}px`,
       top: `${y}px`,
-      animation: `${styles['dot-scale-animation']} 0.8s alternate infinite`,
+      animation: 'spinner-dot-scale-animation 0.8s alternate infinite',
       animationDelay: `${animationDelay}s`,
     }
   }

@@ -1,4 +1,4 @@
-@keyframes dot-scale-animation {
+@keyframes spinner-dot-scale-animation {
   0% {
     transform: scale(0);
   }
