@@ -6,6 +6,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
     '^.+\\.svg$': 'svg-jest',
-    '^.+\\.(css|jpg|png)$': 'jest-transform-stub',
+    '^.+\\.(jpg|png)$': 'jest-transform-stub',
+    '^.+\\.css$': 'jest-transform-css',
   },
 }
