@@ -18,7 +18,7 @@ export default function DropdownContainer({
   children,
   isLogin,
 }: Props) {
-  const { isOpened, handleToggle, setIsOpened } = useToggle()
+  const [isOpened, handleToggle, setIsOpened] = useToggle()
 
   const toggleIconSize = isLogin ? 'medium' : 'small'
   const Toggle = (
