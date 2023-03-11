@@ -1,3 +1,4 @@
+import useToggle from '@inet/hooks/use-toggle'
 import { CancelIcon } from '@inet/icons'
 import clsx from 'clsx'
 import {
@@ -86,6 +87,8 @@ const Input = (
     onSuffixClick?.(value)
   }
 
+  const [focus, handleFocusChange] = useToggle()
+
   return (
     <div
       className={clsx(
@@ -93,27 +96,30 @@ const Input = (
         customClassName,
       )}
     >
-      <div className="flex flex-col grow h-full py-px relative">
+      <div className="flex flex-col grow h-full py-px justify-center relative">
         <label
           className={clsx(
-            'text-left text-primary-500 h-2/4 text-xs absolute',
-            'transition-all duration-75',
-            isClearable ? 'mt-0' : 'invisible opacity-0 mt-3',
+            'text-left pointer-events-none transition-all absolute',
+            focus || isClearable
+              ? 'text-xs text-primary-500 mb-5'
+              : 'text-gray-300',
           )}
         >
-          Search in INET
+          {placeholder}
         </label>
         <input
           ref={ref}
           value={value}
           type={type}
           className={clsx(
-            'grow border-none outline-none placeholder:focus:text-primary-500',
-            isClearable ? 'h-full transition-all pt-3' : 'h-2/4',
+            'grow border-none outline-none placeholder:opacity-0 transition-all',
+            (focus || isClearable) && 'pt-3',
           )}
           placeholder={placeholder}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
+          onFocus={handleFocusChange}
+          onBlur={handleFocusChange}
         />
       </div>
       {isClearable && (

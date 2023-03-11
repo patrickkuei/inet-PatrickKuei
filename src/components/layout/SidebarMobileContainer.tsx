@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function SidebarMobileContainer({ isLogin }: Props) {
-  const { isOpened, handleToggle } = useToggle()
+  const [isOpened, handleToggle] = useToggle()
 
   const Toggle = (
     <Button
