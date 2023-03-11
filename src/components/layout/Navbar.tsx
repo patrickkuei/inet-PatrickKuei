@@ -1,4 +1,3 @@
-import { useAppDispatch } from '@inet/app/hooks'
 import Button from '@inet/components/shared/Button'
 import DropdownContainer from '@inet/components/shared/DropdownContainer'
 import DropdownItemContainer from '@inet/components/shared/DropdownItemContainer'
@@ -6,13 +5,7 @@ import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
 import { ReactComponent as MainLogo } from '@inet/images/mainLogo.svg'
 import { ReactComponent as MobileLogo } from '@inet/images/mobileLogo.svg'
-import { popularCategory } from '@inet/mockData/articleCategories'
-import { setArticleCategory } from '@inet/redux/slices/articleSlice'
-import {
-  setIsGlobalSearch,
-  setSearchKeyword,
-} from '@inet/redux/slices/searchSlice'
-import { MouseEventHandler, useRef } from 'react'
+import { MouseEventHandler } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import NavbarActionContainer from './NavbarActionsContainer'
 import SidebarMobileContainer from './SidebarMobileContainer'
@@ -24,28 +17,15 @@ type Props = {
 }
 
 export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
-  const dispatch = useAppDispatch()
   const userAvatar = user.avatar
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const [_, setSearchParams] = useSearchParams()
+
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
-  const handleSearchInputSubmit = () => {
-    const searchKeyword = searchInputRef.current?.value
-
+  const handleSearchInputSubmit = (searchKeyword: string) => {
     if (searchKeyword) {
-      dispatch(setSearchKeyword(searchKeyword))
-      setSearchParams({ keyword: searchKeyword })
-      dispatch(setIsGlobalSearch(true))
-      dispatch(setArticleCategory(popularCategory))
-      navigate(`category/popular?keyword=${searchKeyword}`)
+      navigate(`/search?keyword=${searchKeyword}`)
     }
-  }
-
-  const handleCancelClick = () => {
-    dispatch(setSearchKeyword(undefined))
-    setSearchParams()
-    dispatch(setIsGlobalSearch(false))
   }
 
   return (
@@ -58,21 +38,19 @@ export default function Navbar({ isLogin, user, onDropdownItemClick }: Props) {
         <MobileLogo />
       </div>
       <Input
-        ref={searchInputRef}
         type="text"
         placeholder="Search in INET"
-        onSubmit={handleSearchInputSubmit}
-        onCancelClick={handleCancelClick}
-        isGlobalSearchInput={true}
+        defaultValue={searchParams.get('keyword') ?? ''}
         suffix={
           <Button
             variant="custom"
             icon={<SearchIcon className="fill-primary-200" />}
             size="small"
             fillType="ghost"
-            onClick={handleSearchInputSubmit}
           />
         }
+        onSubmit={handleSearchInputSubmit}
+        onSuffixClick={handleSearchInputSubmit}
       />
       <DropdownContainer
         className="desktop:hidden"

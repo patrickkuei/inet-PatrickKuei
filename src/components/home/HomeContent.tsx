@@ -1,6 +1,6 @@
 import ArticleList from '@inet/components/shared/ArticleList'
 import PaginationSection from '@inet/components/shared/PaginationSection'
-import usePagination from '@inet/hooks/use-pagination'
+import useGetArticlesQueryParams from '@inet/hooks/use-get-articles-query-params'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
 import { ArticleCreatedWithin } from '@inet/services/types/articles/i-get-articles.query'
 import { useState } from 'react'
@@ -8,27 +8,15 @@ import HomeFilter from './HomeFilter'
 
 export default function HomeContent() {
   const [createdWithin, setCreatedWithin] = useState(ArticleCreatedWithin.All)
-
-  const { page: currentPage, limit, updatePage, updateLimit } = usePagination()
+  const { page, limit, updatePage, handleLimitChange } =
+    useGetArticlesQueryParams()
 
   const { data: response, isFetching } = useGetArticlesQuery({
     createdWithin:
       createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
-    page: currentPage,
+    page,
     limit,
   })
-
-  const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const nextLimit = parseInt(event.target.value)
-    updateLimit(nextLimit)
-
-    const totalCount = response?.totalCount ?? 0
-    const nextTotalPage = ~~(totalCount / nextLimit)
-
-    if (currentPage > nextTotalPage) {
-      updatePage(nextTotalPage - 1)
-    }
-  }
 
   const isEmpty = !response?.totalCount
 
@@ -45,10 +33,12 @@ export default function HomeContent() {
         <ArticleList isLoading={isFetching} articles={response?.data ?? []} />
         {!isFetching && !isEmpty && (
           <PaginationSection
-            currentPage={currentPage}
+            currentPage={page}
             totalPages={response?.totalPages ?? 0}
             onClick={updatePage}
-            onLimitChange={handleLimitChange}
+            onLimitChange={(e) =>
+              handleLimitChange(e, response?.totalCount ?? 0)
+            }
             currentLimit={limit}
           />
         )}

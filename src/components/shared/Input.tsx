@@ -1,93 +1,59 @@
-import { useAppDispatch, useAppSelector } from '@inet/app/hooks'
-import useGetPathName from '@inet/hooks/use-get-path-name'
 import { CancelIcon } from '@inet/icons'
-import {
-  setIsGlobalSearch,
-  setSearchKeyword,
-} from '@inet/redux/slices/searchSlice'
 import clsx from 'clsx'
-import { forwardRef, LegacyRef, ReactElement, useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import {
+  ChangeEvent,
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  useMemo,
+  useState,
+} from 'react'
 import Button from './Button'
 
 type Props = {
   type: string
   className?: string
   placeholder: string
+  defaultValue?: string
   suffix: ReactElement
-  onSubmit?: () => void
-  onCancelClick?: () => void
-  cancelButtonClass?: string
-  cancelButtonIconClass?: string
-  isGlobalSearchInput: boolean
+  onSubmit?: (value: string) => void
+  onClear?: () => void
+  onSuffixClick?: (value: string) => void
+  clearButtonClass?: string
+  clearButtonIconClass?: string
+}
+
+interface IUseInputValue {
+  value: string
+  isClearable: boolean
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void
+  handleClearClick: () => void
 }
 
 const useInputValue = (
-  onCancelClick: (() => void) | undefined,
-  shouldUpdateInput: boolean,
-) => {
-  const dispatch = useAppDispatch()
+  defaultValue: string | undefined,
+  onClear: Props['onClear'],
+): IUseInputValue => {
+  const [value, setValue] = useState(defaultValue || '')
 
-  const [value, setValue] = useState('')
-  const [shouldShowCancel, setShouldShowCancel] = useState(false)
+  const isClearable = useMemo(() => !!value, [value])
 
-  const [searchParams] = useSearchParams()
-  const keyword = searchParams.get('keyword')
-
-  useEffect(() => {
-    if (!shouldUpdateInput) {
-      return
-    }
-
-    setValue(keyword ?? '')
-    dispatch(setSearchKeyword(keyword ?? undefined))
-    setShouldShowCancel(Boolean(keyword))
-  }, [keyword, shouldUpdateInput])
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value: newValue } = event.target
-
     setValue(newValue)
-
-    if (newValue.length > 0) {
-      setShouldShowCancel(true)
-    } else {
-      setShouldShowCancel(false)
-    }
   }
 
-  const handleCancelClick = () => {
+  const handleClearClick = () => {
     setValue('')
-    setShouldShowCancel(false)
-    onCancelClick && onCancelClick()
+    onClear?.()
   }
 
   return {
     value,
-    shouldShowCancel,
+    isClearable,
     handleChange,
-    handleCancelClick,
+    handleClearClick,
   }
-}
-
-const useUpdateSearchMode = (
-  isGlobalSearchInput: boolean,
-): { shouldUpdateInput: boolean } => {
-  const dispatch = useAppDispatch()
-
-  const currentCategoryName = useGetPathName('category', 1)
-  const nextIsGlobalSearch = currentCategoryName === 'popular'
-  const isGlobalSearch = useAppSelector(
-    (state) => state.searchReducer.isGlobalSearch,
-  )
-
-  useEffect(() => {
-    if (isGlobalSearch !== nextIsGlobalSearch) {
-      dispatch(setIsGlobalSearch(nextIsGlobalSearch))
-    }
-  }, [currentCategoryName])
-
-  return { shouldUpdateInput: nextIsGlobalSearch === isGlobalSearchInput }
 }
 
 const Input = (
@@ -95,24 +61,29 @@ const Input = (
     type,
     className: customClassName = '',
     placeholder,
+    defaultValue,
     suffix,
     onSubmit,
-    onCancelClick,
-    cancelButtonIconClass: customCancelButtonIconClassName = '',
-    cancelButtonClass: customCancelButtonClassName = '',
-    isGlobalSearchInput,
+    onClear,
+    onSuffixClick,
+    clearButtonIconClass: customClearButtonIconClassName = '',
+    clearButtonClass: customClearButtonClassName = '',
   }: Props,
-  ref: LegacyRef<HTMLInputElement> | undefined,
+  ref: ForwardedRef<HTMLInputElement> | undefined,
 ) => {
-  const { shouldUpdateInput } = useUpdateSearchMode(isGlobalSearchInput)
-
-  const { value, shouldShowCancel, handleChange, handleCancelClick } =
-    useInputValue(onCancelClick, shouldUpdateInput)
+  const { value, isClearable, handleChange, handleClearClick } = useInputValue(
+    defaultValue,
+    onClear,
+  )
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      onSubmit && onSubmit()
+      onSubmit?.(value)
     }
+  }
+
+  const handleSuffixClick = () => {
+    onSuffixClick?.(value)
   }
 
   return (
@@ -122,48 +93,55 @@ const Input = (
         customClassName,
       )}
     >
-      <>
-        <div className="flex flex-col grow h-full py-px">
-          {shouldShowCancel ? (
-            <label className="text-left text-primary-500 h-2/4 text-xs">
-              Search in INET
-            </label>
-          ) : null}
-          <input
-            ref={ref}
-            value={value}
-            type={type}
-            className={clsx(
-              'grow border-none outline-none placeholder:focus:text-primary-500',
-              shouldShowCancel ? 'h-full' : 'h-2/4',
-            )}
-            placeholder={placeholder}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
-        </div>
-        {shouldShowCancel ? (
-          <Button
-            variant="custom"
-            icon={
-              <CancelIcon
-                className={clsx(
-                  'fill-primary-200',
-                  customCancelButtonIconClassName,
-                )}
-              />
-            }
-            size="small"
-            fillType="ghost"
-            className={clsx(
-              'h-6 border-r border-solid rounded-none border-primary-200 pr-1.5',
-              customCancelButtonClassName,
-            )}
-            onClick={handleCancelClick}
-          />
-        ) : null}
-      </>
-      {suffix}
+      <div className="flex flex-col grow h-full py-px relative">
+        <label
+          className={clsx(
+            'text-left text-primary-500 h-2/4 text-xs absolute',
+            'transition-all duration-75',
+            isClearable ? 'mt-0' : 'invisible opacity-0 mt-3',
+          )}
+        >
+          Search in INET
+        </label>
+        <input
+          ref={ref}
+          value={value}
+          type={type}
+          className={clsx(
+            'grow border-none outline-none placeholder:focus:text-primary-500',
+            isClearable ? 'h-full transition-all pt-3' : 'h-2/4',
+          )}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+      {isClearable && (
+        <Button
+          variant="custom"
+          icon={
+            <CancelIcon
+              className={clsx(
+                'fill-primary-200',
+                customClearButtonIconClassName,
+              )}
+            />
+          }
+          size="small"
+          fillType="ghost"
+          className={clsx(
+            'h-6 border-r border-solid rounded-none border-primary-200 pr-1.5',
+            customClearButtonClassName,
+          )}
+          onClick={handleClearClick}
+        />
+      )}
+      <span
+        className="shrink-0 flex items-center justify-center"
+        onClick={handleSuffixClick}
+      >
+        {suffix}
+      </span>
     </div>
   )
 }

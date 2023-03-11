@@ -1,32 +1,32 @@
-import { useAppSelector } from '@inet/app/hooks'
-import {
-  ArticleCreatedWithin,
-  IGetArticlesQuery,
-} from '@inet/services/types/articles/i-get-articles.query'
+import usePagination, { IUsePagination } from '@inet/hooks/use-pagination'
 import { useSearchParams } from 'react-router-dom'
 
-const useGetArticlesQueryParams = (
-  page: number,
-  limit: number,
-): IGetArticlesQuery => {
-  const createdWithin = useAppSelector(
-    (state) => state.articleReducer.articleCreatedWithin,
-  )
+export interface IUseGetArticlesQueryParams extends IUsePagination {
+  keyword: string | undefined
+  updateKeyword: (keyword: string) => void
+}
 
-  const { id: currentCategoryId } = useAppSelector(
-    (state) => state.articleReducer.currentCategory,
-  )
+export const KEYWORD_PARAM_KEY = 'keyword'
 
-  const [searchParams] = useSearchParams()
-  const keyword = searchParams.get('keyword') ?? undefined
+const useGetArticlesQueryParams = (): IUseGetArticlesQueryParams => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const keyword = searchParams.get(KEYWORD_PARAM_KEY) ?? undefined
+
+  const updateKeyword = (value: string) => {
+    if (value) {
+      searchParams.set(KEYWORD_PARAM_KEY, value)
+    } else {
+      searchParams.delete(KEYWORD_PARAM_KEY)
+    }
+    setSearchParams(searchParams)
+  }
+
+  const pagination = usePagination()
 
   return {
-    page,
-    limit,
-    createdWithin:
-      createdWithin === ArticleCreatedWithin.All ? undefined : createdWithin,
-    categoryId: currentCategoryId === 0 ? undefined : currentCategoryId,
+    ...pagination,
     keyword,
+    updateKeyword,
   }
 }
 

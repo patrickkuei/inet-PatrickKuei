@@ -1,4 +1,3 @@
-import { useAppSelector } from '@inet/app/hooks'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 import moment from 'moment'
 import { useRef } from 'react'
@@ -9,17 +8,15 @@ import SpinLoader from './SpinLoader'
 interface IArticleListProps {
   isLoading: boolean
   articles: IArticleViewModel[]
+  searchKeyword?: string
 }
 
 export default function ArticleList({
   isLoading,
   articles,
+  searchKeyword,
 }: IArticleListProps) {
   const currentMoment = useRef(moment())
-
-  const searchKeyword = useAppSelector(
-    (state) => state.searchReducer.searchKeyword,
-  )
 
   return isLoading ? (
     <SpinLoader className="mt-12" />
@@ -37,6 +34,7 @@ export default function ArticleList({
             key={article.id}
             article={article}
             createdAt={createdAt}
+            highlightText={searchKeyword}
           />
         )
       })}

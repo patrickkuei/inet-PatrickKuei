@@ -1,5 +1,5 @@
-import { store } from '@inet/app/store'
 import { SearchIcon } from '@inet/icons'
+import { store } from '@inet/redux/store'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -15,7 +15,6 @@ it('render Input', () => {
           ref={ref}
           type="text"
           placeholder="搜尋 INET"
-          isGlobalSearchInput={false}
           suffix={<SearchIcon className="fill-primary-200" />}
         />
       </Provider>
