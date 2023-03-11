@@ -1,10 +1,10 @@
-import { useAppSelector } from '@inet/app/hooks'
 import Dot from '@inet/components/shared/Dot'
 import { AnonymIcon, EyeIcon, HeartIcon } from '@inet/icons'
 import { IArticleViewModel } from '@inet/services/types/articles/i-article.view-model'
 
-interface IArticlePreviewProps {
+export interface IArticlePreviewProps {
   article: IArticleViewModel
+  highlightText?: string
   createdAt: string
 }
 
@@ -49,14 +49,11 @@ const getMatchedSubstringIndex = (
 
 export default function ArticlePreview({
   article,
+  highlightText,
   createdAt,
 }: IArticlePreviewProps) {
-  const searchKeyword = useAppSelector(
-    (state) => state.searchReducer.searchKeyword,
-  )
-
   const getMarkedJsx = (string: string) => {
-    const matchedIdx = getMatchedSubstringIndex(string, searchKeyword)
+    const matchedIdx = getMatchedSubstringIndex(string, highlightText)
 
     if (matchedIdx < 0) {
       return string
@@ -65,9 +62,9 @@ export default function ArticlePreview({
         <>
           {string.slice(0, matchedIdx)}
           <span className="text-secondary-500">
-            {string.slice(matchedIdx, matchedIdx + searchKeyword!.length)}
+            {string.slice(matchedIdx, matchedIdx + highlightText!.length)}
           </span>
-          {string.slice(matchedIdx + searchKeyword!.length)}
+          {string.slice(matchedIdx + highlightText!.length)}
         </>
       )
     }

@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 export interface IUsePagination {
   page: number
   limit: number
   updatePage: (page: number) => void
   updateLimit: (nextLimit: number) => void
+  handleLimitChange: (
+    event: ChangeEvent<HTMLSelectElement>,
+    totalCount: number,
+  ) => void
 }
 
 export interface IUsePaginationOptions {
@@ -36,13 +40,26 @@ function usePagination({
     window.scrollTo(0, 0)
   }
 
-  let x = 1
+  const handleLimitChange = (
+    event: ChangeEvent<HTMLSelectElement>,
+    totalCount: number,
+  ): void => {
+    const nextLimit = parseInt(event.target.value)
+    updateLimit(nextLimit)
+
+    const nextTotalPage = ~~(totalCount / nextLimit)
+
+    if (page > nextTotalPage) {
+      updatePage(nextTotalPage - 1)
+    }
+  }
 
   return {
     page,
     limit,
     updatePage,
     updateLimit,
+    handleLimitChange,
   }
 }
 

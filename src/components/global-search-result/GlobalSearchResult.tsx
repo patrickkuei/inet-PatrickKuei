@@ -1,41 +1,25 @@
-import ArticleList from '@inet/components/shared/ArticleList'
-import PaginationSection from '@inet/components/shared/PaginationSection'
 import useGetArticlesQueryParams from '@inet/hooks/use-get-articles-query-params'
 import { useGetArticlesQuery } from '@inet/services/apiSlice'
-import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
-import ArticleDirectoryHeader from './ArticleDirectoryHeader'
-import ArticleDirectorySearchSummary from './ArticleDirectorySearchSummary'
+import ArticleList from '../shared/ArticleList'
+import PaginationSection from '../shared/PaginationSection'
+import GlobalSearchResultHeader from './GlobalSearchResultHeader'
 
-export interface IArticleDirectoryProps {
-  category: IArticleCategoryViewModel
-}
-
-export default function ArticleDirectory({ category }: IArticleDirectoryProps) {
-  const { page, limit, updatePage, handleLimitChange, keyword, updateKeyword } =
+export default function GlobalSearchResult() {
+  const { page, limit, updatePage, handleLimitChange, keyword } =
     useGetArticlesQueryParams()
 
   const { isFetching, data: response } = useGetArticlesQuery({
-    categoryId: category.id,
     page,
     limit,
     keyword,
   })
 
-  const totalCount = response?.totalCount ?? 0
-
   return (
     <div className="flex flex-col p-6 grow min-w-0 max-w-180 desktop:bg-white desktop:mx-12 desktop:py-6 desktop:px-8 desktop:rounded-lg">
-      <ArticleDirectoryHeader
-        category={category}
-        defaultKeyword={keyword}
-        onSearch={updateKeyword}
+      <GlobalSearchResultHeader
+        keyword={keyword ?? ''}
+        totalCount={response?.totalCount ?? 0}
       />
-      {!isFetching && totalCount > 0 && (
-        <ArticleDirectorySearchSummary
-          keyword={keyword ?? ''}
-          totalCount={totalCount}
-        />
-      )}
       <div className="flex flex-col py-4 gap-5">
         <ArticleList
           isLoading={isFetching}

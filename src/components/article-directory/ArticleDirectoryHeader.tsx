@@ -1,22 +1,24 @@
-import { useAppSelector } from '@inet/app/hooks'
 import Input from '@inet/components/shared/Input'
 import { SearchIcon } from '@inet/icons'
 import { useGetArticleCategoryQuery } from '@inet/services/apiSlice'
 import { IArticleCategoryViewModel } from '@inet/services/types/shared/i-article-category.view-model'
+import Button from '../shared/Button'
 
-interface IArticleDirectoryHeaderProps {
+export interface IArticleDirectoryHeaderProps {
   category: IArticleCategoryViewModel
+  defaultKeyword?: string
+  onSearch: (keyword: string) => void
 }
 
 export default function ArticleDirectoryHeader({
   category,
+  defaultKeyword,
+  onSearch,
 }: IArticleDirectoryHeaderProps) {
   const { data: categoryDetail } = useGetArticleCategoryQuery(category.code)
 
-  const { isGlobalSearch } = useAppSelector((state) => state.searchReducer)
-
   return (
-    <>
+    <div className="flex flex-col">
       <div className="flex flex-row mb-4 gap-6">
         <img
           width={80}
@@ -30,15 +32,22 @@ export default function ArticleDirectoryHeader({
           <div>Articles Today: {categoryDetail?.newArticleCountToday ?? 0}</div>
         </div>
       </div>
-      <div>
-        <Input
-          type="text"
-          className="w-64"
-          placeholder="在此分類中搜尋"
-          isGlobalSearchInput={isGlobalSearch}
-          suffix={<SearchIcon className="fill-primary-200" />}
-        />
-      </div>
-    </>
+      <Input
+        type="text"
+        className="w-72"
+        placeholder="Search in this category"
+        defaultValue={defaultKeyword}
+        suffix={
+          <Button
+            variant="custom"
+            icon={<SearchIcon className="fill-primary-200" />}
+            size="small"
+            fillType="ghost"
+          />
+        }
+        onSubmit={onSearch}
+        onSuffixClick={onSearch}
+      />
+    </div>
   )
 }

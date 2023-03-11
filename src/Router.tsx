@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './Layout'
 import ArticleDirectoryPage from './pages/ArticleDirectoryPage'
+import GlobalSearchResultPage from './pages/GlobalSearchResultPage'
 import HomePage from './pages/HomePage'
 
 export default function Router() {
@@ -14,6 +15,7 @@ export default function Router() {
           path="category/:categoryCode"
           element={<ArticleDirectoryPage />}
         />
+        <Route path="search" element={<GlobalSearchResultPage />} />
         <Route path="edit" element={<>edit</>} />
         <Route path="setting" element={<>setting</>} />
       </Route>
